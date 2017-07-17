@@ -31,14 +31,12 @@ public class FirstPyramid {
 		String space = "";
 		// Spaces for top-down pyramid
 		if (row < n) {
-
 			for (int i = 0; i < n - row - 1; i++) {
 				space = space + " ";
 			}
 		}
 		// Spaces for bottom-up pyramid
 		else if (row > n) {
-
 			for (int i = row; i > n; i--) {
 				space = space + " ";
 			}
