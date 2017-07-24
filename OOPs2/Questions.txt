@@ -1,5 +1,5 @@
-Q2. Overall Rating of service ?,(Type) Single Select, Options - (1/2/3/4/5)
-Q1. Area of improvement ? ,(Type) Multi Select,Options - (1.Service Quality/2.Communication/3.Delivery Process)
-Q4. Feedback ? ,(Type)Text
-Q3. Contact No. ? ,(Type) Number
-Q5. Name ? ,(Type)Text
+Q1. Enter your Name-,Text
+Q2. Enter your Contact No-,Number
+Q3. Overall Rating of Service-,Single Select,1/2/3/4/5
+Q4. Area of improvement ?,Multi Select,Service Quality/Communication/Delivery Process
+Q5. Feedback ?,Text
