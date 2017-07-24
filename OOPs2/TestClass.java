@@ -16,24 +16,32 @@ public class TestClass {
 	}
 
 	@Test
-	public void answersClassHappyTestCases() {
+	public void answersClassHappyTestCase() {
 		answer.setAnswer("Udit");
 		answer.setAnswer("Saxena");
 		String actual = answer.getAnswer();
 		String expected = "UditSaxena";
 		assertEquals(expected, actual);
 	}
-
-	//
+	
 	@Test
-	public void quentionsClassIsValidOptionHappyTestCasesForSingleSelect() {
+	public void questionsClassIsValidOptionHappyTestCaseForSingleSelect() {
 		boolean actual = question.isValidOption("1/2/3/4/5", "1");
 		boolean expected = true;
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void fileHandlingClassReadFilenHappyTestCasesForSingleSelect() {
+	public void questionsClassIsValidOptionHappyTestCaseForMultiSelect() {
+		boolean actual = question.isValidOption(
+				"Service Quality/Communication/Delivery Process",
+				"Service Quality,Communication");
+		boolean expected = true;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void fileHandlingClassReadFileHappyTestCase() {
 		String[][] actual = fileOperations
 				.read("C:/Users/User27/workspace/OOPs2/src/Questions.txt");
 		String[][] expected = {
@@ -47,19 +55,10 @@ public class TestClass {
 
 	// Counting number of questions available in Question.txt
 	@Test
-	public void fileHandlingClassCountLinesHappyTestCasesForSingleSelect() {
+	public void fileHandlingClassCountLinesHappyTestCaseForSingleSelect() {
 		int actual = fileOperations
 				.countLines("C:/Users/User27/workspace/OOPs2/src/Questions.txt");
 		int expected = 5;
-		assertEquals(expected, actual);
-	}
-
-	@Test
-	public void quentionsClassIsValidOptionHappyTestCasesForMultiSelect() {
-		boolean actual = question.isValidOption(
-				"Service Quality/Communication/Delivery Process",
-				"Service Quality,Communication");
-		boolean expected = true;
 		assertEquals(expected, actual);
 	}
 
@@ -67,14 +66,14 @@ public class TestClass {
 	 * Negative test Cases
 	 */
 	@Test
-	public void quentionsClassIsValidOptionNegativeTestCasesWhenInvalidOptionEnteredForSingleSelect() {
+	public void questionsClassIsValidOptionNegativeTestCaseWhenInvalidOptionEnteredForSingleSelect() {
 		boolean actual = question.isValidOption("1/2/3/4/5", "7");
 		boolean expected = false;
 		assertEquals(expected, actual);
 	}
 
 	@Test
-	public void quentionsClassIsValidOptionNegativeTestCasesWhenInvalidOptionEnteredForMultiSelect() {
+	public void questionsClassIsValidOptionNegativeTestCaseWhenInvalidOptionEnteredForMultiSelect() {
 		boolean actual = question.isValidOption(
 				"Service Quality/Communication/Delivery Process", "ABC,XYZ");
 		boolean expected = false;
