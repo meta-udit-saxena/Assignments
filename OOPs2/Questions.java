@@ -10,6 +10,10 @@ public class Questions implements Comparable<Questions> {
 
 	}
 
+	/**
+	 * Initializing str 
+	 * @param str - String containing question
+	 */
 	public Questions(String str) {
 		this.str = str;
 	}

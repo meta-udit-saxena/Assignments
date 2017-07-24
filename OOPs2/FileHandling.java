@@ -54,7 +54,6 @@ class FileHandling {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(
 					filePath), true));
-			
 			if (surveyDetails.equals("-1")) {
 				bw.newLine();
 			} else {
@@ -78,7 +77,6 @@ class FileHandling {
 			reader = new LineNumberReader(new FileReader(filePath));
 			int count = 0;
 			while ((reader.readLine()) != null) {
-				
 			}
 			count = reader.getLineNumber();
 			reader.close();
