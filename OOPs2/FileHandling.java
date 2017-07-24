@@ -31,7 +31,7 @@ class FileHandling {
 			BufferedReader br = new BufferedReader(new InputStreamReader(
 					fStream));
 			String str = "";
-			while ((str = br.readLine()) != null) {
+			while ((str = br .readLine()) != null) {
 				questions[index++] = str.split(",");
 			}
 			br.close();

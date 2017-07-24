@@ -54,8 +54,8 @@ public class Survey {
 				if ("Single Select".equals(ques.getType(question, index))) {
 					enteredValue = in.nextLine();
 					// checking entered option is valid or not
-					while (ques.isValidOption(
-							ques.getOption(question, index), enteredValue) == false) {
+					while (ques.isValidOption(ques.getOption(question, index),
+							enteredValue) == false) {
 						System.out.println("Please enter the correct option");
 						enteredValue = in.nextLine();
 					}
@@ -67,8 +67,8 @@ public class Survey {
 							.println("Enter option in following pattern: option1,Option2,so on...");
 					enteredValue = in.nextLine();
 					// checking entered value is valid or not
-					while (ques.isValidOption(
-							ques.getOption(question, index), enteredValue) == false) {
+					while (ques.isValidOption(ques.getOption(question, index),
+							enteredValue) == false) {
 						System.out.println("Please enter the correct option");
 						enteredValue = in.nextLine();
 					}
@@ -96,12 +96,13 @@ public class Survey {
 					} while (String.valueOf(number).length() != 10);
 					ans.setAnswer(number + ",");
 				}
-				//text type questions
+				// text type questions
 				else {
-					enteredValue=in.nextLine();
-					while(enteredValue.length()==0){
-						System.out.println("Enter data This field is mandantory");
-						enteredValue=in.nextLine();
+					enteredValue = in.nextLine();
+					while (enteredValue.length() == 0) {
+						System.out
+								.println("Enter data This field is mandantory");
+						enteredValue = in.nextLine();
 					}
 					ans.setAnswer(enteredValue);
 					if (index != 4) {
@@ -119,7 +120,7 @@ public class Survey {
 			ans.reset();
 			// "-1" for next line
 			print.printReportB("-1", reportBPath);
-			
+
 		}
 		/**
 		 * for part B problem in which we have to sort the given question
