@@ -1,0 +1,37 @@
+
+##########################################################################################
+
+Your Order : Udit Saxena 
+
+##########################################################################################
+
+PURCHASE PRODUCTS :
+
+Product : 1001 - Reebok Sneakers(White)
+Cost : Rs1498.0(2 X 749.0)
+
+Product : 1002 - Reebok T-Shirt (Black)
+Cost : Rs1437.0(3 X 479.0)
+
+
+APPLIED PROMOTION/DISCOUNTS : 
+
+Promotion : Rs100.0 off on Reebok Sneakers(White) [Code:1001]
+Discount : 200.0
+
+Promotion : 15.0% off on Reebok T-Shirt (Black) [Code:1002]
+Discount : 215.54999999999998
+
+Promotion : Rs251.945 off on order 
+Discount : Rs251.945
+
+
+Subtotal : 2935.0
+Product Level Discounts : Rs415.55
+Order Level Discounts : Rs251.945
+Total Discount : Rs667.495
+Total : Rs2267.5049999999997
+
+##########################################################################################
+  THANK YOU 
+##########################################################################################

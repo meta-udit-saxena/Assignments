@@ -1,0 +1,31 @@
+
+##########################################################################################
+
+Your Order : 2 
+
+##########################################################################################
+
+PURCHASE PRODUCTS :
+
+Product : 1001 - Reebok Sneakers(White)
+Cost : Rs17227.0(23 X 749.0)
+
+
+APPLIED PROMOTION/DISCOUNTS : 
+
+Promotion : Rs0.0 off on Reebok Sneakers(White) [Code:1001]
+Discount : 0.0
+
+Promotion : Rs0.0 off on order 
+Discount : Rs0.0
+
+
+Subtotal : 0.0
+Product Level Discounts : Rs0.0
+Order Level Discounts : Rs0.0
+Total Discount : Rs0.0
+Total : Rs0.0
+
+##########################################################################################
+  THANK YOU 
+##########################################################################################
