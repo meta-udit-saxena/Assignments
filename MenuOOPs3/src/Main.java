@@ -63,8 +63,7 @@ public class Main {
 		MenuItem displaycart = new ActionableMenuItem<Cart>(cart);
 		displaycart.setDisplayName("3.Display cart");
 		cartMenu.add(displaycart);
-		MenuItem checkOut = new ActionableMenuItem<Bill>(new Bill(userName,
-				cart, productPromo));
+		MenuItem checkOut = new ActionableMenuItem<BillGenerator>(new BillGenerator(cart, productPromo, orderPromo));
 		checkOut.setDisplayName("4.CheckOut");
 		cartMenu.add(checkOut);
 		MenuItem cartBack = new ActionableMenuItem<String>("");

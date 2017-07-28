@@ -122,6 +122,7 @@ public class Cart {
 
 		if (cartItems.contains(product)) {
 			cartItems.remove(product);
+			setOrderLevelDiscount(getOrderLevelDiscount()-(product.getTotalAmount()));
 			return product.getProductId() + "  " + product.getProductName()
 					+ "  removed from cart";
 		} else {

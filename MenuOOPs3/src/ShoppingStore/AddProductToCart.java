@@ -67,7 +67,6 @@ public class AddProductToCart {
 			cart.addProductToCartByProductId(store, productId, quantity);
 		}
 		productPromo.setDiscount(cart);
-		orderPromo.setDiscount(cart);
 	}
 
 	/**

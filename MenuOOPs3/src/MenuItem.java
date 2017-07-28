@@ -23,6 +23,4 @@ public abstract class MenuItem {
 		// TODO Auto-generated method stub
 		
 	}
-	
-
 }

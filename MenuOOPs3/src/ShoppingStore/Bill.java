@@ -109,8 +109,11 @@ public class Bill {
 	 * 
 	 * @return String containing details of bill
 	 */
-	@Override
-	public String toString() {
+
+	protected String display() {
+		if(cart.getCartItems().size()==0){
+			return "\n--------------No Product Available in Cart for Checkout-----------------\n";
+		}
 		String display = "";
 		String hashtag = "\n##########################################################################################\n";
 		display += hashtag + "\nYour Order : " + userName + " \n" + hashtag;
@@ -122,6 +125,7 @@ public class Bill {
 		display += hashtag + "  THANK YOU " + hashtag;
 		// making cart empty after checkout
 		cart.setCartItems(new ArrayList<CartProducts>());
+		cart.setOrderLevelDiscount(0);
 		FileHandling file = new FileHandling();
 		file.write(display, userName);
 
