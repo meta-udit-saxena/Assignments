@@ -1,4 +1,5 @@
 package ShoppingStore;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,7 +18,6 @@ import java.util.List;
  * 
  */
 class FileHandling {
-
 
 	/**
 	 * Read file
@@ -40,22 +40,23 @@ class FileHandling {
 	/**
 	 * Write File on its location
 	 * 
-	 * @param surveyDetails
-	 *            - is the content that need to be printed in file
+	 * @param billDetails
+	 *            - is the bill that need to be printed in file
 	 * @param filePath
 	 *            - is the location of file which we need to add content
 	 * 
 	 */
-	protected void write(String surveyDetails, String filePath) {
+	protected void write(String billDetails, String filePath) {
 		try {
-			clearRecord(filePath+"'s bill.txt");
+			clearRecord(filePath + "'s bill.txt");
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(
-					filePath+"'s bill.txt"), true));
-				bw.write(surveyDetails);
+					filePath + "'s bill.txt"), true));
+			bw.write(billDetails);
 			bw.close();
 		} catch (Exception e) {
 		}
 	}
+
 	protected void clearRecord(String filePath) {
 		PrintWriter writer;
 		try {

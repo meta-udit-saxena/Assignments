@@ -37,7 +37,6 @@ public class OrderPromoTest {
 	public void Given_IdIs1001AndQuantityIs50_When_setDiscount_Then_3245() {
 		cart.addProductToCartByProductId(store, 1001, 50);
 		productPromo.setDiscount(cart);
-		cart.calculateTotal(cart);
 		orderPromo.setDiscount(cart);
 
 		double actual = cart.getOrderLevelDiscount();
@@ -49,7 +48,6 @@ public class OrderPromoTest {
 	public void Given_IdIs1001AndQuantityIs1_When_setDiscount_Then_0() {
 		cart.addProductToCartByProductId(store, 1001, 1);
 		productPromo.setDiscount(cart);
-		cart.calculateTotal(cart);
 		orderPromo.setDiscount(cart);
 
 		double actual = cart.getOrderLevelDiscount();

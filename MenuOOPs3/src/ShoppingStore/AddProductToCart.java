@@ -3,16 +3,26 @@ package ShoppingStore;
 import java.util.Scanner;
 
 /**
- * Drives all the functionality through main Class
+ * Responsible for adding product to Cart
  * 
  * @author Udit Saxena
  * 
  */
 public class AddProductToCart {
+	private Scanner scan;
 	private static Cart cart;
 	private static ProductPromo productPromo;
 	private static OrderPromo orderPromo;
 
+	/**
+	 * 
+	 * @param cart
+	 *            -Cart class object
+	 * @param productPromo
+	 *            -ProductPromo Class Object
+	 * @param orderPromo
+	 *            -OrderPromo class Object
+	 */
 	public AddProductToCart(Cart cart, ProductPromo productPromo,
 			OrderPromo orderPromo) {
 		this.cart = cart;
@@ -20,8 +30,9 @@ public class AddProductToCart {
 		this.orderPromo = orderPromo;
 	}
 
-	private Scanner scan;
-
+	/**
+	 * Take input from user and add that products in Cart
+	 */
 	public void addToCart() {
 		scan = new Scanner(System.in);
 		Store store = new Store();
@@ -44,7 +55,7 @@ public class AddProductToCart {
 		for (int loop = 1; loop <= numberOfProduct; loop++) {
 			System.out.println("Enter " + loop + " Product Id");
 			while (!scan.hasNextInt()
-					|| !store.isIdValid(productId = scan.nextInt())) {
+					|| !store.isValidProductId(productId = scan.nextInt())) {
 				System.out.println("Enter Valid product Id");
 				scan.nextLine();
 			}
@@ -56,10 +67,12 @@ public class AddProductToCart {
 			cart.addProductToCartByProductId(store, productId, quantity);
 		}
 		productPromo.setDiscount(cart);
-		cart.calculateTotal(cart);
 		orderPromo.setDiscount(cart);
 	}
 
+	/**
+	 * OverRiding toString method of String Class
+	 */
 	@Override
 	public String toString() {
 		addToCart();

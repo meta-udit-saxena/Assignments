@@ -11,14 +11,11 @@ public class Product {
 	private String productName;
 	private double productPrice;
 
-	public Product() {
-
-	}
-
-	public Product(String id, String name, String price) {
-		productId = Integer.parseInt(id);
-		productName = name;
-		productPrice = Double.parseDouble(price);
+	public Product(String productDetails) {
+		String[] details = productDetails.split(",");
+		productId = Integer.parseInt(details[0]);
+		productName = details[1];
+		productPrice = Double.parseDouble(details[2]);
 	}
 
 	public int getProductId() {

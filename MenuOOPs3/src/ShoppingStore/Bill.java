@@ -12,7 +12,6 @@ public class Bill {
 	private String userName;
 	private Cart cart;
 	private ProductPromo productPromo;
-	
 
 	/**
 	 * parameterized constructor initializing private variables
@@ -28,7 +27,6 @@ public class Bill {
 		this.userName = userName;
 		this.cart = cart;
 		this.productPromo = productPromo;
-		
 	}
 
 	/**
@@ -40,12 +38,12 @@ public class Bill {
 		for (CartProducts product : cart.getCartItems()) {
 			output += "\nProduct : " + product.getProductId() + " - "
 					+ product.getProductName() + "\n";
-			output += "Cost : Rs"
+			output += "Cost : Rs "
 					+ (product.getProductPrice() * product.getQuantity()) + "("
 					+ product.getQuantity() + " X " + product.getProductPrice()
 					+ ")\n";
 		}
-	
+
 		return output;
 	}
 
@@ -61,7 +59,7 @@ public class Bill {
 				if (PromotionType.ProductFixedAmountPromotion
 						.equals(productPromo.getDiscountType().get(
 								product.getProductId()))) {
-					output += "Promotion : Rs" + product.getDiscount()
+					output += "Promotion : Rs " + product.getDiscount()
 							+ " off on " + product.getProductName() + " [Code:"
 							+ product.getProductId() + "]\n";
 					output += "Discount : "
@@ -77,12 +75,11 @@ public class Bill {
 							+ (product.getDiscount() * product.getQuantity())
 							+ "\n\n";
 				}
-
 			}
 		}
-		output += "Promotion : Rs" + cart.getOrderLevelDiscount()
+		output += "Promotion : Rs " + cart.getOrderLevelDiscount()
 				+ " off on order \n";
-		output += "Discount : Rs" + cart.getOrderLevelDiscount() + "\n\n\n";
+		output += "Discount : Rs " + cart.getOrderLevelDiscount() + "\n\n\n";
 		return output;
 	}
 
@@ -93,19 +90,23 @@ public class Bill {
 	private String finalBill() {
 		String output = "";
 		output += "Subtotal : " + cart.getSubTotal() + "\n";
-		output += "Product Level Discounts : Rs" + cart.getTotalProductLevelDiscount()
+		output += "Product Level Discounts : Rs "
+				+ cart.getTotalProductLevelDiscount() + "\n";
+		output += "Order Level Discounts : Rs " + cart.getOrderLevelDiscount()
 				+ "\n";
-		output += "Order Level Discounts : Rs" + cart.getOrderLevelDiscount() + "\n";
-		output += "Total Discount : Rs"
-				+ (cart.getOrderLevelDiscount() + cart.getTotalProductLevelDiscount()) + "\n";
-		output += "Total : Rs"
-				+ (cart.getSubTotal() - cart.getTotalProductLevelDiscount() - cart.getOrderLevelDiscount() + "\n");
-		
+		output += "Total Discount : Rs "
+				+ (cart.getOrderLevelDiscount() + cart
+						.getTotalProductLevelDiscount()) + "\n";
+		output += "Total : Rs "
+				+ (cart.getSubTotal() - cart.getTotalProductLevelDiscount()
+						- cart.getOrderLevelDiscount() + "\n");
+
 		return output;
 	}
 
 	/**
 	 * Overriding toString method and return bill in string format
+	 * 
 	 * @return String containing details of bill
 	 */
 	@Override
@@ -119,10 +120,11 @@ public class Bill {
 		display += appliedPromotionsOrDiscount();
 		display += finalBill();
 		display += hashtag + "  THANK YOU " + hashtag;
+		// making cart empty after checkout
 		cart.setCartItems(new ArrayList<CartProducts>());
 		FileHandling file = new FileHandling();
 		file.write(display, userName);
-		
+
 		return display;
 	}
 }

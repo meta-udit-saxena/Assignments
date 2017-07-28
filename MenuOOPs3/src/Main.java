@@ -2,15 +2,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import ShoppingStore.Bill;
-import ShoppingStore.BillGenerator;
-import ShoppingStore.Cart;
-import ShoppingStore.CartProducts;
-import ShoppingStore.OrderPromo;
-import ShoppingStore.ProductPromo;
-import ShoppingStore.AddProductToCart;
-import ShoppingStore.Store;
-import ShoppingStore.RemoveProductFromCart;
+import ShoppingStore.*;
 
 /**
  * Main class which creates , display and perform actions on Menu.
@@ -22,9 +14,9 @@ public class Main {
 	private static Cart cart = new Cart();
 	private static OrderPromo orderPromo = new OrderPromo();
 	private static ProductPromo productPromo = new ProductPromo();
-	private static Store store = new Store();
 	private static String userName;
 	private static Scanner scan;
+	private static Scanner scan2;
 
 	/**
 	 * Creates a Menu
@@ -32,34 +24,32 @@ public class Main {
 	 */
 	public static Menu createMenu() {
 		Menu mainMenu = new Menu();
-
+		// Main Menu
 		List<MenuItem> subMenu = mainMenu.getSubMenu();
 		MenuItem displayProduct = new ActionableMenuItem<Store>(new Store());
 		displayProduct.setDisplayName("1.Display Product List");
 		subMenu.add(displayProduct);
-
 		Menu promotionsMenu = new Menu();
 		promotionsMenu.setDisplayName("2.Display Promotion List");
 		subMenu.add(promotionsMenu);
-
+		// sub menu of Display Promotion
 		List<MenuItem> subPromotionMenu = ((Menu) promotionsMenu).getSubMenu();
 		MenuItem ProductPromo = new ActionableMenuItem<ProductPromo>(
 				new ProductPromo());
 		ProductPromo.setDisplayName("1.Product Promotion");
 		subPromotionMenu.add(ProductPromo);
-
 		MenuItem OrderPromo = new ActionableMenuItem<OrderPromo>(
 				new OrderPromo());
 		OrderPromo.setDisplayName("2.Order Promotion");
 		subPromotionMenu.add(OrderPromo);
-
 		MenuItem back = new ActionableMenuItem<String>("");
 		back.setDisplayName("3.Back");
 		subPromotionMenu.add(back);
+		// buy Product Menu
 		MenuItem buyProduct = new Menu();
 		buyProduct.setDisplayName("3.Buy Product");
 		subMenu.add(buyProduct);
-
+		// Buy product - Cart sub menu
 		List<MenuItem> cartMenu = ((Menu) buyProduct).getSubMenu();
 		MenuItem addToCart = new ActionableMenuItem<AddProductToCart>(
 				new AddProductToCart(cart, productPromo, orderPromo));
@@ -80,8 +70,12 @@ public class Main {
 		MenuItem cartBack = new ActionableMenuItem<String>("");
 		cartBack.setDisplayName("5.Back");
 		cartMenu.add(cartBack);
-		return mainMenu;
+		// Exit Button
+		MenuItem exit = new ActionableMenuItem<Exit>(new Exit());
+		exit.setDisplayName("4.Exit");
+		subMenu.add(exit);
 
+		return mainMenu;
 	}
 
 	/**
@@ -101,12 +95,12 @@ public class Main {
 	 * @return user enter choice
 	 */
 	public static int getInput(Menu menu) {
-		Scanner scan = new Scanner(System.in);
+		scan2 = new Scanner(System.in);
 		int choice;
-		while (!scan.hasNextInt() || (choice = scan.nextInt()) < 1) {
-			System.out.println("Enter psoitive integer\n");
+		while (!scan2.hasNextInt() || (choice = scan2.nextInt()) < 1) {
+			System.out.println("Enter positive integer\n");
 			displayAndPerformAction(menu);
-			scan.nextLine();
+			scan2.nextLine();
 		}
 		return choice - 1;
 	}
@@ -119,11 +113,11 @@ public class Main {
 		int choice = getInput(menu);
 		MenuItem menuItem = menu.getSelection(choice);
 		if (menuItem == null) {
+			System.out.println();
 			displayAndPerformAction(menu);
 		} else if (menuItem instanceof ActionableMenuItem) {
-
-			((ActionableMenuItem<?>) menuItem).performAction();
 			if (!menuItem.getDisplayName().contains("Back")) {
+				((ActionableMenuItem<?>) menuItem).performAction();
 				displayAndPerformAction(menu);
 			}
 		} else {
@@ -141,6 +135,5 @@ public class Main {
 		while (true) {
 			displayAndPerformAction(menu);
 		}
-
 	}
 }

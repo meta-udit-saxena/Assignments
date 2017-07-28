@@ -1,4 +1,5 @@
 package ShoppingStore;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -12,9 +13,6 @@ import java.util.Scanner;
 public class Cart {
 	private List<CartProducts> cartItems = new ArrayList<CartProducts>();
 	private double orderLevelDiscount;
-	private double subTotal;
-	private double totalProductLevelDiscount;
-	private double finalAmount;
 	private Scanner scan;
 
 	/**
@@ -25,13 +23,14 @@ public class Cart {
 	public double getOrderLevelDiscount() {
 		return orderLevelDiscount;
 	}
-
+	
+	/**
+	 * Calculate final amount after applying all discount
+	 * @return final amount
+	 */
 	public double getFinalAmount() {
-		return finalAmount;
-	}
-
-	public void setFinalAmount(double finalAmount) {
-		this.finalAmount = finalAmount;
+		return getSubTotal() - getTotalProductLevelDiscount()
+				- getOrderLevelDiscount();
 	}
 
 	/**
@@ -50,17 +49,11 @@ public class Cart {
 	 * @return subTotal
 	 */
 	public double getSubTotal() {
+		double subTotal = 0;
+		for (CartProducts products : cartItems) {
+			subTotal += products.getProductPrice() * products.getQuantity();
+		}
 		return subTotal;
-	}
-
-	/**
-	 * setter for sub total amount
-	 * 
-	 * @param subTotal
-	 *            - sum of amount of all product
-	 */
-	public void setSubTotal(double subTotal) {
-		this.subTotal = subTotal;
 	}
 
 	/**
@@ -68,7 +61,13 @@ public class Cart {
 	 * 
 	 * @return totalProductLevelDiscount
 	 */
+
 	public double getTotalProductLevelDiscount() {
+		double totalProductLevelDiscount = 0;
+		for (CartProducts products : cartItems) {
+			totalProductLevelDiscount += (products.getDiscount() * products
+					.getQuantity());
+		}
 		return totalProductLevelDiscount;
 	}
 
@@ -78,15 +77,10 @@ public class Cart {
 	 * @param totalProductLevelDiscount
 	 *            - sum of all discount available on product
 	 */
-	public void setTotalProductLevelDiscount(double totalProductLevelDiscount) {
-		this.totalProductLevelDiscount = totalProductLevelDiscount;
-	}
-	
+
 	public void setCartItems(List<CartProducts> cartItems) {
 		this.cartItems = cartItems;
 	}
-
-	
 
 	/**
 	 * Adding product to cart by its product ID
@@ -100,38 +94,41 @@ public class Cart {
 	 */
 	public void addProductToCartByProductId(Store store, int id, int quantity) {
 		Product product = store.getProductByProductId(id);
-		CartProducts cartProducts = getChartProductById(id);
+		CartProducts cartProducts = getCartProductById(id);
 		// if product already in cartItems only increase its quantity
 		if (cartItems.contains(cartProducts)) {
 			cartProducts.setQuantity(cartProducts.getQuantity() + quantity);
 		}
 		// else create new CartProducts object and add to cartItems
 		else {
-			CartProducts cartProduct = new CartProducts(String.valueOf(product
-					.getProductId()), String.valueOf(product.getProductName()),
-					String.valueOf(product.getProductPrice()));
+			CartProducts cartProduct = new CartProducts(product.getProductId()
+					+ "," + product.getProductName() + ","
+					+ product.getProductPrice());
 			cartProduct.setQuantity(quantity);
 			cartItems.add(cartProduct);
 		}
 	}
-	
-	public String removeProductFromCartByProductId()
-	{
-		Scanner scan = new Scanner(System.in);
+
+	/**
+	 * remove product from cart By product Id
+	 * 
+	 * @return String
+	 */
+	public String removeProductFromCartByProductId() {
+		scan = new Scanner(System.in);
 		System.out.println("Enter product id You want to remove from cart :");
 		int id = scan.nextInt();
-		CartProducts product=getChartProductById(id);
+		CartProducts product = getCartProductById(id);
 
-		if(cartItems.contains(product)){
-		cartItems.remove(product);
-		return product.getProductId()+"  "+product.getProductName()+ "  removed from cart";
-		}else
-		{
+		if (cartItems.contains(product)) {
+			cartItems.remove(product);
+			return product.getProductId() + "  " + product.getProductName()
+					+ "  removed from cart";
+		} else {
 			return "Product not present in Cart";
 		}
-		
 	}
-	
+
 	/**
 	 * Getting ChartProducts Object from cartItems list by product ID
 	 * 
@@ -139,7 +136,7 @@ public class Cart {
 	 *            -product ID
 	 * @return product ChartProducts Class Object
 	 */
-	public CartProducts getChartProductById(int id) {
+	public CartProducts getCartProductById(int id) {
 		CartProducts product = null;
 		for (CartProducts p : cartItems) {
 			if (p.getProductId() == id) {
@@ -159,44 +156,36 @@ public class Cart {
 	}
 
 	/**
-	 * calculate the total amount and set subTotal and TotalProductLevelDiscount
-	 * 
-	 * @param cart
-	 *            - Cart class object
-	 */
-	public void calculateTotal(Cart cart) {
-		double subTotal = 0;
-		double totalProductLevelDiscount = 0;
-		for (CartProducts products : cart.getCartItems()) {
-			subTotal += products.getProductPrice() * products.getQuantity();
-			totalProductLevelDiscount += products.getDiscount()
-					* products.getQuantity();
-		}
-		cart.setSubTotal(Double.parseDouble(String.format("%2f",subTotal)));
-		cart.setTotalProductLevelDiscount(Double.parseDouble(String.format("%2f",totalProductLevelDiscount)));
-	}
-
-	/**
 	 * override toString method of String class
 	 * 
 	 * @return String containing details of products add on cart
 	 */
 	@Override
 	public String toString() {
-		if(cartItems.size()==0){
+		if (cartItems.size() == 0) {
 			return "\n----------Cart is Empty---------\n---------Buy some Product----------\n";
 		}
-		String result = "\n----------Your Products in cart----------\n";
+		String result = "\n------------------------Your Products in cart------------------------\n\n";
 		for (CartProducts product : cartItems) {
-			result += product.getProductId() + "  -->  "
-					+ product.getProductName() + "  -->  Price =  Rs "
-					+ product.getProductPrice() + "*" + product.getQuantity()
-					+ " = Rs " + product.getProductPrice() * product.getQuantity()
-					+ "  --> Discount = " + product.getDiscount() + "*"
-					+ product.getQuantity() + " = Rs " + product.getQuantity()
-					* product.getDiscount() + "  -->  Total Amount = "
-					+ (product.getProductPrice() - product.getDiscount())
-					* product.getQuantity() + "\n";
+			result += product.getProductId()
+					+ "  -->  "
+					+ product.getProductName()
+					+ "  -->  Price :  Rs "
+					+ product.getProductPrice()
+					+ "*"
+					+ product.getQuantity()
+					+ " = Rs "
+					+ product.getProductPrice()
+					* product.getQuantity()
+					+ "  --> Discount : "
+					+ product.getDiscount()
+					+ "*"
+					+ product.getQuantity()
+					+ " = Rs "
+					+ (product.getQuantity() * product.getDiscount())
+					+ "  -->  Total Amount = "
+					+ ((product.getProductPrice() - product.getDiscount()) * product
+							.getQuantity()) + "\n";
 		}
 		return result;
 	}

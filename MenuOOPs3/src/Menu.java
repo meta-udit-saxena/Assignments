@@ -12,10 +12,20 @@ public class Menu extends MenuItem {
 
 	private List<MenuItem> subMenu = new ArrayList<MenuItem>();
 
+	/**
+	 * 
+	 * @return subMenu - List of MenuItem
+	 */
 	public List<MenuItem> getSubMenu() {
 		return subMenu;
 	}
 
+	/**
+	 * Set SubMenu list
+	 * 
+	 * @param list
+	 *            - List of Menu Item
+	 */
 	public void setSubMenu(List<MenuItem> list) {
 		this.subMenu = list;
 	}
@@ -31,5 +41,4 @@ public class Menu extends MenuItem {
 
 		return subMenu.get(choice);
 	}
-
 }

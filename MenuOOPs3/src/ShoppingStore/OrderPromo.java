@@ -1,4 +1,5 @@
 package ShoppingStore;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -105,16 +106,14 @@ public class OrderPromo implements Promotion {
 					} else {
 						if (maxDiscount < discountList
 								.get(thresoldArray[count]) * totalAmount / 100) {
-							maxDiscount = discountList
-									.get(thresoldArray[count])
-									* totalAmount
-									/ 100;
+							maxDiscount = (discountList
+									.get(thresoldArray[count]) * totalAmount) / 100;
 						}
 					}
 					count++;
 				}
 			}
-			cart.setOrderLevelDiscount(Double.parseDouble(String.format("%2f",maxDiscount)));
+			cart.setOrderLevelDiscount(maxDiscount);
 		} else {
 			cart.setOrderLevelDiscount(0);
 		}
@@ -131,10 +130,10 @@ public class OrderPromo implements Promotion {
 		for (String str : orderPromoList) {
 			String[] s = str.split(",");
 			if (PromotionType.OrderFixedAmountPromotion.toString().equals(s[0])) {
-				result += "get Rs" + s[1] + "  discount on order above - Rs"
+				result += "get Rs " + s[1] + "  discount on order above - Rs "
 						+ s[2] + "\n";
 			} else {
-				result += "get " + s[1] + "%  discount on order above - Rs"
+				result += "get " + s[1] + "%  discount on order above - Rs "
 						+ s[2] + "\n";
 			}
 		}

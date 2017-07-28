@@ -18,8 +18,7 @@ public class Store {
 		List<String> productsDetails = new FileHandling()
 				.read(Constants.PRODUCT_LIST_PATH);
 		for (String str : productsDetails) {
-			String[] details = str.split(",");
-			this.products.add(new Product(details[0], details[1], details[2]));
+			this.products.add(new Product(str));
 		}
 	}
 
@@ -30,9 +29,10 @@ public class Store {
 		return products;
 	}
 
-	public int getTotalNoOfProductInStore(){
+	public int getTotalNoOfProductInStore() {
 		return products.size();
 	}
+
 	/**
 	 * Check whether given id is valid or not
 	 * 
@@ -40,7 +40,7 @@ public class Store {
 	 *            - ProductId
 	 * @return true if product available in store having given id else false
 	 */
-	public boolean isIdValid(int id) {
+	public boolean isValidProductId(int id) {
 		for (Product product : products) {
 			if (product.getProductId() == id) {
 				return true;
@@ -57,11 +57,13 @@ public class Store {
 	 * @return product Product Class Object
 	 */
 	public Product getProductByProductId(int id) {
-		Product product = new Product();
-		for (Product p : products) {
-			if (p.getProductId() == id) {
-				product = p;
-				break;
+		Product product = null;
+		if (isValidProductId(id)) {
+			for (Product p : products) {
+				if (p.getProductId() == id) {
+					product = p;
+					break;
+				}
 			}
 		}
 		return product;
@@ -80,9 +82,9 @@ public class Store {
 			result += "Product Id : " + product.getProductId() + "  -->  "
 					+ product.getProductName() + "  -->  Rs "
 					+ product.getProductPrice() + "\n";
-			
+
 		}
-		
+
 		return result;
 	}
 }

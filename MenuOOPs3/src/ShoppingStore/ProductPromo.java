@@ -1,4 +1,5 @@
 package ShoppingStore;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,6 +16,9 @@ public class ProductPromo implements Promotion {
 	// HashMap<ProductId,DiscountType> here PromotionType is an enum
 	private HashMap<Integer, PromotionType> discountType = new HashMap<Integer, PromotionType>();
 
+	/**
+	 * Initializing productPromo list from product promo file
+	 */
 	public ProductPromo() {
 		initProductPromo();
 	}
@@ -78,19 +82,18 @@ public class ProductPromo implements Promotion {
 			if (isApplicable(productId)) {
 				if (PromotionType.ProductFixedAmountPromotion
 						.equals(discountType.get(productId))) {
-					product.setDiscount(Double.parseDouble(String.format("%2f",discountAmount.get(productId))));
+					product.setDiscount(discountAmount.get(productId));
 				} else {
 					discountPercentage = discountAmount.get(productId);
-					discountOffer = product.getProductPrice()
-							* (discountPercentage) / 100;
-					product.setDiscount(Double.parseDouble(String.format("%2f",discountOffer)));
+					discountOffer = (product.getProductPrice() * (discountPercentage)) / 100;
+					product.setDiscount(discountOffer);
 				}
 			} else {
 				product.setDiscount(0);
 			}
-			product.setTotalAmount();
 		}
 	}
+
 	/**
 	 * Overriding toString method of String class
 	 * 
@@ -101,7 +104,8 @@ public class ProductPromo implements Promotion {
 		String result = "";
 		for (String str : productPromo) {
 			String[] s = str.split(",");
-			if (PromotionType.ProductFixedAmountPromotion.toString().equals(s[0])) {
+			if (PromotionType.ProductFixedAmountPromotion.toString().equals(
+					s[0])) {
 				result += "get Rs " + s[1] + " discount on these Products : "
 						+ s[2] + "\n";
 			} else {
