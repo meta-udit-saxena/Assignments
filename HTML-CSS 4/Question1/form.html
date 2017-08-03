@@ -1,0 +1,92 @@
+<html>
+     <link rel="stylesheet" type="text/css" href="style.css">
+     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <head>
+        <title>
+            Contact Us 
+        </title>
+    </head>
+
+    <body>
+        <div class="main-container">
+            <div class="header">Contact us Today !</div>
+
+            <div class="form-div">
+                <form method="" action="#">
+                    <div class="first-name">
+                        <label >First Name</label>
+                        <img src="icons\user.png" class="user-img" alt="user icon">
+                        <input type="text" placeholder="First Name" pattern="[A-Za-z]{3,20}" title="Enter only alphabets and range should be 3-20 letters" required/>
+                    </div>
+
+                    <div class="last-name">
+                        <label>Last Name</label>
+                        <img src="icons\user.png" class="user-img" alt="user icon">
+                        <input type="text" placeholder="Last Name" pattern="[A-Za-z]{3,20}" title="Enter only alphabetsand range should be 3-20 letters" required/>
+                    </div>
+
+                    <div class="e-mail">
+                        <label>E-mail</label>
+                       <img src="icons\email.png" class="email-img" alt="email icon">
+                        <input type="email" placeholder="E-mail Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Enter E-mail address" required/>
+                    </div>
+
+                     <div class="phone">
+                        <label>Phone</label>
+                        <img src="icons\phone.png" class="phone-img" alt="phone icon">
+                        <input type="text" placeholder="(835)123-574" pattern="[0-9]{6,13}"title="Enter only alphabets No numberic allow" required/>
+                    </div>
+
+                    <div class="city">
+                        <label>City</label>
+                       <img src="icons\home.png" class="home-img" alt="city icon">
+                        <input type="text" placeholder="city" pattern="[A-Za-z]{*}" minlength="3" title="Enter city name" required/>
+                    </div>
+
+                    <div class="state">
+                        <label>State</label>
+                        <img src="icons\menu.png" class="menu-img" alt="state icon">
+                        <select class="select-state" title="Select any state" required>
+                            <option disabled selected hidden>Please select your state</option>
+                            <option>Rajasthan</option>
+                            <option>Madhya Pradesh</option>
+                            <option>Delhi</option>
+                            <option>Uttar Pradesh</option>
+                            <option>Himachal Pradesh</option>
+                        </select>
+                    </div>
+
+                    <div class="Zip Code">
+                        <label>Zip Code</label>
+                        <img src="icons\home.png" class="home-img" alt="home icon">
+                        <input type="text" placeholder="Zip Code" pattern="[0-9]{6,6}" title="Enter 6 digit zip code" required>
+                    </div>
+
+                    <div class="Domain Name">
+                        <label>Website or Domain Name</label>
+                         <img src="icons\web.png" class="web-img" alt="website icon">
+                        <input type="text" placeholder="Website or Domain Name" title="Website or domain name" minlength="3" required>
+                    </div>
+
+                    <div class="hosting">
+                        <label>Do you have hosting ?</label>
+                        <label class="radio"><input type="radio" name="select"  checked>Yes</label><div></div>
+                        <label class="radio"><input type="radio" name="select" > No</label>
+                    </div>
+
+                    <div class="project-description">
+                        <label>Project Description</label>
+                         <img src="icons\edit.png" class="edit-img" alt="edit icon" >
+                        <textarea rows="4" cols="22" placeholder="Project description" title="Enter description" minlength="6" required></textarea>
+                    </div>
+
+                    <div class="submit">
+                          <img src="icons\send.png" class="send-img" alt="send icon" >
+                        <button type="submit" value="submit">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        <div>
+    </body>    
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<canvas id="circle-with-plus" width="200" height="200">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		<script>
+			var canvas=document.getElementById("circle-with-plus");
+			var context=canvas.getContext("2d");
+			context.beginPath();
+			context.arc(70, 70, 40, 0, 2*Math.PI);
+			context.fillStyle="#fcb03c";
+			context.fill();
+			context.beginPath();
+			context.moveTo(60,40);
+			context.lineTo(80,40);
+			context.lineTo(80,60);
+			context.lineTo(100,60);
+			context.lineTo(100,80);
+			context.lineTo(80,80);
+			context.lineTo(80,100);
+			context.lineTo(60,100);
+			context.lineTo(60,80);
+			context.lineTo(40,80);
+			context.lineTo(40,60);
+			context.lineTo(60,60);
+			context.fillStyle="#fff";
+			context.fill();
+		</script>
+	</body>
+</html>

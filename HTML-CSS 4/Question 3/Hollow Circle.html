@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<canvas id="hollow-circle" width="300" height="300">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		<script>
+			var canvas=document.getElementById("hollow-circle");
+			var context=canvas.getContext("2d");
+			context.beginPath();
+			context.arc(105, 150, 60, 0, 2*Math.PI);
+			context.lineWidth=20;
+			context.strokeStyle="#982068";
+			context.stroke();
+		</script>
+	</body>
+</html>

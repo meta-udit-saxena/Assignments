@@ -1,0 +1,8 @@
+<html>
+  <body>
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="250" height="250">
+      <circle cx="110" cy="110" r="52.5" fill="white" stroke="#979b9c" stroke-width="5" />
+      <path d="M110,55 A55,55,180,1,0,110,165" fill="#2e94d1"/>
+    </svg>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<canvas id="half-colored-circle" width="300" height="300">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		<script>
+			var canvas=document.getElementById("half-colored-circle");
+			var context=canvas.getContext("2d");
+			context.beginPath();
+			context.arc(150, 150, 60, Math.PI/2, 3*Math.PI/2);
+			context.fillStyle="#2e94d1";
+			context.fill();
+			context.stroke();
+			context.beginPath();
+			context.arc(150, 150, 58.5, 3*Math.PI/2, Math.PI/2);
+			context.lineWidth=5;
+			context.strokeStyle='#979b9c';
+			context.stroke();
+		</script>
+	</body>
+</html>

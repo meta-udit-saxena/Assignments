@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<canvas id="solid-circle" width="300" height="300">
+			Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		<script>
+			var canvas=document.getElementById("solid-circle");
+			var context=canvas.getContext("2d");
+			context.beginPath();
+			context.arc(150, 150, 60, 0, 2 * Math.PI);
+			context.fillStyle="#2e94d1";
+			context.fill();
+		</script>
+	</body>
+</html>
