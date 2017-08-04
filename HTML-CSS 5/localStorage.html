@@ -1,18 +1,6 @@
 <html>
     <head>
         <title> hello </title>
-        <script>
-             function getStore(){
-                   var msg = document.getElementById('msg');
-                msg.innerHTML=localStorage.getItem("key1")
-             }
-
-             function saveToStore(){
-             var text = document.getElementById('textbox');
-                localStorage.setItem("key1",textbox.value);
-                textbox.value="";
-             }
-        </script>
     </head>
     <body>
         <p id="msg">Hello word</p>
@@ -21,18 +9,28 @@
         <input type="button" value="Get Local Storage" onclick="getStore()"/>
     </body>
     <style type="text/css">
-        body{
-    background-color:black;
-    color:white;
-    text-align: center;
-    font-size: 2em;
-    padding-top: 200px;
-}
-input{
-    font-size: 20px;
-    margin-bottom:10px; 
-}
-    
-
+            body{
+        background-color:black;
+        color:white;
+        text-align: center;
+        font-size: 2em;
+        padding-top: 200px;
+        }
+        input{
+            font-size: 20px;
+            margin-bottom:10px; 
+        }
     </style>
+    <script>
+        function getStore(){
+            var msg = document.getElementById('msg');
+        msg.innerHTML=localStorage.getItem("key1")
+        }
+
+        function saveToStore(){
+        var text = document.getElementById('textbox');
+        localStorage.setItem("key1",textbox.value);
+        textbox.value="";
+        }
+    </script>
 </html>
