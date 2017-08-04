@@ -1,0 +1,5 @@
+Q1. Enter your Name-,Text
+Q2. Enter your Contact No-,Number
+Q3. Overall Rating of Service-,Single Select,1/2/3/4/5
+Q4. Area of improvement ?,Multi Select,Service Quality/Communication/Delivery Process
+Q5. Feedback ?,Text
