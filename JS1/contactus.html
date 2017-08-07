@@ -1,0 +1,79 @@
+<html>
+     <link rel="stylesheet" type="text/css" href="style.css">
+     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <head>
+        <title>
+            Contact Us 
+        </title>
+    </head>
+
+    <body>
+        <div class="main-container">
+            <div class="header">Contact us Today !</div>
+
+            <div class="form-div">
+                <form method="" id="form" action="#">
+                    <div class="first-name">
+                        <label >Name</label>
+                        <img src="icons\user.png" class="user-img" alt="user icon">
+                        <input type="text" id ="userName" placeholder="Name" title="Enter only alphabets and range should be 3-20 letters"/>
+                          <span id="nameErrorMsg"></span>
+                    </div>
+
+                   <div class="e-mail">
+                        <label>E-mail</label>
+                       <img src="icons\email.png" class="email-img" alt="email icon">
+                        <input type="text" id="userEmail" placeholder="E-mail Address" title="Enter E-mail address"/>
+                         <span id="emailErrorMsg"></span>
+                    </div>
+
+                    <div class="city">
+                        <label>City</label>
+                       <img src="icons\menu.png" class="menu-img" alt="state icon">
+                        <select id="city" class="select-state" title="Select any state" required>
+                            <option disabled selected hidden>Please select your City</option>
+                            <option value="Jaipur">Jaipur</option>
+                            <option value="Jodhpur">Jodhpur</option>
+                            <option value="Udaipur">Udaipur</option>
+                            <option value="Jabalpur">Jabalpur</option>
+                            <option value="Ajmer">Ajmer</option>
+                        </select>
+                        <input type="text" id="selectedOption" readonly />
+                        <span id="cityErrorMsg"></span>
+                    </div>
+
+                     <div class="last-name">
+                        <label>Organization Name</label>
+                        <img src="icons\user.png" class="user-img" alt="user icon">
+                        <input type="text" id="userOrganization" placeholder="Organization Name" title="Enter only alphabetsand range should be 3-20 letters"/>
+                         <span id="organizationErrorMsg"></span>
+                    </div>
+
+                     <div class="phone">
+                        <label>Phone</label>
+                        <img src="icons\phone.png" class="phone-img" alt="phone icon">
+                        <input type="text" placeholder="(835)123-574" id="userContact" title="Enter only alphabets No numberic allow" />
+                        <span id="contactErrorMsg"></span>
+                    </div>
+
+                    <div class="project-description">
+                        <label>Message</label>
+                         <img src="icons\edit.png" class="edit-img" alt="edit icon" >
+                        <textarea rows="4" cols="22" id="message" placeholder="Project description" title="Enter description" ></textarea>
+                         <span id="messageErrorMsg"></span>
+                        
+                    </div>
+
+                    <div class="submit">
+                          <img src="icons\send.png" class="send-img" alt="send icon" >
+                        <button type="submit" value="submit">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        <div>
+
+        <script  src="script.js">
+        </script>
+    </body>    
+</html>
