@@ -6,18 +6,29 @@
 </title>
 </head>
 
+<style>
+
+#home,#contactus{
+	display: inline;
+}
+#home,#contactus:hover{
+cursor: pointer;
+}
+</style>
+
 </body>
+<!--First table which act as header to hold the logo and navigation links. -->
 <table width="60%" align="center">
 	<tr>
 		<td>
 			<img src="HTML5.png"  height="70px" width="70px"/>
 		</td>
 		<td align="right">
-			<a href="#" id="home" >Home</a>
+			<p id="home" onclick="toHome()">Home</p>
 			<a href="#">About</a>
 			<a href="#">Product</a>
 			<a href="#">Gallery</a>
-			<a href="#" id="contact" >Contact</a>
+			<p id="contactus">Contact</p>
 		</td>
 
 	</tr>
@@ -25,6 +36,7 @@
 
 <hr></hr>
 
+<!-- Second table to hold the cover image -->
 <table  align="center" >
 	<tr>
 		<td>
@@ -35,6 +47,8 @@
 </table>
 
 <br/>
+
+<!-- Third table to hold the main text content divided into three rows.-->
 <table align="center" width="60%" cellspacing="20px">
 	<tr>
 		<td>
@@ -81,6 +95,7 @@
 	</tr>
 </table>
 
+<!-- Fourth table to hold the content divided into three columns -->
 <table width="60%" align="center" cellspacing="30px">
 	<tr>
 		<th colspan="3">
@@ -154,6 +169,7 @@
 	
 </table>
 
+<!-- Fifth table which act as a footer for web page-->
 <br>
 <br>
 <hr/>
@@ -170,15 +186,19 @@
 </table>
 
 
-	<script>
-		document.getElementById("home").addEventListener("click",function(){
-			window.location.href="Home.html";
-		});
-		document.getElementById("contact").addEventListener("click",function(){
-			window.location.href="contactus.html";
-		});
-	
-	</script>
+<script>
+
+
+document.getElementById('home').addEventListener("click",function(event){
+	location.href = "home.html";
+});
+
+document.getElementById('contactus').addEventListener("click",function(event){
+	location.href = "contactus.html";
+});
+</script>
+
+
 </body>
 
 

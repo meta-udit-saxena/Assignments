@@ -1,79 +1,146 @@
+<!DOCTYPE html>
 <html>
-     <link rel="stylesheet" type="text/css" href="style.css">
-     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <head>
-        <title>
-            Contact Us 
-        </title>
-    </head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<title>
+			Home Page
+</title>
+</head>
 
-    <body>
-        <div class="main-container">
-            <div class="header">Contact us Today !</div>
+</body>
+	<!--First table which act as header to hold the logo and navigation links. -->
+	<table width="60%" align="center">
+		<tr>
+			<td>
+				<img src="HTML5.png"  height="70px" width="70px" alt="html5.png"/>
+			</td>
+			<td class="link" align="right">
+				<p id="home">Home</p>
+				<a href="#">About</a>
+				<a href="#">Product</a>
+				<a href="#">Gallery</a>
+				<p class="link" id="contactus">Contact</p>
+			</td>
+		</tr>
+	</table>
 
-            <div class="form-div">
-                <form method="" id="form" action="#">
-                    <div class="first-name">
-                        <label >Name</label>
-                        <img src="icons\user.png" class="user-img" alt="user icon">
-                        <input type="text" id ="userName" placeholder="Name" title="Enter only alphabets and range should be 3-20 letters"/>
-                          <span id="nameErrorMsg"></span>
-                    </div>
+	<hr>
 
-                   <div class="e-mail">
-                        <label>E-mail</label>
-                       <img src="icons\email.png" class="email-img" alt="email icon">
-                        <input type="text" id="userEmail" placeholder="E-mail Address" title="Enter E-mail address"/>
-                         <span id="emailErrorMsg"></span>
-                    </div>
+	<!--Second table to hold the cover picture. -->
+	<table  align="center">
+		<tr align="center">
+			<td>
+				<img src="contact_us_.jpg" width="80%" alt="contactus image"/>
+			<td>
+		</tr>
 
-                    <div class="city">
-                        <label>City</label>
-                       <img src="icons\menu.png" class="menu-img" alt="state icon">
-                        <select id="city" class="select-state" title="Select any state" required>
-                            <option disabled selected hidden>Please select your City</option>
-                            <option value="Jaipur">Jaipur</option>
-                            <option value="Jodhpur">Jodhpur</option>
-                            <option value="Udaipur">Udaipur</option>
-                            <option value="Jabalpur">Jabalpur</option>
-                            <option value="Ajmer">Ajmer</option>
-                        </select>
-                        <input type="text" id="selectedOption" readonly />
-                        <span id="cityErrorMsg"></span>
-                    </div>
+	</table>
 
-                     <div class="last-name">
-                        <label>Organization Name</label>
-                        <img src="icons\user.png" class="user-img" alt="user icon">
-                        <input type="text" id="userOrganization" placeholder="Organization Name" title="Enter only alphabetsand range should be 3-20 letters"/>
-                         <span id="organizationErrorMsg"></span>
-                    </div>
+	<br/>
 
-                     <div class="phone">
-                        <label>Phone</label>
-                        <img src="icons\phone.png" class="phone-img" alt="phone icon">
-                        <input type="text" placeholder="(835)123-574" id="userContact" title="Enter only alphabets No numberic allow" />
-                        <span id="contactErrorMsg"></span>
-                    </div>
+	<!-- Third table to hold the html form-->
+	<table align="center" >
+		<form  id="myForm" autocomplete="off">
+			<tr>
+				<td> 
+					Name
+				</td>
+				<td>
+					<input type="text" id="name" name="name">
+					<span id="name-warning"></span>
+				</td>
+			</tr>
 
-                    <div class="project-description">
-                        <label>Message</label>
-                         <img src="icons\edit.png" class="edit-img" alt="edit icon" >
-                        <textarea rows="4" cols="22" id="message" placeholder="Project description" title="Enter description" ></textarea>
-                         <span id="messageErrorMsg"></span>
-                        
-                    </div>
+			<tr>
+				<td>
+					Email
+				</td>
+				<td>
+					<input type="text" id="email" name="email">
+					<span id="email-warning"></span>
+				</td>
+			</tr>
 
-                    <div class="submit">
-                          <img src="icons\send.png" class="send-img" alt="send icon" >
-                        <button type="submit" value="submit">Submit</button>
-                    </div>
+			<tr>
+				<td>
+					City
+				</td>
+				<td>
+					<select id="selectCity">
+						<option  value="default" selected hidden>Select Your City</option>
+						<option value="Jaipur">Jaipur</option>
+						<option value="Jodhpur">Jodhpur</option>
+						<option value="Goa">Goa</option>
+						<option value="Jabalpur">Jabalpur</option>
+						<option value="Udaipur">Udaipur</option>
+					</select>
+				</td>
+			</tr>
 
-                </form>
-            </div>
-        <div>
+			<tr>
+				<td></td>
 
-        <script  src="script.js">
-        </script>
-    </body>    
+				<td>
+				<input type="text" id="selectedcity" style="visibility: hidden" readonly>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Organization Name
+				</td>
+				<td>
+					<input type="text" id="organization" name="organization" >
+					<span id="organization-warning"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Contact Number
+				</td>
+
+				<td>
+					<input type="text" id="contactnumber" name="contactnumber"  >
+					<span id="phone-warning"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Message
+				</td>
+				<td>
+					<textarea id="message" ></textarea>
+					<span id="text-warning"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<input type="submit" value="submit" >
+				</td>
+			</tr>
+		</form>
+	</table>
+
+	<br>
+	<br>
+	<hr/>
+
+	<!--Fourth table act as footer for web page-->
+	<table align="center">
+		<tr>
+			<td>
+				<p>
+				© Copyright 2016-2017 | All Rights Reserved | Metacube Training
+				</p>
+			</td>
+		</tr>
+		
+	</table>
+
+	<script src="java script/script.js"></script>
+
+</body>
 </html>
