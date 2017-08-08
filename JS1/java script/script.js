@@ -132,6 +132,7 @@ function validateForm(){
 		
 		return false;
 	}
+	alert("Submitted Successfully");
 }
 
 
