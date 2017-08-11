@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>HTML - Session 1 Assignment - Contact</title>
+	</head>
+	<body>
+		<!-- Header Table Start -->
+		<table width="75%" id="header" align="center">
+			<tr>
+				<td width="5%">
+					<img src="images/HTML5_logo.png" width="55px" height="55px"/>
+				</td>
+				<td width="95%" align="right">
+					<a href="index.html">Home</a>
+					<a href="#">About</a>
+					<a href="#">Product</a>
+					<a href="#">Gallary</a>
+					<a href="contact.html">Contact</a>	
+				</td>
+			</tr>
+		</table>
+		<!-- Header Table End -->
+		<hr/>
+		<!-- Cover Table Starts -->
+		<table width="75%" id="cover" align="center">
+			<tr align="center">
+				<td>
+					<img src="images/contact_us.jpg" width="900px" height="400px" />
+				</td>
+			</tr>
+		</table>
+		<!-- Cover Table Ends -->
+		<!-- Contact Form Starts -->
+		<form method="post" action="#">
+			<table align="center" id="userform"	>
+				<tr>
+					<td width="30%">Name</td>
+					<td width="70%">
+						<input type="text" name="username" id="username" placeholder="Name" />
+					</td>
+				</tr>	
+				<tr>
+					<td width="30%">Email</td>
+					<td width="70%">
+						<input type="text" name="useremail" id="useremail" placeholder="Email" />
+					</td>
+				</tr>
+				<tr>
+					<td width="30%">City</td>
+					<td width="70%">
+						<select name="usercity" id="usercity">
+							<option value="city" selected hidden>Choose city...</option>
+							<option value="Jaipur">Jaipur</option>
+							<option value="Udaipur">Udaipur</option>
+							<option value="Alwar">Alwar</option>
+							<option value="Kota">Kota</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%">Organisation Name</td>
+					<td width="70%">
+						<input type="text" name="userorg" id="userorg" placeholder="Organisation Name" />
+					</td>
+				</tr>
+				<tr>
+					<td width="30%">Contact Number</td>
+					<td width="70%">
+						<input type="text" name="usercontact" id="usercontact" placeholder="Contact Number" />
+					</td>
+				</tr>
+				<tr>
+					<td width="30%">Message</td>
+					<td width="70%">
+						<textarea name="usermessage" id="usermessage" placeholder="Enter your message here"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" name="saveLocalStorage" value="Save to Local Storage" id="save" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="button" name="clearLocalStorage" value="Clear Local Storage" id="clear" /></td>
+				</tr>
+			</table>
+		</form>
+		<!-- Contact Form End -->
+		<hr/>
+		<!-- Footer Table Start -->
+		<table width="75%" id="footer" align="center">
+			<tr align="center">
+				<td>
+					&copy; Copyright 2016-2017 | All Right Reserved | Metacube Training
+				</td>
+			</tr>
+		</table>	
+		<!-- Footer Table End -->
+
+		<script src="js/script.js"></script>
+	</body>
+</html>
