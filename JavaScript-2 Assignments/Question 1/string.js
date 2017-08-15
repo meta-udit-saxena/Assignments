@@ -1,15 +1,16 @@
 function removeDuplicates() {
-	var str = document.getElementById("input").value.trim();
+	var inputBox = document.getElementById("input");
+	var str = inputBox.value.trim();
 	var previousPosition = 0;
 	var currentPosition = 0;
 	var currentLength = 0;
 	var result = str;
+	var originalString = str;
 	//if input string is empty
-	if (str.length == 0) {
-		result = "Empty:Insert an element";
-	} else {
+
+	if (str.length != 0) {
 		while (currentPosition < str.length) {
-			if (str.charAt(previousPosition) == str.charAt(currentPosition)) {
+			if (str.charAt(previousPosition) === str.charAt(currentPosition)) {
 				//On finding same character
 				currentPosition++;
 				currentLength++;
@@ -35,14 +36,16 @@ function removeDuplicates() {
 		if (str == result) {
 			result = "No Duplicates Elements";
 		}
-			document.getElementById("input").value = "";
+		inputBox.value = "";
+		inputBox.placeholder = originalString;
+	} else {
+		result = "Empty:Insert an element";
 	}
 	//Display result to user
-	document.getElementById("input").focus();
+	inputBox.focus();
 	document.getElementById("result").innerHTML = result;
-	
 }
 
-window.onload = function(){
-	document.getElementById("remove").addEventListener("click",removeDuplicates);
+window.onload = function () {
+	document.getElementById("remove").addEventListener("click", removeDuplicates);
 }
