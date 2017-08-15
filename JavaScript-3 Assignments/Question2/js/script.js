@@ -1,6 +1,5 @@
 'use strict'; // For strict mode.
 
-// Global variables declaration.
 var username = document.getElementById('username');
 var email = document.getElementById('useremail');
 var city = document.getElementById('usercity');
@@ -40,9 +39,7 @@ function clearData() {
     contact.value = '';
     message.value = '';
 }
-shortcut.add("F1", function() {
-    alert("F1 pressed");
-});
+
 /**
  * Sets the value of each field with the values stored in the local storage
  * whenever the page is refreshed.

@@ -6,12 +6,12 @@ var webWorker = {}; // Global variable declaration.
  */
 function startWorker() {
     var result = document.getElementById('result');
-    if ('undefined' !== typeof(Worker)) {
-        if ('object' === typeof(webWorker)) {
+    if ('undefined' !== typeof (Worker)) {
+        if ('object' === typeof (webWorker)) {
             webWorker = new Worker('js/web_worker.js');
         }
         // Gets the value of date and time from web_worker.js file.
-        webWorker.onmessage = function(event) {
+        webWorker.onmessage = function (event) {
             result.innerHTML = event.data;
         }
     } else {
@@ -39,10 +39,10 @@ function checkAgain() {
  * Display the current date and time.
  * Set up eventListeners when window is loaded.
  */
-window.onload = function() {
-    document.getElementById('start').addEventListener('click',startWorker);
-    document.getElementById('stop').addEventListener('click',stopWorker);
-    document.getElementById('checkAgain').addEventListener('click',checkAgain);
+window.onload = function () {
+    document.getElementById('start').addEventListener('click', startWorker);
+    document.getElementById('stop').addEventListener('click', stopWorker);
+    document.getElementById('checkAgain').addEventListener('click', checkAgain);
     var date = new Date();
     alert(date);
 };

@@ -3,6 +3,6 @@
  * to the calling object.
  */
 setTimeout(function () {
-        var newDate = new Date();
-        postMessage(newDate);
-    }, 120000);
+    var newDate = new Date();
+    postMessage(newDate);
+}, 5000);

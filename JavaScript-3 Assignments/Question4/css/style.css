@@ -91,7 +91,7 @@ body{
     height: 10px;
 }
 
-.main .LinkedListDiv,.main .QueueDiv,.main .StackDiv{
+.main .LinkedListDiv{
     text-align: center;
     margin:auto;
     color:white;
@@ -100,13 +100,12 @@ body{
 }
 
 .main .LinkedListDiv .LinkedListHeader,
-.main .QueueDiv .QueueHeader,
-.main .StackDiv .StackHeader{
+{
     color:white;
     font-size: 30px;
     padding-bottom:50px;
 }
 
-#displayLinkedList,#displayQueue,#displayStack{
+#displayLinkedList{
     font-size:30px;
 }

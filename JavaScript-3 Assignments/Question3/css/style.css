@@ -1,5 +1,5 @@
 body{
-    font-family: 'Cinzel', serif;
+    font-family: Arial, Helvetica, sans-serif;
     background: radial-gradient(circle, #ffffff, #c3c3c3);
 }
 
@@ -33,7 +33,6 @@ section{
 }
 
 #start, #stop, #checkAgain{
-    font-family: 'Cinzel', serif;
     border-radius: 5px;
     padding: 5px;
     background: #83c3dd;

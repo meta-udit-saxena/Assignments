@@ -8,13 +8,13 @@
  */
 function sum(firstOperand) {
   // When sum(firstOperand, secondOperand) is invoked.
-  if (2 === arguments.length) {
+  if (arguments.length === 2) {
     console.log(arguments[0] + arguments[1]);
-  } 
+  }
   // When sum(firstOperand)(secondOperand) is invoked.
-  else if (1 === arguments.length) {
-    return (function(secondOperand) {
-      console.log(firstOperand + secondOperand); 
+  else if (arguments.length === 1) {
+    return (function (secondOperand) {
+      console.log(firstOperand + secondOperand);
     });
   }
   // For other cases. 
