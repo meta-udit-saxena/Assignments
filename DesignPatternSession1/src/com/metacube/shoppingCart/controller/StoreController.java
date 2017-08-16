@@ -34,7 +34,7 @@ public class StoreController {
 	 */
 	public void displayProduct() {
 		DisplayOutput.getInstance()
-				.displayOutput(StoreController.getInstance());
+				.displayOutput(StoreFacade.getInstance());
 	}
 
 	/**
