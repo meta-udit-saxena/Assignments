@@ -1,5 +1,3 @@
-'use strict'; // For strict mode.
-
 var username = document.getElementById('username');
 var email = document.getElementById('useremail');
 var city = document.getElementById('usercity');
