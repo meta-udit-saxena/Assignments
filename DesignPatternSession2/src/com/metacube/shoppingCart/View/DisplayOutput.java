@@ -3,6 +3,7 @@ package com.metacube.shoppingCart.View;
 public class DisplayOutput<T> {
 	private static DisplayOutput display;
 
+	private DisplayOutput(){}
 	/**
 	 * Creating the DisplayOutput class singleton
 	 * 

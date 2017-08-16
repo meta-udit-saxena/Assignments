@@ -12,9 +12,12 @@ import com.metacube.shoppingCart.controller.StoreController;
  * 
  */
 public class DisplayInput {
-	private Scanner scan;
+	private static Scanner scan;
 	private static DisplayInput input;
 	private static int choice;
+
+	private DisplayInput() {
+	}
 
 	/**
 	 * Creating the DisplayInput class singleton
@@ -37,13 +40,14 @@ public class DisplayInput {
 	 * Display the main menu
 	 */
 	public void displayInput() {
-		boolean exit = false;
 		scan = new Scanner(System.in);
+		boolean exit = false;
 		while (!exit) {
 			System.out.println("\n1.Display Product");
 			System.out.println("2.Buy Product");
 			System.out.println("3.Cart");
 			System.out.println("4.Exit");
+			System.out.println("Enter Your Choice:-");
 			choice = getValidInteger("Enter Your Choice:-");
 			switch (choice) {
 			case 1:
@@ -71,13 +75,14 @@ public class DisplayInput {
 	 *            - message display after error message
 	 * @return integer
 	 */
-	public int getValidInteger(String msg) {
-		while (!scan.hasNextInt()) {
-			System.out.println("Error ---> Enter Integer Value:\n" + msg);
-			scan.nextLine();
+	private int getValidInteger(String msg) {
+		while (!scan.hasNextInt() || (choice = scan.nextInt()) < 1) {
+			System.out
+					.print("Error ---> Enter Positive Integer Value:\n" + msg);
+			scan.next();
 		}
 
-		return scan.nextInt();
+		return choice;
 	}
 
 	/**
@@ -91,7 +96,8 @@ public class DisplayInput {
 			System.out.println("3.Edit Product in Cart");
 			System.out.println("4.Checkout");
 			System.out.println("5.Back");
-			choice = getValidInteger("Enter Valid Choice :-");
+			System.out.println("Enter Your Choice:-");
+			choice = getValidInteger("Enter Your Choice :-");
 			switch (choice) {
 			case 1:
 				CartController.getInstance().displayCart();

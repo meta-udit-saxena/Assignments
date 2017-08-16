@@ -11,12 +11,13 @@ import com.metacube.shoppingCart.Enum.Status;
 import com.metacube.shoppingCart.Factory.DaoFactory;
 
 public class CartFacade {
-	private static InMemoryCartDao cartItems = (InMemoryCartDao) DaoFactory
-			.getBaseDaoForEntity(Entity.Cart, DBType.Inmemory);;
+	private static InMemoryCartDao cartItems;
 	private Status status;
 	private static CartFacade cartFacade;
 
 	private CartFacade() {
+		cartItems = (InMemoryCartDao) DaoFactory.getBaseDaoForEntity(
+				Entity.Cart, DBType.Inmemory);
 	}
 
 	/**

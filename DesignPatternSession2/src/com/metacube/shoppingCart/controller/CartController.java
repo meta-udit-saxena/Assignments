@@ -12,6 +12,7 @@ import com.metacube.shoppingCart.View.DisplayOutput;
 public class CartController {
 	private static CartController cartController;
 
+	private CartController(){}
 	/**
 	 * Create a singleton Class
 	 * 
