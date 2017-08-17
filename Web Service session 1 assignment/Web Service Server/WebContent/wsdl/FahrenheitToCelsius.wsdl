@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice" xmlns:intf="http://webservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="convertFahrenheitToCelsius">
+    <complexType>
+     <sequence>
+      <element name="temperature" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="convertFahrenheitToCelsiusResponse">
+    <complexType>
+     <sequence>
+      <element name="convertFahrenheitToCelsiusReturn" type="xsd:double"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="convertFahrenheitToCelsiusRequest">
+
+      <wsdl:part element="impl:convertFahrenheitToCelsius" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="convertFahrenheitToCelsiusResponse">
+
+      <wsdl:part element="impl:convertFahrenheitToCelsiusResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="FahrenheitToCelsius">
+
+      <wsdl:operation name="convertFahrenheitToCelsius">
+
+         <wsdl:input message="impl:convertFahrenheitToCelsiusRequest" name="convertFahrenheitToCelsiusRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:convertFahrenheitToCelsiusResponse" name="convertFahrenheitToCelsiusResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="FahrenheitToCelsiusSoapBinding" type="impl:FahrenheitToCelsius">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="convertFahrenheitToCelsius">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="convertFahrenheitToCelsiusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="convertFahrenheitToCelsiusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="FahrenheitToCelsiusService">
+
+      <wsdl:port binding="impl:FahrenheitToCelsiusSoapBinding" name="FahrenheitToCelsius">
+
+         <wsdlsoap:address location="http://localhost:8080/Web_Service_Assignment_1/services/FahrenheitToCelsius"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
