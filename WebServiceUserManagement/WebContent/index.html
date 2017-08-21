@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Menu</title>
+</head>
+<body>
+	<div style="padding-left: 100px; font-family: monospace;">
+		<form action="index.html" method="GET">
+			<div style="width: 200px; text-align: left;">
+				<div style="padding: 10px; text-align: center">
+					<input type="submit" name="create" value="Create Employee"
+						onclick="form.action='create.html';" />
+				</div>
+				<div style="padding: 10px; text-align: center">
+					<input type="submit" name="retrieveById"
+						value="Retrieve Employee By Id"
+						onclick="form.action='employeeById.html';" />
+				</div>
+				<div style="padding: 10px; text-align: center">
+					<input type="submit" name="retrieveByName"
+						value="Retrieve Employee By Name"
+						onclick="form.action='employeeByName.html';" />
+				</div>
+				<div style="padding: 10px; text-align: center">
+					<input type="submit" name="retrieveAll"
+						value="Retrieve all Employee"
+						onclick="form.action='rest/employees/getAll';" />
+				</div>
+				<div style="padding: 10px; text-align: center">
+					<input type="submit" name="deleteById"
+						value="Delete Employee By Id"
+						onclick="form.action='deleteById.html';" />
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
