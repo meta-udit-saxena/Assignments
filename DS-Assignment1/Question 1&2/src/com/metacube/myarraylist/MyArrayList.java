@@ -87,7 +87,8 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
 	 * Increase the Capacity of Array list by double
 	 */
 	private void increaseCapacity() {
-		list = Arrays.copyOf(list, list.length * 2);
+		int increament = list.length/2;
+		list = Arrays.copyOf(list, list.length+increament);
 	}
 
 	/**
