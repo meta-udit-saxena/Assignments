@@ -32,8 +32,7 @@ public class JsonFilehandling {
 		try {
 			File readfromFile = new File(filePath);
 			FileInputStream fileReader = new FileInputStream(readfromFile);
-			bufferedReader = new BufferedReader(new InputStreamReader(
-					fileReader));
+			bufferedReader = new BufferedReader(new InputStreamReader(fileReader));
 			while ((string = bufferedReader.readLine()) != null) {
 				jsonObj = (JSONObject) parser.parse(string);
 				list.add((JSONObject) jsonObj);
@@ -66,7 +65,6 @@ public class JsonFilehandling {
 				e.printStackTrace();
 			}
 		}
-		System.out.print(jsonObj);
 	}
 
 	/**

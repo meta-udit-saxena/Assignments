@@ -33,26 +33,29 @@ public class EmployeeFacade {
 	 * Method to add new employee detail
 	 * 
 	 * @param employee
+	 *            -Employee Class Object
 	 */
-	public void createEmployee(Employee employee) {
+	public boolean createEmployee(Employee employee) {
 		employeeDao.getEmployees().put(employee.getId(), employee);
 		writeToJsonFile();
+		return true;
 	}
 
 	/**
 	 * Method to get the employee detail by id
 	 * 
 	 * @param id
+	 *            employee id
 	 * @return
 	 */
-	public Employee getEmployee(String id) {
+	public Employee getEmployeeById(String id) {
 		return employeeDao.getEmployees().get(id);
 	}
 
 	/**
 	 * Method to get all the employees
 	 * 
-	 * @return
+	 * @return employee map
 	 */
 	public Map<String, Employee> getEmployees() {
 		return employeeDao.getEmployees();
@@ -61,7 +64,7 @@ public class EmployeeFacade {
 	/**
 	 * Method to get the list of employees
 	 * 
-	 * @return
+	 * @return employee list
 	 */
 	public List<Employee> getEmployeeAsList() {
 		List<Employee> employeeList = new ArrayList<Employee>();
@@ -74,7 +77,7 @@ public class EmployeeFacade {
 	 * 
 	 * @param id
 	 */
-	public void deleteEmployee(String id) {
+	public void deleteEmployeeById(String id) {
 		employeeDao.getEmployees().remove(id);
 		writeToJsonFile();
 	}
@@ -83,16 +86,16 @@ public class EmployeeFacade {
 	 * Method to get the employee detail by name
 	 * 
 	 * @param name
-	 * @return
+	 *            - employee name
+	 * @return Employee Class Object
 	 */
 	public Employee getEmployeeByName(String name) {
 		Employee employee = null;
 		// lopp continues till map end
-		for (Map.Entry<String, Employee> employeeMap : employeeDao
-				.getEmployees().entrySet()) {
+		for (Map.Entry<String, Employee> employeeMap : employeeDao.getEmployees().entrySet()) {
 			// if employee map contains this name then return the name age and
 			// id
-			if (employeeMap.getValue().getName().matches(name)) {
+			if (employeeMap.getValue().getName().equalsIgnoreCase(name)) {
 				employee = employeeMap.getValue();
 			}
 		}
@@ -108,7 +111,6 @@ public class EmployeeFacade {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

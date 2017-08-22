@@ -10,7 +10,8 @@
 		<form action="rest/employees/deleteById" method="POST">
 			<div style="width: 200px; text-align: left;">
 				<div style="padding: 10px;">
-					Employee ID: <input name="id" />
+					Employee ID: <input name="id" pattern="[0-9]{3,3}"
+						title="Only integers" required="required" />
 				</div>
 				<div style="padding: 10px; text-align: center">
 					<input type="submit" value="Submit" />

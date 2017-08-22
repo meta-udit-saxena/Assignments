@@ -9,13 +9,16 @@
 		<form action="rest/employees/create" method="POST">
 			<div style="width: 200px; text-align: left;">
 				<div style="padding: 10px;">
-					Employee ID: <input name="id" />
+					Employee ID: <input name="id" pattern="[0-9]{3}"
+						title="Only integers" required="required" />
 				</div>
 				<div style="padding: 10px;">
-					Employee Name: <input name="employeename" />
+					Employee Name: <input name="employeename" required="required"
+						maxlength="10" />
 				</div>
 				<div style="padding: 10px;">
-					Employee Age: <input name="employeeage" pattern="{0-9}" />
+					Employee Age: <input name="employeeage" pattern="[0-9]{1,3}"
+						required="required" />
 				</div>
 				<div style="padding: 10px; text-align: center">
 					<input type="submit" value="Submit" />
