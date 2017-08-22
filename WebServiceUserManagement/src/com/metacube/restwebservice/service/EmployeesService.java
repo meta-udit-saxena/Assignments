@@ -50,8 +50,8 @@ public class EmployeesService {
 	/*
 	 * @GET
 	 * 
-	 * @Produces(MediaType.TEXT_XML) public List<Employee> getEmployeesAsHtml() {
-	 * return employeeService.getEmployeeAsList(); }
+	 * @Produces(MediaType.TEXT_XML) public List<Employee> getEmployeesAsHtml()
+	 * { return employeeService.getEmployeeAsList(); }
 	 */
 	/**
 	 * This is used as post method to create the employee
@@ -66,8 +66,10 @@ public class EmployeesService {
 	@Path("/create/")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public void createEmployee(@FormParam("id") String id, @FormParam("employeename") String name,
-			@FormParam("employeeage") String age, @Context HttpServletResponse servletResponse) throws IOException {
+	public void createEmployee(@FormParam("id") String id,
+			@FormParam("employeename") String name,
+			@FormParam("employeeage") String age,
+			@Context HttpServletResponse servletResponse) throws IOException {
 		Employee employee = new Employee(id, name, age);
 		employeeFacade.createEmployee(employee);
 		servletResponse.sendRedirect("./getAll");
@@ -97,8 +99,8 @@ public class EmployeesService {
 	@Path("getById")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public void getEmployeeById(@FormParam("id") String id, @Context HttpServletResponse servletResponse)
-			throws IOException {
+	public void getEmployeeById(@FormParam("id") String id,
+			@Context HttpServletResponse servletResponse) throws IOException {
 		servletResponse.sendRedirect("./getById/" + id);
 	}
 
@@ -126,8 +128,8 @@ public class EmployeesService {
 	@Path("deleteById")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public void deleteEmployeeById(@FormParam("id") String id, @Context HttpServletResponse servletResponse)
-			throws IOException {
+	public void deleteEmployeeById(@FormParam("id") String id,
+			@Context HttpServletResponse servletResponse) throws IOException {
 		servletResponse.sendRedirect("./deleteById/" + id);
 	}
 
@@ -154,8 +156,8 @@ public class EmployeesService {
 	@Path("getByName")
 	@Produces(MediaType.TEXT_HTML)
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	public void getEmployeeByName(@FormParam("employeename") String name, @Context HttpServletResponse servletResponse)
-			throws IOException {
+	public void getEmployeeByName(@FormParam("employeename") String name,
+			@Context HttpServletResponse servletResponse) throws IOException {
 		servletResponse.sendRedirect("./getByName/" + name);
 	}
 }

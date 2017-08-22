@@ -24,6 +24,12 @@ public class JsonFilehandling {
 	private static FileWriter file;
 	private static BufferedReader bufferedReader;
 
+	/**
+	 * Read the Json file and store to List of JsonObject
+	 * 
+	 * @param filePath
+	 * @return
+	 */
 	public static List<JSONObject> read(String filePath) {
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObj = null;
@@ -32,7 +38,8 @@ public class JsonFilehandling {
 		try {
 			File readfromFile = new File(filePath);
 			FileInputStream fileReader = new FileInputStream(readfromFile);
-			bufferedReader = new BufferedReader(new InputStreamReader(fileReader));
+			bufferedReader = new BufferedReader(new InputStreamReader(
+					fileReader));
 			while ((string = bufferedReader.readLine()) != null) {
 				jsonObj = (JSONObject) parser.parse(string);
 				list.add((JSONObject) jsonObj);
@@ -44,6 +51,7 @@ public class JsonFilehandling {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+
 		return list;
 	}
 

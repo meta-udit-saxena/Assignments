@@ -37,6 +37,10 @@ public class EmployeeDao {
 		}
 	}
 
+	/**
+	 * 
+	 * @return Instance of EmployeeDao
+	 */
 	public static EmployeeDao getInstance() {
 		if (employeeDao == null) {
 			synchronized (EmployeeDao.class) {

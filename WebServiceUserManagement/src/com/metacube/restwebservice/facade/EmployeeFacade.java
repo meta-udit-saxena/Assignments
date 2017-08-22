@@ -33,7 +33,7 @@ public class EmployeeFacade {
 	 * Method to add new employee detail
 	 * 
 	 * @param employee
-	 *            -Employee Class Object
+	 * @return
 	 */
 	public boolean createEmployee(Employee employee) {
 		employeeDao.getEmployees().put(employee.getId(), employee);
@@ -45,7 +45,6 @@ public class EmployeeFacade {
 	 * Method to get the employee detail by id
 	 * 
 	 * @param id
-	 *            employee id
 	 * @return
 	 */
 	public Employee getEmployeeById(String id) {
@@ -55,7 +54,7 @@ public class EmployeeFacade {
 	/**
 	 * Method to get all the employees
 	 * 
-	 * @return employee map
+	 * @return
 	 */
 	public Map<String, Employee> getEmployees() {
 		return employeeDao.getEmployees();
@@ -64,7 +63,7 @@ public class EmployeeFacade {
 	/**
 	 * Method to get the list of employees
 	 * 
-	 * @return employee list
+	 * @return
 	 */
 	public List<Employee> getEmployeeAsList() {
 		List<Employee> employeeList = new ArrayList<Employee>();
@@ -86,16 +85,16 @@ public class EmployeeFacade {
 	 * Method to get the employee detail by name
 	 * 
 	 * @param name
-	 *            - employee name
-	 * @return Employee Class Object
+	 * @return
 	 */
 	public Employee getEmployeeByName(String name) {
 		Employee employee = null;
 		// lopp continues till map end
-		for (Map.Entry<String, Employee> employeeMap : employeeDao.getEmployees().entrySet()) {
+		for (Map.Entry<String, Employee> employeeMap : employeeDao
+				.getEmployees().entrySet()) {
 			// if employee map contains this name then return the name age and
 			// id
-			if (employeeMap.getValue().getName().equalsIgnoreCase(name)) {
+			if (employeeMap.getValue().getName().matches(name)) {
 				employee = employeeMap.getValue();
 			}
 		}
@@ -111,6 +110,7 @@ public class EmployeeFacade {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
