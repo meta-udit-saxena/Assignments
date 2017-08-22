@@ -113,7 +113,7 @@ public interface MyLinkedList<E extends Comparable<E>> extends Iterable<E> {
 	 * @throws NoSuchElementException
 	 *             the no such element exception
 	 */
-	public E remove(int position) throws NoSuchElementException;
+	public E removeByPosition(int position) throws NoSuchElementException;
 
 	/**
 	 * Removes the element

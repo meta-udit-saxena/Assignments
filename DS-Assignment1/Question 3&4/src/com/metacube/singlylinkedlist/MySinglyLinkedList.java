@@ -11,7 +11,7 @@ import javax.swing.SortOrder;
 import com.metacube.linkedlistinterface.MyLinkedList;
 
 /**
- * @author Udit SaxenaOOO
+ * @author Udit Saxena
  *
  */
 @SuppressWarnings("rawtypes")
@@ -29,7 +29,8 @@ public class MySinglyLinkedList<E extends Comparable<E>> implements MyLinkedList
 	 */
 	@Override
 	public boolean add(E element) {
-		if(element==null) {
+		if (element == null) {
+
 			return false;
 		}
 		Node currentNode = this.head;
@@ -55,6 +56,10 @@ public class MySinglyLinkedList<E extends Comparable<E>> implements MyLinkedList
 	 */
 	@Override
 	public boolean addFirst(E element) {
+		if (element == null) {
+
+			return false;
+		}
 		Node node = new Node(element);
 		if (this.head == null) {
 			this.head = node;
@@ -80,7 +85,11 @@ public class MySinglyLinkedList<E extends Comparable<E>> implements MyLinkedList
 	 */
 	@Override
 	public boolean add(int position, E element) throws IndexOutOfBoundsException {
-		if (position > this.size || position < 1) {
+		if (element == null) {
+
+			return false;
+		}
+		if (position > this.size + 1 || position < 1) {
 			throw new IndexOutOfBoundsException();
 		}
 		if (position == 1) {
@@ -253,7 +262,7 @@ public class MySinglyLinkedList<E extends Comparable<E>> implements MyLinkedList
 	 *             the no such element exception
 	 */
 	@Override
-	public E remove(int position) throws NoSuchElementException {
+	public E removeByPosition(int position) throws NoSuchElementException {
 		if (position > size() || position < 1 || this.head == null) {
 			throw new NoSuchElementException();
 		}
@@ -282,17 +291,17 @@ public class MySinglyLinkedList<E extends Comparable<E>> implements MyLinkedList
 			removeFirst();
 		} else if (element.equals(getLast())) {
 			removeLast();
-		}
-		Node previousNode = null;
-		while (currentNode != null) {
-			if (currentNode.getElement().equals(element)) {
-				break;
+		} else {
+			Node previousNode = null;
+			while (currentNode != null) {
+				if (currentNode.getElement().equals(element)) {
+					break;
+				}
+				previousNode = currentNode;
+				currentNode = currentNode.getNextNode();
 			}
-			previousNode = currentNode;
-			currentNode = currentNode.getNextNode();
+			previousNode.setNextNode(currentNode.getNextNode());
 		}
-		previousNode.setNextNode(currentNode.getNextNode());
-
 		return true;
 	}
 
@@ -428,7 +437,7 @@ public class MySinglyLinkedList<E extends Comparable<E>> implements MyLinkedList
 	 *            the sort order
 	 */
 	@Override
-	public void sort(SortOrder sortOrder) {
+	public void sort(SortOrder sortOrder) throws NullPointerException {
 		if (this.head == null) {
 			throw new NullPointerException();
 		}

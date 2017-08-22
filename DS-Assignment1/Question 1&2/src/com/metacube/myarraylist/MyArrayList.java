@@ -149,9 +149,11 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
 		if (position > size() || position < 0) {
 			removed = false;
 		} else {
-			for (int index = position; index < list.length - 1; index++) {
+			int index;
+			for (index = position; index < list.length - 1; index++) {
 				list[index] = list[index + 1];
 			}
+			list[index] = null;
 			this.size--;
 		}
 		return removed;
