@@ -1,0 +1,34 @@
+
+div{
+	display : flex;
+	margin : 50px;
+	width: 100px;
+	height: 100px;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.rotate{
+	transition: transform 5s;
+}
+.rotate:hover{
+	-webkit-transform: rotate(5000deg);
+}
+.scale{
+	transition: transform 1s;
+}
+.scale:hover{
+	-webkit-transform: scale(2,2);
+}
+.skew{
+	transition: transform 1s;
+}
+.skew:hover{
+	-webkit-transform: skew(20deg,20deg);
+}
+.translate{
+	transition: transform 1s;
+}
+.translate:hover{
+	-webkit-transform: translate(0px,100px);
+}

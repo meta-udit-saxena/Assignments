@@ -1,0 +1,222 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0px;
+    padding:0px;
+}
+.main-container{
+}
+.text{
+    line-height: 25px;
+}
+.header{
+    background: black;
+    color : white;
+    display: flex;
+    padding:7px 10px 15px 10px;
+    font-size:15px;     
+    position: fixed;
+    width: 1565px;
+}
+.header-left{
+    float:left;
+    flex:1;
+     padding:10px 0px 0px 0px;
+}
+.header-right{  
+    float: right;
+    display: flex;
+}
+.link{
+    margin:10px;
+    color:lightblue;
+    text-decoration: none;
+    transition: transform 0.4s;
+}
+.link:hover{
+-webkit-transform: scale(1.25,1.25);
+}
+.active{
+    color: white;
+}
+.container1 {
+    background-color: #3f87ce;
+    background-size: cover;
+    padding: 150px 500px 200px 500px;
+    height: 129px;
+}
+.container1-content-box {
+    color: white;
+    text-transform: uppercase;
+    font-size: 3em;
+    border: 2px solid white;
+    text-align: center;
+    padding: 30px 30px 30px 30px;
+}
+.container1-content-text{
+    color:white;
+    font-size: 15px;
+    text-align: center;
+    padding:30px;
+}
+.container1-content-button{
+   color:#3f87ce;
+    font-size: 15px;
+    text-align: center;
+    padding:10px 30px 10px 30px;
+    width:200px;
+    margin-left: 200px;
+    background: white;
+    text-decoration: none;
+}
+.container1-content-button:hover{
+    color: white;
+	background: skyblue;
+	-webkit-box-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+}
+.container2{
+    background: white;
+    height: 100px;
+    padding: 30px 0px 200px 0px;
+}
+
+.container2-header{
+    font-size: 25px;
+    text-align: center;
+    background: white;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 600;
+    
+}
+
+.container2-box{
+   display: flex;
+    padding:20px 10px 10px 20px;
+}
+.container2-box1,.container2-box2,.container2-box3,.container2-box4{
+    width:2000px;
+    background:white;
+    padding:10px 0px 50px 0px;
+}
+.box-header{
+    font-weight: bold;
+    color : #3f98ce;
+}
+.box-text{
+    font-size: 15px;
+    padding:10px 10px 0px 10px;
+}
+.container3{
+    background:#2d3e50;
+    padding:50px 0px 80px 0px;
+    height:100px;
+    display: flex;
+}
+.container3-icon{
+    padding:0px 0px 0px 200px;
+      display: flex;
+}
+.icon{
+    height:120px;
+    width:250px;
+    padding : 0px 20px 10px 50px;
+}
+.container3-box{
+    padding :0px 0px 20px 200px;
+}
+.container3-box-header{
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 25px;
+    padding:10px 10px 0px 10px;
+}
+.container3-box-text{
+     font-size: 15px;
+    padding:10px 100px 0px 10px;
+    color: white;
+}
+.container4{
+    background-color: white;
+    padding:20px 10px 50px 20px;
+}
+.container4-header{
+    font-size: 30px;
+    text-align: center;
+    background: white;
+    color: black;
+    text-transform: uppercase;
+    font-weight:600;
+    padding:15px 0px 20px 0px;
+}
+
+.container4-form{
+    flex:1;
+    float: left;
+}
+.container4-content{
+    display: flex;
+}
+.label{
+    font-size: 15px;
+    font-weight: bolder;    
+    padding: 25px 10px 10px 10px;
+}
+
+input:focus{
+    outline: none;
+}
+input{
+	 box-shadow: 1px 1px 0px gray;
+    font-size: 15px;
+    height:30px;
+    margin: 0px 0px 0px 10px;
+    padding: 5px;
+    width:700px;
+    border-radius: 2px;
+    display:block;
+}
+input:invalid{
+	border: 1px solid red;
+}
+.submit-button{
+    margin: 15px 10px 10px 10px;
+    width:100px;
+    color: white;
+   font-family: "Comic Sans MS", "Comic Sans", cursive;
+    background-color:#3f87ce;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 3px;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+  box-shadow: 0 3px #999;
+}
+.submit-button:hover {background-color: #3e85ff}
+.submit-button:active{
+    background-color: #3e85ff;
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+}
+.container4-box{
+    margin: 10px 0px 0px 10px;
+    flex:1;
+}
+.container4-box-header{
+    font-weight: bolder;
+    padding: 15px 10px 5px 10px;
+    font-size: 18px;
+}
+.container4-box-text{
+    padding:10px;
+    font-size: 15px;
+}
+footer{
+    background-color: black;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+}
