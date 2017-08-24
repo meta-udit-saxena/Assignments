@@ -1,5 +1,8 @@
 package com.metacube.binarytree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import com.metacube.entity.BTNode;
 
 /**
@@ -10,9 +13,7 @@ import com.metacube.entity.BTNode;
  */
 public class BinaryTree<E> {
 	private BTNode<E> root;
-	private String inOrder;
-	private String postOrder;
-	private String preOrder;
+	private Queue<BTNode<E>> parentNodes;
 
 	/**
 	 * Checks if Binary Tree is empty.
@@ -23,6 +24,10 @@ public class BinaryTree<E> {
 		return root == null;
 	}
 
+	public BinaryTree() {
+		parentNodes = new LinkedList<BTNode<E>>();
+	}
+
 	/**
 	 * Insert data into Binary Tree
 	 *
@@ -31,72 +36,27 @@ public class BinaryTree<E> {
 	 * @return true, if successful
 	 */
 	public boolean insert(E data) {
-		if (data == null) {
-			return false;
-		}
-		this.root = insert(data, this.root);
-		return true;
-
-	}
-
-	/**
-	 * Insert data into Binary Tree Recursively
-	 *
-	 * @param data
-	 *            the data
-	 * @param node
-	 *            the node
-	 * @return the node
-	 */
-	public BTNode<E> insert(E data, BTNode<E> node) {
-		if (node == null) {
-			node = new BTNode<E>(data);
-		} else {
-			if (node.getRight() == null) {
-				node.setRight(insert(data, node.getRight()));
+		if (data != null) {
+			BTNode<E> newNode = new BTNode<E>(data);
+			if (this.root == null) {
+				this.root = newNode;
+				parentNodes.add(this.root);
 			} else {
-				node.setLeft(insert(data, node.getLeft()));
+				BTNode<E> currentNode = parentNodes.peek();
+				if (currentNode.getLeft() == null) {
+					currentNode.setLeft(newNode);
+					parentNodes.add(currentNode.getLeft());
+				} else {
+					currentNode.setRight(newNode);
+					parentNodes.add(currentNode.getRight());
+					parentNodes.poll();
+				}
 			}
-		}
-		return node;
-	}
 
-	/**
-	 * Insert Data to Mirror Tree
-	 *
-	 * @param data
-	 *            the data
-	 * @return true, if successful
-	 */
-	public boolean insertMirror(E data) {
-		if (data == null) {
-			return false;
+			return true;
 		}
-		this.root = insertMirror(data, this.root);
-		return true;
 
-	}
-
-	/**
-	 * Insert Data to Mirror Tree Recursively
-	 *
-	 * @param data
-	 *            the data
-	 * @param node
-	 *            the node
-	 * @return the node
-	 */
-	public BTNode<E> insertMirror(E data, BTNode<E> node) {
-		if (node == null) {
-			node = new BTNode<E>(data);
-		} else {
-			if (node.getLeft() == null) {
-				node.setLeft(insertMirror(data, node.getLeft()));
-			} else {
-				node.setRight(insertMirror(data, node.getRight()));
-			}
-		}
-		return node;
+		return false;
 	}
 
 	/**
@@ -105,9 +65,7 @@ public class BinaryTree<E> {
 	 * @return the string of Pre-Order
 	 */
 	public String preOrder() {
-		preOrder = "";
-		setPreOrder(this.root);
-		return preOrder;
+		return setPreOrder(this.root);
 	}
 
 	/**
@@ -116,12 +74,15 @@ public class BinaryTree<E> {
 	 * @param node
 	 *            the root node
 	 */
-	private void setPreOrder(BTNode<E> node) {
+	private String setPreOrder(BTNode<E> node) {
+		String preOrder = "";
 		if (node != null) {
 			preOrder += node.getData() + " ";
-			setPreOrder(node.getLeft());
-			setPreOrder(node.getRight());
+			preOrder += setPreOrder(node.getLeft());
+			preOrder += setPreOrder(node.getRight());
 		}
+
+		return preOrder;
 	}
 
 	/**
@@ -130,9 +91,7 @@ public class BinaryTree<E> {
 	 * @return the string of Post order
 	 */
 	public String postOrder() {
-		postOrder = "";
-		setPostOrder(this.root);
-		return postOrder;
+		return setPostOrder(this.root);
 	}
 
 	/**
@@ -141,12 +100,15 @@ public class BinaryTree<E> {
 	 * @param node
 	 *            the root node
 	 */
-	private void setPostOrder(BTNode<E> node) {
+	private String setPostOrder(BTNode<E> node) {
+		String postOrder = "";
 		if (node != null) {
-			setPostOrder(node.getLeft());
-			setPostOrder(node.getRight());
+			postOrder += setPostOrder(node.getLeft());
+			postOrder += setPostOrder(node.getRight());
 			postOrder += node.getData() + " ";
 		}
+
+		return postOrder;
 	}
 
 	/**
@@ -155,9 +117,8 @@ public class BinaryTree<E> {
 	 * @return the string of In-Order
 	 */
 	public String inOrder() {
-		inOrder = "";
-		setInOrder(this.root);
-		return inOrder;
+
+		return setInOrder(this.root);
 	}
 
 	/**
@@ -166,12 +127,15 @@ public class BinaryTree<E> {
 	 * @param node
 	 *            the root node
 	 */
-	private void setInOrder(BTNode<E> node) {
+	private String setInOrder(BTNode<E> node) {
+		String inOrder = "";
 		if (node != null) {
-			setInOrder(node.getLeft());
+			inOrder += setInOrder(node.getLeft());
 			inOrder += node.getData() + " ";
-			setInOrder(node.getRight());
+			inOrder += setInOrder(node.getRight());
 		}
+
+		return inOrder;
 	}
 
 	/**
@@ -185,6 +149,7 @@ public class BinaryTree<E> {
 	 */
 	public boolean isMirrorImage(BinaryTree<E> firstBinaryTree,
 			BinaryTree<E> secondBinaryTree) {
+
 		return isMirrorImage(firstBinaryTree.root, secondBinaryTree.root);
 	}
 
@@ -202,9 +167,11 @@ public class BinaryTree<E> {
 		if (firstTreeRoot == null && secondTreeRoot == null) {
 			return true;
 		}
+
 		if (firstTreeRoot == null || secondTreeRoot == null) {
 			return false;
 		}
+
 		return secondTreeRoot.getData().toString()
 				.equals(firstTreeRoot.getData().toString())
 				&& isMirrorImage(firstTreeRoot.getLeft(),
@@ -214,7 +181,7 @@ public class BinaryTree<E> {
 	}
 
 	/**
-	 * Gets the root.
+	 * Gets the root node.
 	 *
 	 * @return the root
 	 */
