@@ -41,7 +41,6 @@ public class BinaryTreeTestCases {
 
 	@Test
 	public void GivenElementInserted_WhenInsert_ThenCorrectOutput() {
-		System.out.println(insertedInput);
 		boolean actual = binaryTree.insert(insertedInput);
 		assertEquals(expectedOutput, actual);
 	}
