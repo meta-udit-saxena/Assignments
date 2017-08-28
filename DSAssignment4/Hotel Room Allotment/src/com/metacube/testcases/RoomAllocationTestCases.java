@@ -4,10 +4,8 @@
 package com.metacube.testcases;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import com.metacube.controller.RoomAllocation;
 import com.metacube.entity.Guest;
 
