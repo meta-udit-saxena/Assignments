@@ -1,7 +1,6 @@
 package com.metacube.view;
 
 import java.util.Scanner;
-
 import com.metacube.controller.RoomAllocation;
 import com.metacube.entity.Guest;
 
