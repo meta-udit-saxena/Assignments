@@ -41,9 +41,7 @@ public class ConcordanceTestCases {
 
 	@Test
 	public void GivenMultipleValueWhenGetCharactersMapThenRespectiveResults() {
-		System.out.println(expected);
 		String actual = concordance.getCharactersMap(inputString).toString();
-		System.out.println(actual);
 		assertEquals(actual, expected);
 	}
 }
