@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Java Script session 3 Assignment - Contact
+	</title>
+</head>
+
+<body>
+	<!-- Header Table Start -->
+	<table width="60%" align="center">
+		<tr>
+			<td>
+				<img src="images/HTML5_logo.png" height="70px" width="70px" alt="HTML5 logo" />
+			</td>
+			<td align="right">
+				<a href="Home.html">Home</a>
+				<a href="#">About</a>
+				<a href="#">Product</a>
+				<a href="#">Gallery</a>
+				<a href="contact.html">Contact</a>
+			</td>
+		</tr>
+	</table>
+	<!-- Header Table End -->
+	<hr>
+	<!-- Cover Table Starts -->
+	<table align="center">
+		<tr align="center">
+			<td>
+				<img src="images/contact_us.jpg" width="80%" alt="contact_us" />
+				<td>
+		</tr>
+	</table>
+	<br/>
+	<!-- Cover Table Ends -->
+	<!-- Contact Form Starts -->
+	<table align="center" width="100px">
+		<form>
+			<tr>
+				<td>
+					Name
+				</td>
+				<td>
+					<input type="text" name="username" id="username" placeholder="Name" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Email
+				</td>
+				<td>
+					<input type="email" name="useremail" id="useremail" placeholder="Email" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					City
+				</td>
+				<td>
+				<select name="usercity" id="usercity">
+							<option value="city" selected hidden>Choose city...</option>
+							<option value="Jaipur">Jaipur</option>
+							<option value="Udaipur">Udaipur</option>
+							<option value="Alwar">Alwar</option>
+							<option value="Kota">Kota</option>
+						</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Organization Name
+				</td>
+				<td>
+					<input type="text" name="userorg" id="userorg" placeholder="Organisation Name" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Contact Number
+				</td>
+
+				<td>
+					<input type="text" name="usercontact" id="usercontact" placeholder="Contact Number" />
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Message
+				</td>
+				<td>
+					<textarea name="usermessage" id="usermessage" placeholder="Enter your message here"></textarea>
+				</td>
+			</tr>
+
+			<tr>
+				<td colspan="2"><input type="button" name="saveLocalStorage" value="Save to Local Storage" id="save" /></td>
+			</tr>
+			<br>
+			<tr>
+				<td colspan="2"><input type="button" name="clearLocalStorage" value="Clear Local Storage" id="clear" /></td>
+			</tr>
+		</form>
+		<br><br>
+	<!-- Contact Form End -->
+	<hr/>
+	<!-- Footer Table Start -->
+	<table width="75%" id="footer" align="center">
+		<tr align="center">
+			<td>
+				&copy; Copyright 2016-2017 | All Right Reserved | Metacube Training
+			</td>
+		</tr>
+	</table>
+	<!-- Footer Table End -->
+
+	<script src="js/script.js"></script>
+</body>
+</html>

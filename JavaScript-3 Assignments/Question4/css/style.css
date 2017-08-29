@@ -1,0 +1,111 @@
+body{
+    margin:0px;
+}
+
+.main{
+    background-image: url('../images/background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    font-family: Courier New, Courier, monospace;
+}
+
+.main .header{
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    color:white;
+    padding: 30px 0px;
+    font-size: 1.5em;
+}
+
+.main .header .functionButton{
+    background-color: rgba(0,0,0,0);
+    color:white;
+    text-align: center;
+    font-size: 1em;
+    margin:0px 50px;
+    padding:10px;
+    outline: none;
+    border : none;
+    font-weight: bolder;
+}
+
+.main .header .functionButton:hover{
+    color:black;
+    cursor: pointer;
+    border-radius:4px;
+    box-shadow: 2px 2px 5px #888888;
+    background-color:lightblue; 
+}
+
+#containerDiv{
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.main .actionDiv{
+    background-color: rgba(0, 128, 128, 0.3);
+    text-align: center;
+    margin:auto;
+    color:white;
+    padding: 30px 0px;
+}
+
+.main .actionDiv .actionButton{
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    font-size: 1.3em;
+    margin:0px 5px;
+    border-radius:4px;
+    border:1px solid black;
+    outline: none
+}
+
+.main .actionDiv .actionButton:hover{
+    cursor: pointer;
+    border-radius:10px;
+    box-shadow: 2px 2px 5px #888888;
+    background-color:lightblue; 
+}
+
+.main .inputDiv {
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+    color:white;
+    padding: 50px 0px;
+    font-size: 22px;
+}
+
+.main .inputDiv .console{
+    font-size: 20px;
+}
+
+.main .messageDiv{
+    color:#902222;
+    padding: 30px 30px;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bolder;
+    height: 10px;
+}
+
+.main .LinkedListDiv{
+    text-align: center;
+    margin:auto;
+    color:white;
+    padding: 30px 0px;
+    height: auto;
+}
+
+.main .LinkedListDiv .LinkedListHeader,
+{
+    color:white;
+    font-size: 30px;
+    padding-bottom:50px;
+}
+
+#displayLinkedList{
+    font-size:30px;
+}
