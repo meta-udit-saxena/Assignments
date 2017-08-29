@@ -10,7 +10,6 @@ import java.util.NoSuchElementException;
  *            the element type
  */
 public class MyQueue<E> {
-
 	private LinkedList<E> queue;
 
 	/**
@@ -93,5 +92,14 @@ public class MyQueue<E> {
 	 */
 	public void clear() {
 		queue.clear();
+	}
+
+	/**
+	 * Size.
+	 *
+	 * @return the size of queue
+	 */
+	public int size() {
+		return queue.size();
 	}
 }

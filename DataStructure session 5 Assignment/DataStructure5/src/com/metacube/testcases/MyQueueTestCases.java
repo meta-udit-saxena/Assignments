@@ -7,7 +7,6 @@ import org.junit.Test;
 import com.metacube.queue.MyQueue;
 
 public class MyQueueTestCases {
-
 	MyQueue<Integer> queue;
 
 	@Before
@@ -19,6 +18,9 @@ public class MyQueueTestCases {
 	public void GivenElement_WhenAdd_ThenTrue() {
 		boolean actual = queue.add(10);
 		assertEquals(true, actual);
+		int actualSize = queue.size();
+		int expectedSize = 1;
+		assertEquals(expectedSize, actualSize);
 	}
 
 	@Test

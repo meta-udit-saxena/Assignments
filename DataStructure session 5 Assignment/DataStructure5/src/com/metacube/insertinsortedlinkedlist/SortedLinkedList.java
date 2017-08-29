@@ -20,37 +20,39 @@ public class SortedLinkedList<E extends Comparable<E>> {
 	}
 
 	/**
-	 * Adds the element to Sorted LinkedList
+	 * Adds the element to Sorted LinkedList.
 	 *
 	 * @param element
 	 *            the element
+	 * @return true, if successful
 	 */
 	public boolean add(E element) {
 		if (element == null) {
 			return false;
 		}
-		int position = getPosition(0, element);
+		int position = findPositionOfElement(0, element);
 		sortedLinkedList.add(position, element);
 		return true;
 	}
 
 	/**
-	 * Gets the position of Element recursively
+	 * Find position of element in Sorted linked List.
 	 *
 	 * @param position
 	 *            the position
 	 * @param element
 	 *            the element
-	 * @return the element position
+	 * @return the position of Element
 	 */
-	public int getPosition(int position, E element) {
+	private int findPositionOfElement(int position, E element) {
 		if (position >= sortedLinkedList.size()) {
 			return position;
 		}
 		if (sortedLinkedList.get(position).compareTo(element) > 0) {
 			return position;
 		}
-		return getPosition(position + 1, element);
+
+		return findPositionOfElement(position + 1, element);
 	}
 
 	/**
@@ -60,5 +62,20 @@ public class SortedLinkedList<E extends Comparable<E>> {
 	 */
 	public List<E> getLinkedList() {
 		return sortedLinkedList;
+	}
+
+	/**
+	 * Gets the index of element.
+	 *
+	 * @param element
+	 *            the element
+	 * @return the index of element
+	 */
+	public int getIndexOfElement(E element) {
+		if (element == null) {
+			return -1;
+		}
+
+		return sortedLinkedList.indexOf(element);
 	}
 }

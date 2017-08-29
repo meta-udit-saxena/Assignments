@@ -13,43 +13,39 @@ import com.metacube.insertinsortedlinkedlist.SortedLinkedList;
 
 @RunWith(Parameterized.class)
 public class SortedLinkedListTestCases {
-
 	SortedLinkedList<Integer> sortedLinkedList;
 
 	@Before
 	public void setUpObject() {
 		sortedLinkedList = new SortedLinkedList<Integer>();
-	}
-
-	@Test
-	public void GivenElementIsValid_WhenAdd_ThenTrue() {
-		boolean actual = sortedLinkedList.add(10);
-		assertEquals(true, actual);
-	}
-
-	@Test
-	public void GivenElementIsNull_WhenAdd_ThenFalse() {
-		boolean actual = sortedLinkedList.add(null);
-		assertEquals(false, actual);
+		sortedLinkedList.add(10);
+		sortedLinkedList.add(20);
+		sortedLinkedList.add(30);
 	}
 
 	@Parameters
 	public static Collection<Object[]> insert() {
-		return Arrays.asList(new Object[][] { { 12, 1 }, { 22, 2 }, { 0, 0 },
-				{ 8, 0 }, { 33, 3 } });
+		return Arrays.asList(new Object[][] {
+				{ 12, 1 },
+				{ 22, 2 },
+				{ 0, 0 },
+				{ 8, 0 },
+				{ 33, 3 },
+				{ 10, 0 },
+				{ 20, 1 },
+				{ 30, 2 },
+				{ null, -1 } });
 	}
 
 	@Parameter(0)
-	public int input;
+	public Integer input;
 	@Parameter(1)
 	public int expectedPosition;
 
 	@Test
-	public void GivenMultipleValuesInserted_WhenGetPosition_ThenValidPosition() {
-		sortedLinkedList.add(10);
-		sortedLinkedList.add(20);
-		sortedLinkedList.add(30);
-		int actual = sortedLinkedList.getPosition(0, input);
+	public void GivenMultipleValuesInserted_WhenAdd_ThenAddedAtCorrectPosition() {
+		sortedLinkedList.add(input);
+		int actual = sortedLinkedList.getIndexOfElement(input);
 		assertEquals(expectedPosition, actual);
 	}
 }
