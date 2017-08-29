@@ -17,8 +17,16 @@ public class College extends Entity {
 		String[] collegeDetails = details.split(",");
 		setId(collegeDetails[0]);
 		setName(collegeDetails[1]);
-		setRank(Integer.parseInt(collegeDetails[2]));
-		this.availableSeats = Integer.parseInt(collegeDetails[3]);
+		try {
+			setRank(Integer.parseInt(collegeDetails[2]));
+		} catch (NumberFormatException e) {
+			setRank(0);
+		}
+		try {
+			this.availableSeats = Integer.parseInt(collegeDetails[3]);
+		} catch (NumberFormatException e) {
+			this.availableSeats = 0;
+		}
 		this.totalSeats = this.availableSeats;
 	}
 

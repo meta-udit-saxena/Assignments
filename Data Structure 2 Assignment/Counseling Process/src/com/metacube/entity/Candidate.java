@@ -5,7 +5,7 @@ package com.metacube.entity;
  */
 public class Candidate extends Entity implements Comparable<Candidate> {
 	private String[] optedColleges;
-	private College college;
+	private String collegeId;
 
 	/**
 	 * Instantiates a new candidate.
@@ -17,9 +17,12 @@ public class Candidate extends Entity implements Comparable<Candidate> {
 		String[] candidateDetails = details.split(",");
 		setId(candidateDetails[0]);
 		setName(candidateDetails[1]);
-		setRank(Integer.parseInt(candidateDetails[2]));
+		try {
+			setRank(Integer.parseInt(candidateDetails[2]));
+		} catch (NumberFormatException e) {
+			setRank(0);
+		}
 		this.optedColleges = candidateDetails[3].split("/");
-		this.setCollege(null);
 	}
 
 	/**
@@ -46,18 +49,18 @@ public class Candidate extends Entity implements Comparable<Candidate> {
 	 *
 	 * @return the college
 	 */
-	public College getCollege() {
-		return college;
+	public String getCollegeId() {
+		return collegeId;
 	}
 
 	/**
-	 * Sets the college.
+	 * Sets the college Id.
 	 *
-	 * @param college
+	 * @param collegeId
 	 *            the new college
 	 */
-	public void setCollege(College college) {
-		this.college = college;
+	public void setCollegeId(String collegeId) {
+		this.collegeId = collegeId;
 	}
 
 	/**
@@ -79,6 +82,7 @@ public class Candidate extends Entity implements Comparable<Candidate> {
 			display += optedColleges[i] + " ";
 		}
 		display += optedColleges[optedColleges.length - 1] + "]";
+
 		return display;
 	}
 }

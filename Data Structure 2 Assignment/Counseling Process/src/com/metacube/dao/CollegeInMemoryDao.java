@@ -36,6 +36,7 @@ public class CollegeInMemoryDao {
 				}
 			}
 		}
+
 		return collegeInMemoryDao;
 	}
 
@@ -93,10 +94,11 @@ public class CollegeInMemoryDao {
 	 */
 	public College getCollegeById(String id) {
 		for (College college : collegesList) {
-			if (college.getId() == id) {
+			if (college.getId().equals(id)) {
 				return college;
 			}
 		}
+
 		return null;
 	}
 

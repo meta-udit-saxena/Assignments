@@ -6,8 +6,6 @@ package com.metacube.entity;
 public abstract class Entity {
 	private String id;
 	private String name;
-
-	/** The rank. */
 	private int rank;
 
 	/**

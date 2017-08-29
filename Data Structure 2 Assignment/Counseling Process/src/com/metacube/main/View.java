@@ -1,22 +1,53 @@
-package com.metacube.utility;
+package com.metacube.main;
 
 import java.util.List;
 import java.util.Scanner;
+import com.metacube.controller.Controller;
 import com.metacube.entity.Candidate;
 import com.metacube.entity.College;
 import com.metacube.myqueue.MyQueue;
 
 /**
- * The Class Helper for all input output operations.
+ * The View class.
+ *
+ * @author Udit Saxena
  */
-public class Helper {
-	private Scanner scan;
+public class View {
+	private static Scanner scan;
+	private static View view;
 
 	/**
-	 * Instantiates a new helper.
+	 * Instantiates a new view for singelton.
 	 */
-	public Helper() {
+	private View() {
+	}
+
+	/**
+	 * Gets the single instance of View.
+	 *
+	 * @return single instance of View
+	 */
+	public static View getInstance() {
+		if (view == null) {
+			synchronized (View.class) {
+				if (view == null) {
+					view = new View();
+				}
+			}
+		}
+
+		return view;
+	}
+
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
+	public static void main(String[] args) {
 		scan = new Scanner(System.in);
+		Controller.getInstance().startCounseling();
 	}
 
 	/**
@@ -44,7 +75,7 @@ public class Helper {
 	/**
 	 * Gets the number of counseling round.
 	 *
-	 * @return the total rounds
+	 * @return the total rounds of counseling
 	 */
 	public int getCounselingRound() {
 		System.out.println("\nEnter total Counseling Round");
@@ -103,9 +134,12 @@ public class Helper {
 	 */
 	public void printSelectedCandidate(List<Candidate> candidatesList) {
 		for (Candidate candidate : candidatesList) {
-			if (candidate.getCollege() != null) {
-				System.out.println("Candidate " + candidate.getName() + " get "
-						+ candidate.getCollege().getName() + " college");
+			if (candidate.getCollegeId() != null) {
+				System.out.println("Candidate "
+						+ candidate.getName()
+						+ " get "
+						+ Controller.getInstance().getCollegeName(
+								candidate.getCollegeId()) + " college");
 			}
 		}
 	}
@@ -113,12 +147,12 @@ public class Helper {
 	/**
 	 * Prints the counseling result.
 	 *
-	 * @param counsellingNumber
+	 * @param counselingNumber
 	 *            the counseling number
 	 * @param candidatesList
 	 *            the candidates list
 	 * @param queue
-	 *            the queue
+	 *            the candidate queue
 	 */
 	public void printCounsellingResult(int counselingNumber,
 			List<Candidate> candidatesList, MyQueue<Candidate> queue) {
@@ -138,7 +172,7 @@ public class Helper {
 	 * Prints the counseling header.
 	 *
 	 * @param round
-	 *            the round
+	 *            the round number
 	 */
 	public void printCounsellingHeader(int round) {
 		System.out
