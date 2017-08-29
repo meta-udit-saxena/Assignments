@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<title>
+			Home Page
+</title>
+</head>
+
+</body>
+	<!--First table which act as header to hold the logo and navigation links. -->
+	<table width="60%" align="center">
+		<tr>
+			<td>
+				<img src="HTML5.png"  height="70px" width="70px" alt="html5.png"/>
+			</td>
+			<td class="link" align="right">
+				<p id="home">Home</p>
+				<a href="#">About</a>
+				<a href="#">Product</a>
+				<a href="#">Gallery</a>
+				<p class="link" id="contactus">Contact</p>
+			</td>
+		</tr>
+	</table>
+
+	<hr>
+
+	<!--Second table to hold the cover picture. -->
+	<table  align="center">
+		<tr align="center">
+			<td>
+				<img src="contact_us_.jpg" width="80%" alt="contactus image"/>
+			<td>
+		</tr>
+
+	</table>
+
+	<br/>
+
+	<!-- Third table to hold the html form-->
+	<table align="center" >
+		<form  id="myForm" autocomplete="off">
+			<tr>
+				<td> 
+					Name<sup>*</sup>
+				</td>
+				<td>
+					<input type="text" id="name" name="name">
+					<span id="name-warning"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Email<sup>*</sup>
+				</td>
+				<td>
+					<input type="text" id="email" name="email">
+					<span id="email-warning"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					City<sup>*</sup>
+				</td>
+				<td>
+					<select id="selectCity">
+						<option  value="default" selected hidden>Select Your City</option>
+						<option value="Jaipur">Jaipur</option>
+						<option value="Jodhpur">Jodhpur</option>
+						<option value="Goa">Goa</option>
+						<option value="Jabalpur">Jabalpur</option>
+						<option value="Udaipur">Udaipur</option>
+					</select>
+				</td>
+			</tr>
+
+			<tr>
+				<td></td>
+
+				<td>
+				<input type="text" id="selectedcity" style="visibility: hidden" readonly>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Organization Name<sup>*</sup>
+				</td>
+				<td>
+					<input type="text" id="organization" name="organization" >
+					<span id="organization-warning"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Contact Number<sup>*</sup>
+				</td>
+
+				<td>
+					<input type="text" id="contactnumber" name="contactnumber"  >
+					<span id="phone-warning"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Message<sup>*</sup>
+				</td>
+				<td>
+					<textarea id="message" ></textarea>
+					<span id="text-warning"></span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<input type="submit" value="submit" >
+				</td>
+			</tr>
+		</form>
+	</table>
+
+	<br>
+	<br>
+	<hr/>
+
+	<!--Fourth table act as footer for web page-->
+	<table align="center">
+		<tr>
+			<td>
+				<p>
+				© Copyright 2016-2017 | All Rights Reserved | Metacube Training
+				</p>
+			</td>
+		</tr>
+		
+	</table>
+
+	<script src="java script/script.js"></script>
+
+</body>
+</html>

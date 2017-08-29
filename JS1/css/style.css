@@ -1,0 +1,23 @@
+#home,#contactus{
+	display: inline;
+}
+#home,#contactus:hover{
+cursor: pointer;
+}
+#name-warning,#email-warning,#organization-warning,#phone-warning,#text-warning{
+	position: absolute;
+	color:red;
+	margin: -20px 0px 0px 190px;
+}
+.link{
+	text-decoration: underline;
+	color: blue;
+}
+#selectCity{
+	width:172px;
+}
+#message{
+	height:30px;
+	width:168px;
+	resize: none;
+}
