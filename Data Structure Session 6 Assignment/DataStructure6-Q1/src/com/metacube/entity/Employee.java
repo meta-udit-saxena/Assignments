@@ -3,10 +3,9 @@ package com.metacube.entity;
 import java.util.Comparator;
 
 /**
- * Employee class
- * 
- * @author Udit Saxena
+ * Employee class.
  *
+ * @author Udit Saxena
  */
 public class Employee implements Comparable<Employee> {
 	private int empId;
@@ -14,9 +13,14 @@ public class Employee implements Comparable<Employee> {
 	private String address;
 
 	/**
+	 * Instantiates a new employee.
+	 *
 	 * @param empId
+	 *            the employee id
 	 * @param name
+	 *            the name
 	 * @param address
+	 *            the address
 	 */
 	public Employee(int empId, String name, String address) {
 		this.empId = empId;
@@ -25,21 +29,17 @@ public class Employee implements Comparable<Employee> {
 	}
 
 	/**
-	 * @return the empId
+	 * Gets the employee id.
+	 *
+	 * @return the employee id
 	 */
 	public int getEmpId() {
 		return empId;
 	}
 
 	/**
-	 * @param empId
-	 *            the empId to set
-	 */
-	public void setEmpId(int empId) {
-		this.empId = empId;
-	}
-
-	/**
+	 * Gets the name.
+	 *
 	 * @return the name
 	 */
 	public String getName() {
@@ -47,40 +47,28 @@ public class Employee implements Comparable<Employee> {
 	}
 
 	/**
-	 * @param name
-	 *            the employee name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
+	 * Gets the address.
+	 *
 	 * @return the address
 	 */
 	public String getAddress() {
 		return address;
 	}
 
-	/**
-	 * @param address
-	 *            the address to set
-	 */
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	/**
-	 * Comparator object to sort employees list or array in order of Name
-	 */
+	/** Name comparator object to sort employees in order of employee name. */
 	public static Comparator<Employee> nameComparator = new Comparator<Employee>() {
 		@Override
-		public int compare(Employee obj1, Employee obj2) {
-			return obj1.getName().compareTo(obj2.getName());
+		public int compare(Employee emp1, Employee emp2) {
+			return emp1.getName().compareTo(emp2.getName());
 		}
 	};
 
 	/**
-	 * Override compareTo to sort employees list or array in order of id
+	 * Override compareTo to sort employees in order of employee id.
+	 *
+	 * @param obj
+	 *            the employee object
+	 * @return 0 if equals , 1 if greater and -1 if smaller than obj
 	 */
 	@Override
 	public int compareTo(Employee obj) {
@@ -88,7 +76,9 @@ public class Employee implements Comparable<Employee> {
 	}
 
 	/**
-	 * return string containing employee details
+	 * return string containing employee details.
+	 *
+	 * @return the string
 	 */
 	@Override
 	public String toString() {
@@ -97,7 +87,9 @@ public class Employee implements Comparable<Employee> {
 	}
 
 	/**
-	 * return hash code for employee id
+	 * return hash code for employee id.
+	 *
+	 * @return the hash code
 	 */
 	@Override
 	public int hashCode() {
@@ -108,18 +100,17 @@ public class Employee implements Comparable<Employee> {
 	}
 
 	/**
-	 * If object have same id then return true else false
+	 * If object have same id then return true else false.
+	 *
+	 * @param obj
+	 *            the object
+	 * @return true, if successful
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Employee)) {
-			return false;
-		}
 		Employee other = (Employee) obj;
-		if (empId != other.empId) {
+		if (obj == null || this.getClass() != obj.getClass()
+				|| empId != other.empId) {
 			return false;
 		}
 

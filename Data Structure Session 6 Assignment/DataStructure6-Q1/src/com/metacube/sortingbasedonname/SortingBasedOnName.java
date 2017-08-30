@@ -13,7 +13,8 @@ public class SortingBasedOnName {
 	/**
 	 * The main method.
 	 *
-	 * @param args the arguments
+	 * @param args
+	 *            the arguments
 	 */
 	public static void main(String[] args) {
 		List<Employee> empList = new ArrayList<Employee>();

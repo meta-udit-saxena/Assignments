@@ -3,22 +3,25 @@ package com.metacube.uniquecharacter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.Set;
+import com.metacube.dto.FindTotalUniqueCharacterDTO;
 
 /**
  * The Class UniqueCharacters.
  */
 public class UniqueCharacters {
-
-	/** The string map. */
-	private Map<String, Set<Character>> stringMap;
+	/** The string map works as cache memory */
+	private static Map<String, Set<Character>> stringMap;
 
 	/**
-	 * Instantiates a new unique characters.
+	 * Instantiates a new unique characters and also 
+	 * if stringMap is null then initialize the map
+	 * by doing this if we create multiple object of this class it uses the same map as cache memory
 	 */
 	public UniqueCharacters() {
-		stringMap = new HashMap<String, Set<Character>>();
+		if (stringMap == null) {
+			stringMap = new HashMap<String, Set<Character>>();
+		}
 	}
 
 	/**
@@ -28,41 +31,29 @@ public class UniqueCharacters {
 	 *            the input
 	 * @return the total unique character
 	 */
-	public int findTotalUniqueCharacters(String input) {
+	public FindTotalUniqueCharacterDTO findTotalUniqueCharacters(String input) {
+		FindTotalUniqueCharacterDTO dto = new FindTotalUniqueCharacterDTO();
+		dto.fromCache = false;
+		dto.success = true;
 		if (input == null) {
-			return -1;
+			dto.success = false;
+			dto.result = -1;
+			return dto;
 		}
+
 		if (stringMap.containsKey(input)) {
-			System.out.println("Getting From cache");
-			return stringMap.get(input).size();
+			dto.result = stringMap.get(input).size();
+			dto.fromCache = true;
+			return dto;
 		}
 
 		Set<Character> characterSet = new HashSet<Character>();
 		for (int index = 0; index < input.length(); index++) {
-			if (input.charAt(index) != ' ') {
-				characterSet.add(input.charAt(index));
-			}
+			characterSet.add(input.charAt(index));
 		}
 
 		stringMap.put(input, characterSet);
-
-		return characterSet.size();
-	}
-
-	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *            the arguments
-	 */
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		UniqueCharacters uniqueCharacters = new UniqueCharacters();
-		String input = scan.nextLine();
-		while (input.equalsIgnoreCase("exit") == false) {
-			System.out.println(uniqueCharacters
-					.findTotalUniqueCharacters(input));
-			input = scan.nextLine();
-		}
+		dto.result = characterSet.size();
+		return dto;
 	}
 }

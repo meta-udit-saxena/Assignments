@@ -20,29 +20,31 @@ public class NaturalSortingTestCases {
 		e3 = new Employee(2, "Neel", "sector 8");
 		e4 = new Employee(5, "Prateek", "sector 13");
 		e5 = new Employee(4, "Chetan", "sector 12");
+	}
+
+	@Test
+	public void GivenEmployeePresentWithUniqueId_WhenSort_ThenSortBasedOnId() {
 		employeeList.add(e1);
 		employeeList.add(e2);
 		employeeList.add(e3);
 		employeeList.add(e4);
 		employeeList.add(e5);
+		Collections.sort(employeeList);
+		Object[] actualArray = employeeList.toArray();
+		Object[] expectedArray = { e1, e3, e2, e5, e4 };
+		assertArrayEquals(actualArray, expectedArray);
 	}
 
 	@Test
-	public void GivenEmployeePresentWithUniqueId_WhenSort_ThenSortBasedOnId() {
+	public void GivenListIsEmpty_WhenSort_ThenEmptyList() {
 		Collections.sort(employeeList);
-		Object[] empArray = employeeList.toArray();
-		Object[] actualArray = { e1, e3, e2, e5, e4 };
-		assertArrayEquals(actualArray, empArray);
+		Object[] actualArray = employeeList.toArray();
+		Object[] expectedArray = {};
+		assertArrayEquals(actualArray, expectedArray);
 	}
 
-	@Test
-	public void GivenEmployeeAddedWithSimilarId_WhenSort_ThenSortBasedOnId() {
-		Employee e6 = new Employee(4, "Udit Saxena", "sector 3");
-		employeeList.add(e6);
-		Collections.sort(employeeList);
-		Collections.sort(employeeList);
-		Object[] empArray = employeeList.toArray();
-		Object[] actualArray = { e1, e3, e2, e5, e6, e4 };
-		assertArrayEquals(actualArray, empArray);
+	@Test(expected = NullPointerException.class)
+	public void GivenNull_WhenSort_ThenEmpty() {
+		Collections.sort(null);
 	}
 }

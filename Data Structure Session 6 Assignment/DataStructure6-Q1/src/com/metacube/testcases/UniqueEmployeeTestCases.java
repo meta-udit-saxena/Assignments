@@ -1,6 +1,6 @@
 package com.metacube.testcases;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertArrayEquals;
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.Before;
@@ -30,25 +30,17 @@ public class UniqueEmployeeTestCases {
 	public void GivenEmployeeAddedtWithUniqueId_WhenSort_ThenAddedToSet() {
 		Employee e6 = new Employee(6, "Udit Saxena", "sector 3");
 		employeeList.add(e6);
-		boolean actual = false;
-		for (Employee employee : employeeList) {
-			if (employee.getName().equals(e6.getName())) {
-				actual = true;
-			}
-		}
-		assertEquals(true, actual);
+		Object[] actualArray = employeeList.toArray();
+		Object[] expectedArray = { e1, e3, e2, e5, e4, e6 };
+		assertArrayEquals(expectedArray, actualArray);
 	}
 
 	@Test
 	public void GivenEmployeeAddedWithSimilarId_WhenSort_ThenDiscarded() {
 		Employee e6 = new Employee(5, "Udit Saxena", "sector 3");
 		employeeList.add(e6);
-		boolean actual = false;
-		for (Employee employee : employeeList) {
-			if (employee.getName().equals(e6.getName())) {
-				actual = true;
-			}
-		}
-		assertEquals(false, actual);
+		Object[] actualArray = employeeList.toArray();
+		Object[] expectedArray = { e1, e3, e2, e5, e4 };
+		assertArrayEquals(expectedArray, actualArray);
 	}
 }
