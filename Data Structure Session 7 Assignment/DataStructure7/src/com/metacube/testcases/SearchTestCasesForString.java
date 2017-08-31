@@ -22,25 +22,27 @@ public class SearchTestCasesForString {
 
 	@Parameters
 	public static Collection<Object[]> insert() {
-		return Arrays.asList(new Object[][] {
-				{ "a", 0 },
-				{ "x", -1 },
-				{ "c", 2 },
-				{ "d", 5 },
-				{ "z", 10 },
-				{ "", -1 } });
+		return Arrays
+				.asList(new Object[][] {
+						{ new String[] { "a", "b", "c", "c", "c", "d", "d" },"a", 0 },
+						{ new String[] { "a", "b", "c", "c", "c", "d", "d" },"x", -1 },
+						{ new String[] { "a" }, "a", 0 },
+						{ new String[] {}, "d", -1 },
+						{ null, "z", -1 } });
 	}
 
 	@Parameter(0)
-	public String data;
+	public String[] array;
+	
 	@Parameter(1)
+	public String searchData;
+	
+	@Parameter(2)
 	public int expectedPosition;
 
 	@Test
-	public void binarySearchTestsCases() {
-		String[] arr = { "a", "b", "c", "c", "c", "d", "d", "e", "f", "g", "z",
-				"z", "z", "z" };
-		int actualPosition = search.binarySearch(arr, data);
+	public void binarySearchInStringArrayTestsCases() {
+		int actualPosition = search.binarySearch(array, searchData);
 		assertEquals(actualPosition, expectedPosition);
 	}
 }
