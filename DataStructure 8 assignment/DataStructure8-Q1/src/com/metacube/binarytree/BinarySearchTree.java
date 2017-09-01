@@ -30,8 +30,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	 *            the array
 	 */
 	public void insert(T[] array) {
-		for (T element : array)
-			this.root = insert(this.root, element);
+		if (array != null) {
+			for (T element : array)
+				this.root = insert(this.root, element);
+		}
 	}
 
 	/**

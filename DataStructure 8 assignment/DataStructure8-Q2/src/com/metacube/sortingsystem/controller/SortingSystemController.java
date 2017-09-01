@@ -27,9 +27,9 @@ public class SortingSystemController {
 	 * @param inputArray
 	 *            the input array
 	 */
-	public void doComparisonSort(int[] inputArray) {
+	public ControllerResponse doComparisonSort(int[] inputArray) {
 		ControllerResponse response = new ControllerResponse();
-		if (inputArray == null) {
+		if (inputArray == null || inputArray.length == 0) {
 			main.displayResponse(response);
 		} else {
 			if (inputArray.length > 10) {
@@ -42,6 +42,8 @@ public class SortingSystemController {
 
 			main.displayResponse(response);
 		}
+
+		return response;
 	}
 
 	/**
@@ -52,12 +54,15 @@ public class SortingSystemController {
 	 * @param inputArray
 	 *            the input array
 	 */
-	public void doLinearSort(int[] inputArray) {
+	public ControllerResponse doLinearSort(int[] inputArray) {
 		ControllerResponse response = new ControllerResponse();
-		if (inputArray == null) {
+		if (inputArray == null || inputArray.length == 0) {
 			main.displayResponse(response);
 		} else {
-			if (sortingTechniques.getLargestValue(inputArray) / 100 > 0) {
+			int min = sortingTechniques.getLowestValue(inputArray);
+			int max = sortingTechniques.getLargestValue(inputArray);
+			max = Math.abs(min) > max ? min : max;
+			if (Math.abs(max) / 100 > 0) {
 				response.sortedArray = sortingTechniques.radixSort(inputArray);
 				response.message = "Radix Sort";
 			} else {
@@ -68,5 +73,7 @@ public class SortingSystemController {
 
 			main.displayResponse(response);
 		}
+
+		return response;
 	}
 }

@@ -4,7 +4,6 @@ package com.metacube.sortingsystem.dto;
  * The Class CountingSortRequest.
  */
 public class CountingSortRequest {
-
 	/** The input array. */
 	public int[] array;
 

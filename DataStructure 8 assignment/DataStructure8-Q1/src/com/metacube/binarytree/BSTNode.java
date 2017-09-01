@@ -3,7 +3,8 @@ package com.metacube.binarytree;
 /**
  * The Class BSTNode.
  *
- * @param <T> the generic type
+ * @param <T>
+ *            the generic type
  */
 public class BSTNode<T> {
 	private T data;
@@ -13,7 +14,8 @@ public class BSTNode<T> {
 	/**
 	 * Instantiates a new BST node.
 	 *
-	 * @param data the data
+	 * @param data
+	 *            the data
 	 */
 	public BSTNode(T data) {
 		this.data = data;
@@ -31,7 +33,8 @@ public class BSTNode<T> {
 	/**
 	 * Sets the data.
 	 *
-	 * @param data the new data
+	 * @param data
+	 *            the new data
 	 */
 	public void setData(T data) {
 		this.data = data;
@@ -40,7 +43,7 @@ public class BSTNode<T> {
 	/**
 	 * Gets the left.
 	 *
-	 * @return the left
+	 * @return the left node
 	 */
 	public BSTNode<T> getLeft() {
 		return left;
@@ -49,7 +52,8 @@ public class BSTNode<T> {
 	/**
 	 * Sets the left.
 	 *
-	 * @param left the new left
+	 * @param left
+	 *            the new left node
 	 */
 	public void setLeft(BSTNode<T> left) {
 		this.left = left;
@@ -58,7 +62,7 @@ public class BSTNode<T> {
 	/**
 	 * Gets the right.
 	 *
-	 * @return the right
+	 * @return the right node
 	 */
 	public BSTNode<T> getRight() {
 		return right;
@@ -67,7 +71,8 @@ public class BSTNode<T> {
 	/**
 	 * Sets the right.
 	 *
-	 * @param right the new right
+	 * @param right
+	 *            the new right node
 	 */
 	public void setRight(BSTNode<T> right) {
 		this.right = right;

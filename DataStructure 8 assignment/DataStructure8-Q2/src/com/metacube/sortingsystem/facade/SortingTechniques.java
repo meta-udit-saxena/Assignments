@@ -16,7 +16,7 @@ public class SortingTechniques {
 	 * @return the sorted array
 	 */
 	public int[] bubbleSort(int[] array) {
-		if (array == null) {
+		if (array == null || array.length == 0) {
 			return null;
 		}
 		for (int index1 = 0; index1 < array.length; index1++) {
@@ -54,7 +54,7 @@ public class SortingTechniques {
 	 * @return the sorted Array
 	 */
 	public int[] quickSort(int[] array) {
-		if (array == null) {
+		if (array == null || array.length == 0) {
 			return null;
 		}
 		quickSort(array, 0, array.length - 1);
@@ -113,12 +113,12 @@ public class SortingTechniques {
 	 * @return the sorted array
 	 */
 	public int[] countingSort(int[] array) {
-		if (array == null) {
+		if (array == null || array.length == 0) {
 			return null;
 		}
 		int minimum = getLowestValue(array);
 		for (int index = 0; index < array.length; index++) {
-			array[index] += minimum;
+			array[index] -= minimum;
 		}
 		CountingSortRequest request = new CountingSortRequest();
 		request.array = array;
@@ -127,8 +127,9 @@ public class SortingTechniques {
 		request.mod = request.max;
 		countingSort(request);
 		for (int index = 0; index < array.length; index++) {
-			array[index] -= minimum;
+			array[index] += minimum;
 		}
+
 		return array;
 	}
 
@@ -146,17 +147,16 @@ public class SortingTechniques {
 		int[] countingArray = new int[request.max];
 		int[] result = new int[array.length];
 		// increase count on particular index
-		for (int i : array) {
-			countingArray[(i / exp) % mod]++;
+		for (int index : array) {
+			countingArray[(index / exp) % mod]++;
 		}
 		// adding count with its previous count
 		for (int index = 1; index < countingArray.length; index++) {
 			countingArray[index] += countingArray[index - 1];
 		}
 		// insert the data in result array at particular index
-		for (int index = 0; index < array.length; index++) {
+		for (int index = array.length - 1; index >= 0; index--) {
 			result[--countingArray[(array[index] / exp) % mod]] = array[index];
-
 		}
 		// sorting the original array
 		for (int index = 0; index < array.length; index++) {
@@ -174,10 +174,10 @@ public class SortingTechniques {
 	 * @return the largest value
 	 */
 	public Integer getLargestValue(int[] array) {
-		if (array == null) {
+		if (array == null || array.length == 0) {
 			return null;
 		}
-		int max = array[0];
+		int max = Integer.MIN_VALUE;
 		for (int i : array) {
 			if (max < i) {
 				max = i;
@@ -198,14 +198,14 @@ public class SortingTechniques {
 		if (array == null) {
 			return null;
 		}
-		int min = array[0];
+		int min = Integer.MAX_VALUE;
 		for (int i : array) {
 			if (min > i) {
 				min = i;
 			}
 		}
 
-		return Math.abs(min);
+		return min;
 	}
 
 	/**
@@ -216,24 +216,28 @@ public class SortingTechniques {
 	 * @return the sorted array
 	 */
 	public int[] radixSort(int[] array) {
-		if (array == null) {
+		if (array == null || array.length == 0) {
 			return null;
 		}
 		int minimum = getLowestValue(array);
 		for (int index = 0; index < array.length; index++) {
-			array[index] += minimum;
+			array[index] -= minimum;
 		}
+
 		CountingSortRequest request = new CountingSortRequest();
 		request.array = array;
 		request.max = 10;
 		request.mod = 10;
-		for (int count = 1; getLargestValue(array) / count > 0; count *= 10) {
+		int maximum = getLargestValue(array);
+		for (int count = 1; maximum / count > 0; count *= 10) {
 			request.count = count;
 			countingSort(request);
 		}
+
 		for (int index = 0; index < array.length; index++) {
-			array[index] -= minimum;
+			array[index] += minimum;
 		}
+
 		return array;
 	}
 }
