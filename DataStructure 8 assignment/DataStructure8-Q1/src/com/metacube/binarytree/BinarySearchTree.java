@@ -37,6 +37,39 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	/**
+	 * Sort the tree.
+	 *
+	 * @return the sorted list
+	 */
+	public List<T> sort() {
+		List<T> array = new ArrayList<T>();
+		return inorder(root, array);
+
+	}
+
+	/**
+	 * Inorder traversing and add data to list.
+	 *
+	 * @param root
+	 *            the root
+	 * @param array
+	 *            the list
+	 * @param index
+	 *            the index
+	 * @return the sorted list
+	 */
+	private List<T> inorder(BSTNode<T> root, List<T> array) {
+		if (root == null) {
+			return null;
+		}
+		inorder(root.getLeft(), array);
+		array.add(root.getData());
+		inorder(root.getRight(), array);
+
+		return array;
+	}
+
+	/**
 	 * Insert.
 	 *
 	 * @param root
@@ -56,38 +89,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 				root.setRight(insert(root.getRight(), element));
 			}
 		}
+
 		return root;
-	}
-
-	/**
-	 * Sort the tree.
-	 *
-	 * @return the sorted list
-	 */
-	public List<T> sort() {
-		List<T> array = new ArrayList<T>();
-		return inorder(root, array, 0);
-
-	}
-
-	/**
-	 * Inorder traversing and add data to list.
-	 *
-	 * @param root
-	 *            the root
-	 * @param array
-	 *            the list
-	 * @param index
-	 *            the index
-	 * @return the sorted list
-	 */
-	private List<T> inorder(BSTNode<T> root, List<T> array, int index) {
-		if (root == null) {
-			return null;
-		}
-		inorder(root.getLeft(), array, index);
-		array.add(root.getData());
-		inorder(root.getRight(), array, index);
-		return array;
 	}
 }

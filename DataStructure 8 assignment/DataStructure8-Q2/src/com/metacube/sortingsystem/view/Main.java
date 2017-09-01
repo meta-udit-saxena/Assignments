@@ -3,7 +3,7 @@ package com.metacube.sortingsystem.view;
 import java.util.Arrays;
 import java.util.Scanner;
 import com.metacube.sortingsystem.controller.SortingSystemController;
-import com.metacube.sortingsystem.dto.ControllerResponse;
+import com.metacube.sortingsystem.dto.SortResponse;
 
 /**
  * The Class Main.
@@ -80,7 +80,7 @@ public class Main {
 	 * @param response
 	 *            the response
 	 */
-	public void displayResponse(ControllerResponse response) {
+	public void displayResponse(SortResponse response) {
 		System.out.print(response.message + " : ");
 		System.out.println(Arrays.toString(response.sortedArray));
 	}

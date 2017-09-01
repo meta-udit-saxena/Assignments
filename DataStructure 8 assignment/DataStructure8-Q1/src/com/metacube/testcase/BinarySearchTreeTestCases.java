@@ -21,7 +21,7 @@ public class BinarySearchTreeTestCases {
 	}
 
 	@Test
-	public void GivenUnsortedArrayWhenSortThenSortedArray() {
+	public void GivenUnsortedArray_WhenSort_ThenSortedArray() {
 		Student[] student = { s1, s5, s3, s4, s2 };
 		tree.insert(student);
 		Student[] expectedArray = { s1, s2, s3, s4, s5 };
@@ -29,9 +29,20 @@ public class BinarySearchTreeTestCases {
 	}
 
 	@Test
-	public void GivenEmptyArrayWhenSortThenNull() {
+	public void GivenEmptyArray_WhenSort_ThenNull() {
 		Student[] student = null;
 		tree.insert(student);
 		assertEquals(null, tree.sort());
+	}
+
+	@Test
+	public void GivenElementInserted_WhenSort_ThenSortedArray() {
+		tree.insert(s1);
+		tree.insert(s4);
+		tree.insert(s3);
+		tree.insert(s5);
+		tree.insert(s2);
+		Student[] expectedArray = { s1, s2, s3, s4, s5 };
+		assertArrayEquals(tree.sort().toArray(), expectedArray);
 	}
 }

@@ -8,11 +8,11 @@ public class CountingSortRequest {
 	public int[] array;
 
 	/** The maximum size of array */
-	public int max;
+	public int arraySize;
 
-	/** The count. */
-	public int count;
+	/** The divisor. */
+	public int divisor;
 
-	/** The mod. */
+	/** The modulus factor */
 	public int mod;
 }
