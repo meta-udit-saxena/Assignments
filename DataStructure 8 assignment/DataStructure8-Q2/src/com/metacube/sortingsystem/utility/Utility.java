@@ -10,7 +10,7 @@ public class Utility {
 	 * @return the lowest value
 	 */
 	public static Integer getLowestValue(int[] array) {
-		if (array == null||array.length==0) {
+		if (array == null || array.length == 0) {
 			return 0;
 		}
 		int min = Integer.MAX_VALUE;

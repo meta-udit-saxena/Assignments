@@ -45,6 +45,17 @@ public class Main {
 	}
 
 	/**
+	 * Display response.
+	 *
+	 * @param response
+	 *            the response
+	 */
+	public void displayResponse(SortResponse response) {
+		System.out.print(response.message + " : ");
+		System.out.println(Arrays.toString(response.sortedArray));
+	}
+
+	/**
 	 * Gets the valid integer from console.
 	 *
 	 * @return the valid integer
@@ -72,16 +83,5 @@ public class Main {
 		}
 
 		return array;
-	}
-
-	/**
-	 * Display response.
-	 *
-	 * @param response
-	 *            the response
-	 */
-	public void displayResponse(SortResponse response) {
-		System.out.print(response.message + " : ");
-		System.out.println(Arrays.toString(response.sortedArray));
 	}
 }

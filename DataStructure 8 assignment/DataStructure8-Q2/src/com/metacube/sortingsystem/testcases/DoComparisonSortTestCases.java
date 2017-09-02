@@ -26,7 +26,7 @@ public class DoComparisonSortTestCases {
 	@Parameters
 	public static Collection<Object[]> insert() {
 		return Arrays.asList(new Object[][]{
-				{new int[]{25, 65, 89, 65, 32, 0, 12, -12},	new int[]{-12, 0, 12, 25, 32, 65, 65, 89},Sort.BUBBLE_SORT},
+				{new int[]{25, 65, 89, 65, 32, 0, 12, -12},	new int[]{-12, 0, 12, 25, 32, 65, 65, 89}, Sort.BUBBLE_SORT},
 				{new int[]{-25, 65, -89, 65, 32, 0, 12, -12, 10, 100,15, 5, 2},	new int[]{-89, -25, -12, 0, 2, 5, 10, 12, 15, 32, 65,65, 100}, Sort.QUICK_SORT},
 				{new int[]{}, new int[]{}, Sort.BUBBLE_SORT},
 				{null, null, null}});

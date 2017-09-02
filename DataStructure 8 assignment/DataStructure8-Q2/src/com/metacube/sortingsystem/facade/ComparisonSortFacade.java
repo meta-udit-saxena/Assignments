@@ -4,11 +4,24 @@ import com.metacube.sortingsystem.Enum.Sort;
 import com.metacube.sortingsystem.dto.SortResponse;
 import com.metacube.sortingsystem.utility.Utility;
 
+/**
+ * The Class ComparisonSortFacade.
+ */
 public class ComparisonSortFacade implements SortingTechniques {
 	private static ComparisonSortFacade comparisonSortingFacade;
 
+	/**
+	 * Constructor is Private to constraint the creation of object using new
+	 * keyword
+	 */
 	private ComparisonSortFacade() {
 	}
+
+	/**
+	 * Gets the single instance of ComparisonSortFacade.
+	 *
+	 * @return single instance of ComparisonSortFacade
+	 */
 	public static ComparisonSortFacade getInstance() {
 		if (comparisonSortingFacade == null) {
 			synchronized (ComparisonSortFacade.class) {
@@ -23,8 +36,8 @@ public class ComparisonSortFacade implements SortingTechniques {
 	/**
 	 * Sort the array.
 	 *
-	 * @param array
-	 *            the array
+	 * @param inputArray
+	 *            the input array
 	 * @return the sort response contains sorted array and message
 	 */
 	@Override

@@ -5,11 +5,24 @@ import com.metacube.sortingsystem.dto.CountingSortRequest;
 import com.metacube.sortingsystem.dto.SortResponse;
 import com.metacube.sortingsystem.utility.Utility;
 
+/**
+ * The Class LinearSortFacade.
+ */
 public class LinearSortFacade implements SortingTechniques {
-
 	private static LinearSortFacade linearSortfacade;
+
+	/**
+	 * Constructor is Private to constraint the creation of object using new
+	 * keyword
+	 */
 	private LinearSortFacade() {
 	}
+
+	/**
+	 * Gets the single instance of LinearSortFacade.
+	 *
+	 * @return single instance of LinearSortFacade
+	 */
 	public static LinearSortFacade getInstance() {
 		if (linearSortfacade == null) {
 			synchronized (LinearSortFacade.class) {
@@ -25,8 +38,8 @@ public class LinearSortFacade implements SortingTechniques {
 	/**
 	 * Sort the array.
 	 *
-	 * @param array
-	 *            the array
+	 * @param inputArray
+	 *            the input array
 	 * @return the sort response contains sorted array and message
 	 */
 	@Override
@@ -68,7 +81,6 @@ public class LinearSortFacade implements SortingTechniques {
 		request.divisor = 1;
 		request.arraySize = Utility.getLargestValue(array) + 1;
 		request.mod = request.arraySize;
-		System.out.println(request.mod);
 		countingSort(request);
 		for (int index = 0; index < array.length; index++) {
 			array[index] += minimum;

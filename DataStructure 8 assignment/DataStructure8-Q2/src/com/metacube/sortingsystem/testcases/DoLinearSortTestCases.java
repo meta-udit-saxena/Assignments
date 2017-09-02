@@ -26,10 +26,10 @@ public class DoLinearSortTestCases {
 	@Parameters
 	public static Collection<Object[]> insert() {
 		return Arrays.asList(new Object[][]{
-				{ new int[]{25, 65, 89, 65, 32, 0, 12, -12},new int[]{-12, 0, 12, 25, 32, 65, 65, 89},Sort.COUNTING_SORT },
-				{ new int[]{-2555, -890, 890, 10000, 13452, -34521},new int[]{-34521, -2555, -890, 890, 10000, 13452},Sort.RADIX_SORT },
+				{ new int[]{25, 65, 89, 65, 32, 0, 12, -12}, new int[]{-12, 0, 12, 25, 32, 65, 65, 89}, Sort.COUNTING_SORT },
+				{ new int[]{-2555, -890, 890, 10000, 13452, -34521}, new int[]{-34521, -2555, -890, 890, 10000, 13452}, Sort.RADIX_SORT },
 				{ new int[]{}, new int[]{}, Sort.COUNTING_SORT},
-				{null, null,null}});
+				{null, null, null}});
 	}
 
 	@Parameter(0)

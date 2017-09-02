@@ -29,6 +29,14 @@ public class BinarySearchTreeTestCases {
 	}
 
 	@Test
+	public void GivenArrayContainsSimilarElemets_WhenSort_ThenSortedArray() {
+		Student[] student = { s1, s1, s2, s1, s2 };
+		tree.insert(student);
+		Student[] expectedArray = { s1, s1, s1, s2, s2 };
+		assertArrayEquals(tree.sort().toArray(), expectedArray);
+	}
+
+	@Test
 	public void GivenEmptyArray_WhenSort_ThenNull() {
 		Student[] student = null;
 		tree.insert(student);
@@ -43,6 +51,17 @@ public class BinarySearchTreeTestCases {
 		tree.insert(s5);
 		tree.insert(s2);
 		Student[] expectedArray = { s1, s2, s3, s4, s5 };
+		assertArrayEquals(tree.sort().toArray(), expectedArray);
+	}
+
+	@Test
+	public void GivenSimilarElemetsInserted_WhenSort_ThenSortedArray() {
+		tree.insert(s1);
+		tree.insert(s2);
+		tree.insert(s1);
+		tree.insert(s1);
+		tree.insert(s2);
+		Student[] expectedArray = { s1, s1, s1, s2, s2 };
 		assertArrayEquals(tree.sort().toArray(), expectedArray);
 	}
 }
