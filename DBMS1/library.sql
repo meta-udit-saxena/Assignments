@@ -13,7 +13,7 @@ CREATE TABLE `members`(
     member_name VARCHAR(45) NOT NULL,
     address_line1 VARCHAR(30) NOT NULL,
     address_line2 VARCHAR(30) NOT NULL,
-    category VARCHAR(20) NOT NULL
+    category VARCHAR(1) NOT NULL
 );
 
 -- Create table author.
