@@ -1,0 +1,35 @@
+body{background: rgba(0,0,0,0.2); margin: 3% 2% 3% 2%;}
+#mainContainer{
+	background : #ffffff;
+	-webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.4);
+	padding: 0.1%;
+}
+#header{
+	text-align: center;
+	background: skyblue;
+	margin: 2%;
+	border: 2px dotted gray;
+	color: black;
+	font-family: Monotype Corsiva;
+	font-size: 150%;
+}
+#mainContent{display: flex;	padding: 1% 2% 1% 2%;}
+#leftSideContent{width:25%;}
+#rightSideContent{width:75%;}
+.imageShadow{
+	-webkit-box-shadow: 1px 1px 1px 4px rgba(0,0,0,0.5);
+	border: 2px solid green;
+	width: 220px;
+	height: 300px;
+}
+.infoBox{margin-bottom: 2%;	line-height: 150%;}
+.links{text-decoration: underline;}
+.tags{
+	border: 1px solid blue;
+	border-radius: 10%;
+	background: lightgreen; 
+	margin: 4px;
+	padding: 2px;
+	display: inline-block;
+	color: black;
+}
