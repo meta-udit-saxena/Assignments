@@ -7,11 +7,4 @@ package com.metacube.facade;
  */
 public interface BaseFacade<E> {
 
-	
-	/**
-	 * Gets the single instance of BaseFacade.
-	 *
-	 * @return single instance of BaseFacade
-	 */
-	public E getInstance();
 }

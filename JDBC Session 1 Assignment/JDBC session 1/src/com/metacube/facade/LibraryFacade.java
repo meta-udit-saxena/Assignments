@@ -8,7 +8,7 @@ import com.metacube.dto.TitleListDTO;
 /**
  * The Class LibraryFacade.
  */
-public class LibraryFacade {
+public class LibraryFacade implements BaseFacade {
 	private static LibraryFacade libraryFacade;
 
 	/**
