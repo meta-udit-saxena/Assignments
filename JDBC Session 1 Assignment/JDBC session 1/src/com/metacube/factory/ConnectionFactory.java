@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import com.metacube.constants.Constant;
+import com.metacube.utility.Constant;
 
 /**
  * A factory for creating Connection objects.

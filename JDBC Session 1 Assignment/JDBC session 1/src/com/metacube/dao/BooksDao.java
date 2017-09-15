@@ -4,15 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.metacube.enums.Status;
+import com.metacube.dto.OperationResult;
 import com.metacube.factory.ConnectionFactory;
+import com.metacube.utility.Queries;
 
 /**
  * The Class BooksDao.
  */
-public class BooksDao {
+public class BooksDao implements BaseDao {
 
-	/** The books dao. */
 	private static BooksDao booksDao;
 
 	/**
@@ -34,58 +34,61 @@ public class BooksDao {
 				}
 			}
 		}
+
 		return booksDao;
 	}
 
 	/**
-	 * Checks if is available.
+	 * Checks if book is available.
 	 *
-	 * @param bookName the book name
-	 * @return the status
+	 * @param bookName
+	 *            the book name
+	 * @return the result - the operationResult DTO
 	 */
-	public Status isAvailable(String bookName){
-		try{
+	public OperationResult isBookAvailable(String bookName) {
+		OperationResult result = new OperationResult();
+		try {
 			Connection con = ConnectionFactory.getConnection();
-			String query = "SELECT * FROM books b INNER JOIN title t ON (b.title_id=t.title_id) WHERE t.title_name=? AND b.status = ?";
-			PreparedStatement preparedStatement = con.prepareStatement(query);
-			preparedStatement.setString(1,bookName);
-			preparedStatement.setString(2,Status.AVAILABLE.toString());
+			PreparedStatement preparedStatement = con
+					.prepareStatement(Queries.checkBookAvailableQuery);
+			preparedStatement.setString(1, bookName);
+			preparedStatement.setString(2, "Available");
 			ResultSet rs = preparedStatement.executeQuery();
-			if(rs.next()){
-				return Status.AVAILABLE;
-			}else{
-				return Status.UNAVAILABLE;
+			if (rs.next()) {
+				result.message = "This Book is Available";
+			} else {
+				result.message = "This Book is Already Issue to Someone or Not available ";
 			}
-		}catch(SQLException se){
-			se.printStackTrace();
-			System.out.println(se);
-			return Status.FAILED;
+		} catch (SQLException se) {
+			result.success = false;
+			result.message = "Error Occured due to " + se.getMessage();
 		}
+
+		return result;
 	}
-	
+
 	/**
-	 * Delete old unissued books.
+	 * Delete old unused books.
 	 *
-	 * @return the string
+	 * @return the result - the operationResult DTO
 	 */
-	public String deleteOldUnissuedBooks(){
-		try{
+	public OperationResult deleteOldUnissuedBooks() {
+		OperationResult result = new OperationResult();
+		try {
 			Connection con = ConnectionFactory.getConnection();
-			String query = "DELETE FROM books"
-					+ " WHERE status <> 'unavaliable'"
-					+ " AND "
-					+ " accession_no NOT IN "
-					+ "(SELECT "
-					+ "accession_no FROM  book_issue WHERE TIMESTAMPDIFF(year, issue_date, now()) < 1);";
-			PreparedStatement preparedStatement = con.prepareStatement(query);
+			PreparedStatement preparedStatement = con
+					.prepareStatement(Queries.deleteOldBooksQuery);
 			int rs = preparedStatement.executeUpdate();
-			if(rs>0){
-				return rs+" books deleted";
-			}else{
-				return "no such books found";
+			if (rs > 0) {
+				result.message = rs + " books deleted";
+			} else {
+				result.message = "no such books found";
 			}
-		}catch(SQLException se){
-			return Status.FAILED.toString();
+		} catch (SQLException se) {
+			result.message = "Error occured due to " + se;
+			result.success = false;
 		}
+
+		return result;
 	}
 }

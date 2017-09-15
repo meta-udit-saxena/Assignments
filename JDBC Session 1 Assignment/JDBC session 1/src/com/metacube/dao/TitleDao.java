@@ -6,15 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import com.metacube.dto.TitleListDTO;
 import com.metacube.entity.Title;
 import com.metacube.factory.ConnectionFactory;
+import com.metacube.utility.Queries;
 
 /**
  * The Class TitleDao.
  */
-public class TitleDao {
-
-	/** The title dao. */
+public class TitleDao implements BaseDao {
 	private static TitleDao titleDao;
 
 	/**
@@ -30,7 +30,7 @@ public class TitleDao {
 	 * @throws SQLException
 	 *             the SQL exception
 	 */
-	public static TitleDao getInstance() throws SQLException {
+	public static TitleDao getInstance() {
 		if (titleDao == null) {
 			synchronized (TitleDao.class) {
 				if (titleDao == null) {
@@ -38,6 +38,7 @@ public class TitleDao {
 				}
 			}
 		}
+
 		return titleDao;
 	}
 
@@ -47,25 +48,26 @@ public class TitleDao {
 	 * @param authorName
 	 *            the author name
 	 * @return the titles published by author
-	 * @throws SQLException
-	 *             the SQL exception
 	 */
-	public List<Title> getTitlesPublishedByAuthor(String authorName)
-			throws SQLException {
-		List<Title> titleList = new ArrayList<Title>();
-		Connection con = ConnectionFactory.getConnection();
-		String query = "SELECT t.title_id, " + "t.title_name "
-				+ "FROM title t " + "INNER JOIN Title_author ta "
-				+ "ON (t.title_id=ta.title_id) " + "INNER JOIN author a "
-				+ "ON(a.author_id = ta.author_id) " + "WHERE a.author_name = ?";
-		PreparedStatement preparedStatement = con.prepareStatement(query);
-		preparedStatement.setString(1, authorName);
-		ResultSet rs = preparedStatement.executeQuery();
-		while (rs.next()) {
-			titleList.add(new Title(rs.getString("title_id"), rs
-					.getString("title_name")));
+	public TitleListDTO getTitlesPublishedByAuthor(String authorName) {
+		TitleListDTO response = new TitleListDTO();
+		try {
+			List<Title> titleList = new ArrayList<Title>();
+			Connection con = ConnectionFactory.getConnection();
+			PreparedStatement preparedStatement = con
+					.prepareStatement(Queries.getTitleListByAuthorNameQuery);
+			preparedStatement.setString(1, authorName);
+			ResultSet rs = preparedStatement.executeQuery();
+			while (rs.next()) {
+				titleList.add(new Title(rs.getString("title_id"), rs
+						.getString("title_name")));
+			}
+			response.titlesList = titleList;
+		} catch (SQLException se) {
+			response.message = "Error occured due to " + se;
+			response.success = false;
 		}
 
-		return titleList;
+		return response;
 	}
 }

@@ -4,18 +4,16 @@ package com.metacube.entity;
  * The Class Title.
  */
 public class Title {
-	
-	/** The title id. */
 	private String titleId;
-	
-	/** The title name. */
 	private String titleName;
 
 	/**
 	 * Instantiates a new title.
 	 *
-	 * @param titleId the title id
-	 * @param titleName the title name
+	 * @param titleId
+	 *            the title id
+	 * @param titleName
+	 *            the title name
 	 */
 	public Title(String titleId, String titleName) {
 		this.titleId = titleId;
@@ -39,5 +37,4 @@ public class Title {
 	public String getTitleName() {
 		return this.titleName;
 	}
-
 }

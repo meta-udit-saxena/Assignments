@@ -1,18 +1,14 @@
 package com.metacube.facade;
 
-import java.sql.SQLException;
-import java.util.List;
 import com.metacube.dao.BooksDao;
 import com.metacube.dao.TitleDao;
-import com.metacube.entity.Title;
-import com.metacube.enums.Status;
+import com.metacube.dto.OperationResult;
+import com.metacube.dto.TitleListDTO;
 
 /**
  * The Class LibraryFacade.
  */
 public class LibraryFacade {
-
-	/** The library facade. */
 	private static LibraryFacade libraryFacade;
 
 	/**
@@ -34,53 +30,38 @@ public class LibraryFacade {
 				}
 			}
 		}
+
 		return libraryFacade;
 	}
 
 	/**
-	 * Gets the title list.
+	 * Gets the titles list.
 	 *
-	 * @param authorName the author name
+	 * @param authorName
+	 *            the author name
 	 * @return the title list
-	 * @throws SQLException the SQL exception
 	 */
-	public String getTitleList(String authorName) throws SQLException {
+	public TitleListDTO getTitlesList(String authorName) {
+		return TitleDao.getInstance().getTitlesPublishedByAuthor(authorName);
+	}
 
-		String titlesName = "\nList of title are following \n\n";
-		try {
-			List<Title> list = TitleDao.getInstance()
-					.getTitlesPublishedByAuthor(authorName);
-			if (list.size() == 0) {
-				return "No such Data Exist";
-			}
-			int index = 1;
-			for (Title t : list) {
-				titlesName = titlesName.concat(index + " " + t.getTitleName())
-						+ "\n";
-				index++;
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return titlesName;
-	}
-	
 	/**
-	 * Checks if is book available.
+	 * Checks if book is available.
 	 *
-	 * @param bookName the book name
-	 * @return the status
+	 * @param bookName
+	 *            the book name
+	 * @return the result - the operationResult DTO
 	 */
-	public Status isBookAvailable(String bookName){
-		return BooksDao.getInstance().isAvailable(bookName);
+	public OperationResult isBookAvailable(String bookName) {
+		return BooksDao.getInstance().isBookAvailable(bookName);
 	}
-	
+
 	/**
-	 * Delete old unissued books.
+	 * Delete old unused books.
 	 *
-	 * @return the string
+	 * @return the result - the operationResult DTO
 	 */
-	public String deleteOldUnissuedBooks(){
+	public OperationResult deleteOldUnissuedBooks() {
 		return BooksDao.getInstance().deleteOldUnissuedBooks();
 	}
 }
