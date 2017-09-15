@@ -3,7 +3,7 @@ package com.metacube.facade;
 import com.metacube.dao.BooksDao;
 import com.metacube.dao.TitleDao;
 import com.metacube.dto.OperationResult;
-import com.metacube.dto.TitleListDTO;
+import com.metacube.dto.TitleListResponse;
 
 /**
  * The Class LibraryFacade.
@@ -41,7 +41,7 @@ public class LibraryFacade implements BaseFacade {
 	 *            the author name
 	 * @return the title list
 	 */
-	public TitleListDTO getTitlesList(String authorName) {
+	public TitleListResponse getTitlesList(String authorName) {
 		return TitleDao.getInstance().getTitlesPublishedByAuthor(authorName);
 	}
 

@@ -3,7 +3,7 @@ package com.metacube.utility;
 /**
  * The Class Queries.
  */
-public class Queries {
+public class SQLQueries {
 	
 	/**
 	 * Given the name of the book, to be issued by an existing member.Return

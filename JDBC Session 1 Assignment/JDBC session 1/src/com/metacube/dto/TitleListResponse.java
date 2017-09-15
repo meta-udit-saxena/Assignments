@@ -6,7 +6,7 @@ import com.metacube.entity.Title;
 /**
  * The Class TitleListDTO.
  */
-public class TitleListDTO extends OperationResult {
+public class TitleListResponse extends OperationResult {
 
 	/** The titles list. */
 	public List<Title> titlesList;

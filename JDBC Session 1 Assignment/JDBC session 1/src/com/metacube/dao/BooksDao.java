@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.metacube.dto.OperationResult;
 import com.metacube.factory.ConnectionFactory;
-import com.metacube.utility.Queries;
+import com.metacube.utility.SQLQueries;
 
 /**
  * The Class BooksDao.
@@ -50,14 +50,14 @@ public class BooksDao implements BaseDao {
 		try {
 			Connection con = ConnectionFactory.getConnection();
 			PreparedStatement preparedStatement = con
-					.prepareStatement(Queries.checkBookAvailableQuery);
+					.prepareStatement(SQLQueries.checkBookAvailableQuery);
 			preparedStatement.setString(1, bookName);
 			preparedStatement.setString(2, "Available");
 			ResultSet rs = preparedStatement.executeQuery();
 			if (rs.next()) {
 				result.message = "This Book is Available";
 			} else {
-				result.message = "This Book is Already Issue to Someone or Not available ";
+				result.message = "This Book is Already Issue to Someone or Not available";
 			}
 		} catch (SQLException se) {
 			result.success = false;
@@ -77,7 +77,7 @@ public class BooksDao implements BaseDao {
 		try {
 			Connection con = ConnectionFactory.getConnection();
 			PreparedStatement preparedStatement = con
-					.prepareStatement(Queries.deleteOldBooksQuery);
+					.prepareStatement(SQLQueries.deleteOldBooksQuery);
 			int rs = preparedStatement.executeUpdate();
 			if (rs > 0) {
 				result.message = rs + " books deleted";

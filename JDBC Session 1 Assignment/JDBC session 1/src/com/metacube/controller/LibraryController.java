@@ -3,7 +3,7 @@ package com.metacube.controller;
 import java.util.List;
 import com.metacube.dao.TitleDao;
 import com.metacube.dto.OperationResult;
-import com.metacube.dto.TitleListDTO;
+import com.metacube.dto.TitleListResponse;
 import com.metacube.entity.Title;
 import com.metacube.facade.LibraryFacade;
 
@@ -20,7 +20,7 @@ public class LibraryController {
 	 * @return the titles published by author
 	 */
 	public String getTitlesPublishedByAuthor(String authorName) {
-		TitleListDTO response = TitleDao.getInstance()
+		TitleListResponse response = TitleDao.getInstance()
 				.getTitlesPublishedByAuthor(authorName);
 		if (response.success == true) {
 			String message = "\nList of title are following \n\n";
