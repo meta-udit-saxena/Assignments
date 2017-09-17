@@ -2,9 +2,10 @@ package com.metacube.factory;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import com.metacube.utility.Constant;
 
 /**
@@ -50,16 +51,21 @@ public class ConnectionFactory {
 	 * @throws Exception
 	 *             the exception
 	 */
-	public static void closeConnection(Connection con, Statement stmt,
-			ResultSet rs) throws Exception {
-		if (con != null) {
-			con.close();
-		}
-		if (stmt != null) {
-			stmt.close();
-		}
-		if (rs != null) {
-			rs.close();
+	public static void closeConnection(Connection con,
+			PreparedStatement preparedStatement, ResultSet rs) {
+		try {
+			if (con != null) {
+
+				con.close();
+			}
+			if (preparedStatement != null) {
+				preparedStatement.close();
+			}
+			if (rs != null) {
+				rs.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -50,7 +50,7 @@ public class LibraryFacade implements BaseFacade {
 	 *
 	 * @param bookName
 	 *            the book name
-	 * @return the result - the operationResult DTO
+	 * @return the result - the operationResult response
 	 */
 	public OperationResult isBookAvailable(String bookName) {
 		return BooksDao.getInstance().isBookAvailable(bookName);
@@ -59,7 +59,7 @@ public class LibraryFacade implements BaseFacade {
 	/**
 	 * Delete old unused books.
 	 *
-	 * @return the result - the operationResult DTO
+	 * @return the result - the operationResult response
 	 */
 	public OperationResult deleteOldUnissuedBooks() {
 		return BooksDao.getInstance().deleteOldUnissuedBooks();

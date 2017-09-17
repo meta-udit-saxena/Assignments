@@ -47,13 +47,16 @@ public class BooksDao implements BaseDao {
 	 */
 	public OperationResult isBookAvailable(String bookName) {
 		OperationResult result = new OperationResult();
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
 		try {
-			Connection con = ConnectionFactory.getConnection();
-			PreparedStatement preparedStatement = con
+			con = ConnectionFactory.getConnection();
+			preparedStatement = con
 					.prepareStatement(SQLQueries.checkBookAvailableQuery);
 			preparedStatement.setString(1, bookName);
 			preparedStatement.setString(2, "Available");
-			ResultSet rs = preparedStatement.executeQuery();
+			rs = preparedStatement.executeQuery();
 			if (rs.next()) {
 				result.message = "This Book is Available";
 			} else {
@@ -62,6 +65,8 @@ public class BooksDao implements BaseDao {
 		} catch (SQLException se) {
 			result.success = false;
 			result.message = "Error Occured due to " + se.getMessage();
+		} finally {
+			ConnectionFactory.closeConnection(con, preparedStatement, rs);
 		}
 
 		return result;
@@ -74,11 +79,14 @@ public class BooksDao implements BaseDao {
 	 */
 	public OperationResult deleteOldUnissuedBooks() {
 		OperationResult result = new OperationResult();
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		int rs;
 		try {
-			Connection con = ConnectionFactory.getConnection();
-			PreparedStatement preparedStatement = con
+			con = ConnectionFactory.getConnection();
+			preparedStatement = con
 					.prepareStatement(SQLQueries.deleteOldBooksQuery);
-			int rs = preparedStatement.executeUpdate();
+			rs = preparedStatement.executeUpdate();
 			if (rs > 0) {
 				result.message = rs + " books deleted";
 			} else {
@@ -87,6 +95,8 @@ public class BooksDao implements BaseDao {
 		} catch (SQLException se) {
 			result.message = "Error occured due to " + se;
 			result.success = false;
+		} finally {
+			ConnectionFactory.closeConnection(con, preparedStatement, null);
 		}
 
 		return result;

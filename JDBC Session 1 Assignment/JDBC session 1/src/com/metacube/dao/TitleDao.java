@@ -51,13 +51,16 @@ public class TitleDao implements BaseDao {
 	 */
 	public TitleListResponse getTitlesPublishedByAuthor(String authorName) {
 		TitleListResponse response = new TitleListResponse();
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet rs = null;
 		try {
 			List<Title> titleList = new ArrayList<Title>();
-			Connection con = ConnectionFactory.getConnection();
-			PreparedStatement preparedStatement = con
+			con = ConnectionFactory.getConnection();
+			preparedStatement = con
 					.prepareStatement(SQLQueries.getTitleListByAuthorNameQuery);
 			preparedStatement.setString(1, authorName);
-			ResultSet rs = preparedStatement.executeQuery();
+			rs = preparedStatement.executeQuery();
 			while (rs.next()) {
 				titleList.add(new Title(rs.getString("title_id"), rs
 						.getString("title_name")));
@@ -66,6 +69,8 @@ public class TitleDao implements BaseDao {
 		} catch (SQLException se) {
 			response.message = "Error occured due to " + se;
 			response.success = false;
+		} finally {
+			ConnectionFactory.closeConnection(con, preparedStatement, rs);
 		}
 
 		return response;

@@ -44,11 +44,11 @@ public class LibraryController {
 	}
 
 	/**
-	 * Checks if is book available.
+	 * Checks if book is available.
 	 *
 	 * @param bookName
 	 *            the book name
-	 * @return the result - the operationResult DTO
+	 * @return the result - the operationResult response
 	 */
 	public OperationResult isBookAvailable(String bookName) {
 		return LibraryFacade.getInstance().isBookAvailable(bookName);
@@ -57,7 +57,7 @@ public class LibraryController {
 	/**
 	 * Delete old unused books.
 	 *
-	 * @return the result - the operationResult DTO
+	 * @return the result - the operationResult response
 	 */
 	public OperationResult deleteOldUnissuedBooks() {
 		return LibraryFacade.getInstance().deleteOldUnissuedBooks();
