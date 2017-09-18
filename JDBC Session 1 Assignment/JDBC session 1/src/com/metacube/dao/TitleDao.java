@@ -67,7 +67,7 @@ public class TitleDao implements BaseDao {
 			}
 			response.titlesList = titleList;
 		} catch (SQLException se) {
-			response.message = "Error occured due to " + se;
+			response.message = "Error occured due to " + se.getMessage();
 			response.success = false;
 		} finally {
 			ConnectionFactory.closeConnection(con, preparedStatement, rs);
