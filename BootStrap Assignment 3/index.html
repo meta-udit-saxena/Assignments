@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Bootstrap-2 Assignment</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+	<!-- Header starts -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<!-- To make collapable button for navigation bar when working on small screens. -->
+				<div class="navbar-header">
+					<button type="button" class="btn navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menuitems">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="col-sm-2 col-xs-12 brand pull-left">
+					<h1>LOGO</h1>
+				</div>
+				<div class="col-sm-2 col-xs-12 pull-right">
+					<p class="text-right"><i class="glyphicon glyphicon-user icon"></i></p>
+				</div>
+			</div>
+		</div>
+		<!-- Navigation bar -->
+		<nav class="navbar navbar-inverse">
+			<div class="container">
+				<div class="collapse navbar-collapse" id="navbar-menuitems">
+					<ul class="nav navbar-nav navbar-right">
+						<li id="dashboard"><a href="index.html">DASHBOARD</a></li>
+						<li><a href="#">UI ELEMENTS</a></li>
+						<li><a href="#">DATA TABLES</a></li>
+						<li><a href="#">FORMS</a></li>
+						<li><a href="#">LOGIN PAGE</a></li>
+						<li><a href="#">BLANK PAGE</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- Header Ends -->
+
+	<!-- Layer 1 Starts -->
+	<section class="layer1">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h4>DASHBOARD</h4>
+				</div>
+			</div>
+			<hr />
+			<div class="alert alert-success">
+				This is a simple admin template that can be used for your small projects or large projects. This is free for personal and
+				commercial use.
+			</div>
+		</div>
+	</section>
+	<!-- Layer 1 Ends -->
+
+	<!-- Layer 2 Starts -->
+	<section class="layer2">
+		<div class="container">
+			<div class="row">
+				<!-- Box 1 -->
+				<div class="col-sm-3 col-xs-12">
+					<div class="well text-center" id="notification">
+						<i class="fa fa-bell icon"></i>
+						<hr /> Notifications
+					</div>
+				</div>
+				<!-- Box 2 -->
+				<div class="col-sm-3 col-xs-12">
+					<div class="well text-center" id="gallery">
+						<i class="fa fa-camera icon"></i>
+						<hr /> Photogallery
+					</div>
+				</div>
+				<!-- Box 3 -->
+				<div class="col-sm-3 col-xs-12">
+					<div class=" well text-center" id="favourite">
+						<i class="fa fa-heart icon"></i>
+						<hr /> Favourites
+					</div>
+				</div>
+				<!-- Box 4 -->
+				<div class="col-sm-3 col-xs-12">
+					<div class=" well text-center" id="announcement">
+						<i class="fa fa-volume-up icon"></i>
+						<hr /> Announcements
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Layer 2 Ends -->
+
+	<!-- Layer 3 Starts -->
+	<section class="layer3">
+		<div class="container">
+			<div class="row">
+				<!-- First column of the row -->
+				<div class="col-md-6 col-xs-12">
+					<div class="panel panel-default" id="left-panel">
+						<!-- Heading of the panel -->
+						<div class="panel-heading">
+							Active Notice Panel
+							<div class="pull-right">
+								<div class="dropdown">
+									<button class="btn btn-success btn-xs" type="button" data-toggle="dropdown">
+										<span class="glyphicon glyphicon-cog"></span>
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a href="#">Option 1</a></li>
+										<li><a href="#">Option 2</a></li>
+										<li><a href="#">Option 3</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- Body of the panel -->
+						<div class="panel-body">
+							<ul>
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-align-left text-success"></span> 
+										Lorem ipsum dolor sit amet ipsum dolor sit amet
+										<span class="label label-warning"> Just now </span>
+									</a>
+								</li>
+								<hr />
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-info-sign text-danger"></span>  
+										Lorem ipsum dolor sit amet ipsum dolor sit amet
+										<span class="label label-info"> 2 min chat </span>
+									</a>
+								</li>
+								<hr />
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-comment text-warning"></span>  
+										Lorem ipsum dolor sit amet ipsum dolor sit amet
+										<span class="label label-success"> GO ! </span>
+									</a>
+								</li>
+								<hr />
+								<li>
+									<a href="#">
+										<span class="glyphicon glyphicon-edit text-danger"></span>  
+										Lorem ipsum dolor sit amet ipsum dolor sit amet
+										<span class="label label-success"> Let's have it </span>
+									</a>
+								</li>
+								<hr />
+							</ul>
+						</div>
+						<!-- Footer of the panel -->
+						<div class="panel-footer">
+							<a href="#" class="btn btn-default btn-block">
+								<i class="glyphicon glyphicon-repeat"></i> Just A Small Footer Button
+							</a>
+						</div>
+					</div>
+					<hr />
+					<!-- Display buttons of social networking websites -->
+					<div class="panel panel-default social-buttons text-center">
+						<button type="button" class="btn btn-fb"><i class="fa fa-facebook left"></i> Facebook</button>
+						<button type="button" class="btn btn-gplus"><i class="fa fa-google-plus left"></i> Google +</button>
+						<button type="button" class="btn btn-tw"><i class="fa fa-twitter left"></i> Twitter</button>
+						<button type="button" class="btn btn-li"><i class="fa fa-linkedin left"></i> Linkedin</button>
+					</div>
+					<hr />
+					<!-- Make a responsive table -->
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>Ref. No.</th>
+									<th>Date</th>
+									<th>Amount</th>
+									<th>Status</th>
+									<th>Delivery On</th>
+									<th>##</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>#2501</td>
+									<td>01/22/2015</td>
+									<td><span class="label label-info"> 300 USD </span></td>
+									<td><span class="label label-success"> Delivered </span></td>
+									<td>01/25/2015</td>
+									<td><span class="label label-danger view"> View </span></td>
+								</tr>
+								<tr>
+									<td>#15091</td>
+									<td>12/12/2014</td>
+									<td><span class="label label-danger"> 7000 USD </span></td>
+									<td><span class="label label-warning"> Shipped </span></td>
+									<td>N/A</td>
+									<td><span class="label label-success view"> View </span></td>
+								</tr>
+								<tr>
+									<td>#11291</td>
+									<td>12/03/2014</td>
+									<td><span class="label label-warning"> 7000 USD </span></td>
+									<td><span class="label label-success"> Delivered </span></td>
+									<td>01/23/2015</td>
+									<td><span class="label label-primary view"> View </span></td>
+								</tr>
+								<tr>
+									<td>#1808</td>
+									<td>11/10/2014</td>
+									<td><span class="label label-success"> 2000 USD </span></td>
+									<td><span class="label label-info"> Returned </span></td>
+									<td>N/A</td>
+									<td><span class="label label-danger view"> View </span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Second column of the row. -->
+				<div class="col-md-6 col-xs-12">
+					<div class="well">
+						This is a simple admin template that can be used for your small projects or large projects. This is free for personal and
+						commercial use.
+					</div>
+					<hr />
+					<!-- Make a form inside the panel -->
+					<div class="panel panel-default" id="right-panel">
+						<div class="panel-heading">
+							Compose New Message
+						</div>
+						<div class="panel-body">
+							<form>
+								<div class="form-group">
+									<label for="name">Enter Recipient Name :</label>
+									<input type="text" class="form-control" id="name">
+								</div>
+								<div class="form-group">
+									<label for="subject">Enter Subject :</label>
+									<input type="text" class="form-control" id="subject">
+								</div>
+								<div class="form-group">
+									<label for="message">Enter Message :</label>
+									<textarea></textarea>
+								</div>
+								<hr />
+								<button type="button" class="btn btn-warning">
+									<i class="glyphicon glyphicon-envelope"></i> Send Message
+								</button>
+								<button type="button" class="btn btn-success">
+									<i class="glyphicon glyphicon-tags"></i> Save To Drafts
+								</button>
+							</form>
+						</div>
+						<div class="panel-footer">
+							<strong>Note : </strong> Please note that we track all messages so don't send any spams.
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Layer 3 Ends -->
+
+	<!-- Layer for modal -->
+	<section class="modal-layer">
+		<!-- Modal -->
+		<div class="modal fade" id="navModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Notifications</h4>
+					</div>
+					<div class="modal-body">
+						<div id="navCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#navCarousel" data-slide-to="0" class="active"></li>
+								<li data-target="#navCarousel" data-slide-to="1"></li>
+								<li data-target="#navCarousel" data-slide-to="2"></li>
+							</ol>
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<!-- Item 1 of modal -->
+								<div class="item active">
+									<ul>
+										<li>
+											<a href="#">
+												<span class="glyphicon glyphicon-align-left text-success"></span> 
+												Lorem ipsum dolor sit amet ipsum dolor sit amet
+												<a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on the top"><span class="label label-warning hidden-xs"> Just now </span></a>
+											<div class="hidden-label">
+												<a href="#" data-toggle="tooltip" data-placement="right" title="Tooltip on the right">
+														<span class="label label-warning visible-xs">	Just now </span>
+													</a>
+											</div>
+											</a>
+										</li>
+										<hr />
+										<li>
+											<a href="#">
+												<span class="glyphicon glyphicon-info-sign text-danger"></span>  
+												Lorem ipsum dolor sit amet ipsum dolor sit amet
+												<span class="label label-info"> 2 min chat </span>
+											</a>
+										</li>
+										<hr />
+										<li>
+											<a href="#">
+												<span class="glyphicon glyphicon-comment text-warning"></span>  
+												Lorem ipsum dolor sit amet ipsum dolor sit amet
+												<span class="label label-success"> GO ! </span>
+											</a>
+										</li>
+										<hr />
+										<li>
+											<a href="#">
+												<span class="glyphicon glyphicon-edit text-danger"></span>  
+												Lorem ipsum dolor sit amet ipsum dolor sit amet
+												<span class="label label-success"> Let's have it </span>
+											</a>
+										</li>
+										<hr />
+									</ul>
+								</div>
+
+								<!-- Item 2 of modal -->
+								<div class="item">
+									<div class="panel-group" id="accordion">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" id="collapsable-item">
+													<h4 class="panel-title">
+														Collapsible Group #1
+														<span class="pull-right glyphicon glyphicon-minus bg-accordion-icon"></span>
+													</h4>
+												</a>
+											</div>
+											<div id="collapse1" class="panel-collapse collapse in">
+												<div class="panel-body">Lorem ipsum labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+													nisi ut aliquip ex eacommodo consequat.</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<a data-toggle="collapse" data-parent="#accordion" href="#collapse2" id="collapsable-item">
+													<h4 class="panel-title">
+														Collapsible Group #2
+														<span class="pull-right glyphicon glyphicon-plus bg-accordion-icon"></span>
+													</h4>
+												</a>
+											</div>
+											<div id="collapse2" class="panel-collapse collapse">
+												<div class="panel-body">Lorem ipsum quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor
+													sit amet, consectetur adipisicing elit.</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading bottom-radius">
+												<a data-toggle="collapse" data-parent="#accordion" href="#collapse3" id="collapsable-item">
+													<h4 class="panel-title">
+														Collapsible Group #3
+														<span class="pull-right glyphicon glyphicon-plus bg-accordion-icon"></span>
+													</h4>
+												</a>
+											</div>
+											<div id="collapse3" class="panel-collapse collapse">
+												<div class="panel-body">Laboris nisi ut aliquip ex mpor incididunt. Ut enim adminim veniam, quis nostrud exercitation ullamco laboris
+													nisi ut aliquip ex ea commodo consequat.</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Item 3 of modal -->
+								<div class="item">
+									<ul id="tabs" class="nav nav-tabs">
+										<li class="active"><a href="#tab1" data-toggle="tab">Tab1</a></li>
+										<li><a href="#tab2" data-toggle="tab">Tab2</a></li>
+										<li><a href="#tab3" data-toggle="tab">Tab3</a></li>
+										<li><a href="#tab4" data-toggle="tab">Tab4</a></li>
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane fade in active" id="tab1">
+											Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt elementum est. Vivamus nec mi odio. Fusce eu venenatis
+											enim. Etiam dui lectus, semper ut pharetra ut, ultricies non urna. Aenean at laoreet velit. Class aptent taciti
+											sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris vel ligula mauris. Aenean pellentesque
+											leo nisi, eu luctus quam aliquet et. Integer ut nisi vitae enim laoreet auctor. Praesent eu purus id lorem congue
+											tempor quis nec diam. Suspendisse non eleifend nibh. Integer nec augue a orci convallis tincidunt. Quisque vestibulum
+											lacinia orci a eleifend.
+										</div>
+										<div class="tab-pane fade" id="tab2">
+											Etiam id tortor vitae nisl lacinia accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+											Curae; Donec in luctus nulla. Aliquam hendrerit efficitur ligula, quis laoreet sapien pellentesque eu. Aenean
+											suscipit porttitor augue, sit amet commodo velit viverra sed. Vestibulum non convallis nunc. Pellentesque porttitor
+											tempus augue, eget blandit sapien fermentum in. Duis sit amet ex mollis, viverra leo at, accumsan lorem. Nunc
+											nec gravida neque, ac sollicitudin odio. Praesent quis iaculis diam, in hendrerit velit. Mauris lacinia, eros
+											vel pellentesque cursus non porttitor elit nisi ac quam.
+										</div>
+										<div class="tab-pane fade" id="tab3">
+											Sed semper ut enim pretium sodales. Duis sem lorem, interdum a facilisis ultrices, condimentum eu purus. Phasellus id malesuada
+											purus, ac malesuada turpis. Suspendisse potenti. Suspendisse nec varius odio. Aliquam imperdiet molestie libero,
+											nec volutpat dui mattis ut. Praesent elementum justo ex, non dictum eros consectetur id. Integer sed felis non
+											purus interdum commodo. Suspendisse potenti. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+											posuere cubilia Curae; Donec in luctus nulla. Aliquam hendrerit efficitur ligula, quis laoreet sapien pellentesque
+											euuspendisse nec varius od.
+										</div>
+										<div class="tab-pane fade" id="tab4">
+											Mauris pellentesque quis neque ac rutrum. Sed nulla quam, dapibus vel leo sit amet, auctor ornare nulla. Fusce dui tellus,
+											porta ut tortor sit amet, venenatis faucibus leo. Class aptent taciti sociosqu ad litora torquent per conubia
+											nostra, per inceptos himenaeos. Donec non nulla sapien. Cras volutpat leo at dui viverra, eget tincidunt ex feugiat.
+											Praesent turpis nisl, malesuada eget libero at, scelerisque mattis justo. Class aptent taciti sociosqu ad litora
+											torquent per conubia nostra, per inceptos himenaeos. Mauris vel ligula mauris eu luctus quam aliquet et. Integer
+											ut nisi vitae enim laoreet auctor.
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Left and right controls -->
+							<a class="left carousel-control" href="#navCarousel" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left"></span>
+								<span class="sr-only">Previous</span>
+							</a>
+							<a class="right carousel-control" href="#navCarousel" data-slide="next">
+								<span class="glyphicon glyphicon-chevron-right"></span>
+								<span class="sr-only">Next</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer Starts -->
+	<footer>
+		<div class="container-fluid">
+			<div class="container">
+				&copy; 2016 All rights reserved.
+			</div>
+		</div>
+	</footer>
+	<!-- Footer Ends -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+
+</html>
