@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$('#dashboard').css('background-color','#ba5e5e').siblings().css('background-color', '#222');
+	$('#menu-item-dashboard').css('background-color','#ba5e5e').siblings().css('background-color', '#222');
 	
 	$('#navbar-menuitems .nav li').click(function () {
 		$(this).css('background-color','#ba5e5e').siblings().css('background-color', '#222');
