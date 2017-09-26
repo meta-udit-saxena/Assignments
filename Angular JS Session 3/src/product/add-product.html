@@ -1,0 +1,7 @@
+<div>
+    <label>Product name:</label> <input #productName />
+    <label>Product price:</label> <input #productPrice />
+    <button (click)="addProduct(productName.value,productPrice.value); productName.value=''; productPrice.value=''">
+      Add
+    </button>
+</div>

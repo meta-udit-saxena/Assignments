@@ -1,0 +1,19 @@
+<h3  *ngIf="product" class="jumbotron text-center">{{product.name}}</h3>
+<div class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngIf="product">
+                <div class="card card-outline-primary mb-3 text-center">
+                    <div class="card-block">
+                        <h3 class="card-title">{{product.name}}</h3>
+                        <p class="card-text">Product ID: {{product.id}}</p>
+                        <span>Rs. {{product.price}}</span>
+                    </div>
+                </div>
+           
+        <button [routerLink]="['/update', product.id]">Update</button>
+        <delete-product></delete-product>
+    </div>
+</div>
+</div>
+</div>
