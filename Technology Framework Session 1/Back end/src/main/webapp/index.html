@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+ <head>
+	<meta charset="UTF-8">
+	<title>ANGULARJS CRUD EXAMPLE - TryCatch Classes</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+	<style>
+	span {margin:5px;}
+	</style>
+ </head>
+ <body>
+  
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Home</a></li>
+					<li><a href="#">About US</a></li>
+                </ul>
+                <p class="nav navbar-text navbar-right">Hello, Ronaldo</p>
+            </div>
+        </div>
+    </div>
+
+	<div ng-app="crudApp">
+		<div ng-controller="crudController">
+
+			<div class="container well mtp75">
+				<div class="row">
+					<span class="pull-left">
+						<button ng-click="reset()" class="btn btn-danger">Reset</button>
+					</span>
+					<span class="pull-left">
+						<input type="text" ng-model="search.$" class="form-control" placeholder="Search All" />
+					</span>
+					<span class="pull-left">
+						<input type="text" ng-model="search.firstname" class="form-control" placeholder="Search Firstname " />
+					</span>
+					<span class="pull-left">
+						<input type="text" ng-model="search.lastname" class="form-control" placeholder="Search Lastname" />
+					</span>
+					
+
+					<!-- <span class="pull-left">
+						&nbsp;&nbsp;Today Date {{date | date:'yyyy-MM-dd'}}
+					</span> -->
+					<span ng-click="addUser()" class="pull-right btn btn-danger">Add New User</span>
+				</div>
+				<br>
+				<div class="row">
+
+					<span class="pull-right">
+						<select class="form-control"
+						ng-model="actItem"
+						ng-change="activeStatus(actItem)"
+						ng-options="page for (idx,page) in itemShowCount">
+						</select>
+					</span>
+					<span class="pull-left">
+						Search By User Type  <select class="form-control"
+						ng-init="search.type = options[0]"
+						ng-model="search.type"
+						ng-options="typ for (idt,typ) in typeList">
+							<option value="0">All</option>
+						</select>
+					</span>
+					<span class="pull-left" style="margin-left:20px;">
+						Check Active Users <input type="checkbox" class="form-control"
+						ng-model="uActive"
+						ng-change="activeChange()" value="1">
+					</span>
+				</div>
+				<div class="row">
+					<div class="alert alert-warning">
+						<p>Sort key: {{sortKey}}</p>
+						<p>Reverse: {{reverse}}</p>
+						<p>Search String : {{search}}</p>
+					</div>
+				</div>
+
+				<br><br>
+				<div class="row">
+					
+				<table cellpadding=10 cellspacing=10 border=0 class="table">
+					<tr>
+						<th>No.</th>
+						<th ng-click="sort('firstname')">First Name
+						<span class="glyphicon sort-icon" ng-show="sortKey=='firstname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th ng-click="sort('lastname')">Last Name
+						<span class="glyphicon sort-icon" ng-show="sortKey=='lastname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th ng-click="sort('type')">Type
+						<span class="glyphicon sort-icon" ng-show="sortKey=='type'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th ng-click="sort('active')">Active
+						<span class="glyphicon sort-icon" ng-show="sortKey=='active'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+						</th>
+						<th>UPDATE</th>
+						<th>DELETE</th>
+					</tr>
+					
+					<tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search:type|itemsPerPage:actItem" ng-class="$even ? 'even-row' : 'odd-row'">
+						<td>{{$index+1}}</td>
+						<td>{{user.firstname}}</td>
+						<td>{{user.lastname}}</td>
+						<!--<td>{{user.firstname | uppercase}}</td>-->
+						<!--<td>{{user.lastname | lowercase | limitTo: 2}}</td>-->
+						<td>{{user.type}}</td>
+						<td>{{user.active}}</td>
+						<td><div ng-click="editUser(user)" class="btn btn-primary">E</div></td>
+						<td><span ng-click="deleteUser(user)" class="btn btn-danger">X</span></td>
+					</tr>
+				</table>
+				
+				<div class="pull-right" style="width:20%;">
+						<select class="form-control"
+						ng-model="actItem"
+						ng-change="activeStatus(actItem)"
+						ng-options="page for (idx,page) in itemShowCount">
+						</select>
+				</div>
+
+				<div class="text-center">
+					<dir-pagination-controls
+					max-size="5"
+					direction-links="true"
+					boundary-links="true" >
+					</dir-pagination-controls>
+				</div>
+				
+				</div> <!-- End OF Row -->
+			</div><!-- End OF Container -->
+			
+			<div class="container" ng-show="UserFormContainer">
+				<div class="row">
+				
+				<div ng-click="closeFrmBtn()">X</div>
+				
+				<table class="table">
+					<tr>
+						<td><b><i>{{Action}} User</i></b></td>
+						<td><input type="text" disabled="disabled" ng-model="UserId" /></td>
+					</tr>
+					<tr>
+						<td>First Name</td>
+						<td><input type="text" placeholder="First Name" ng-model="UserFirstname" /></td>
+					</tr>
+					<tr>
+						<td>Last Name</td>
+						<td><input type="text" placeholder="Last Name" ng-model="UserLastname" /></td>
+					</tr>
+					<tr>
+						<td>User Type</td>
+						<td><input type="text" placeholder="Type Of User" ng-model="UserType" /></td>
+					</tr>
+					<tr>
+						<td>Active</td>
+						<td>
+							<input type="checkbox" ng-checked="UserActiveChecked" ng-model="UserActive" />
+						</td>
+					</tr>
+					<tr>
+						<td><input type="button" class="btn btn-default" value="Save" ng-click="AddUpdateUser()" /></td>
+						<td><input type="button" class="btn btn-danger" value="Cancel" ng-click="Cancel()" /></td>
+					</tr>
+					</table>
+					
+				</div> <!-- End OF Row -->
+			</div><!-- End OF Container -->
+			<br />
+			<h3 align="center"><a href="http://www.trycatchclasses.com/">By TRYCATCH CLASSES</a></h3>
+
+		</div> <!-- End Of ng-controller -->
+	</div> <!-- End Of ng-app -->
+
+
+	<script src="js/angular.min.js"></script>
+	<script src="js/dirPagination.js"></script>
+	<script src="js/Module.js"></script>
+	<script src="js/Service.js"></script>
+	<script src="js/Controller.js"></script>
+
+
+ </body>
+</html>

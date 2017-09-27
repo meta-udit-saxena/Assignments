@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 class="text-center">Add a Product</h2>
+  <div class="well text-center">
+    <div>
+      <label>Product name:</label>
+      <input class="form-control" #productName />
+    </div>
+    <div>
+      <label>Product price:</label>
+      <input class="form-control" #productPrice />
+    </div>
+    <div>
+      <label>Product Image:</label>
+      <input type="file" class="form-control" #imagePath />
+    </div>
+    <div>
+      <label>Product Decription:</label>
+      <textarea class="form-control" row="5" #description></textarea>>
+    </div>
+    <div>
+      <label for="sel1">Currency:</label>
+      <select class="form-control" #currency>
+          <option>India</option>
+          <option>America</option>
+          <option>China</option>
+          <option>UK</option>
+        </select>
+    </div>
+    <button class="btn btn-primary" (click)="addProduct(productName.value, productPrice.value ,imagePath.value, description.value, currency.value)">
+      Add
+    </button>
+  </div>
+</div>

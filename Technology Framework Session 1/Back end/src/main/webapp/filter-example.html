@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+ <head>
+	<meta charset="UTF-8">
+	<title>ANGULARJS CRUD EXAMPLE-TryCatch Classes</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+ </head>
+ <body ng-controller="myCnt">
+	
+	<h2>
+		Today Date 
+		<br><br><br>
+		{{date | currentdate}}
+	</h2>
+
+ 	<script src="js/angular.min.js"></script>
+	<script type="text/javascript">
+	var app = angular.module("myApp", [] )
+			app.controller("myCnt", ["$scope" , function ($scope) {
+				$scope.date = new Date();
+			}]);
+
+			app.filter('currentdate',['$filter',  function($filter) {
+				return function() {
+					return $filter('date')(new Date(), 'yyyy-MM-dd');
+				};
+			}]);	
+	</script>
+ </body>
+</html>
