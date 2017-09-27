@@ -1,4 +1,4 @@
-<h3  *ngIf="product" class="jumbotron text-center">{{product.name}}</h3>
+<!--<h3  *ngIf="product" class="jumbotron text-center">{{product.name}}</h3>
 <div class="main-content">
     <div class="container">
         <div class="row">
@@ -10,10 +10,58 @@
                         <span>Rs. {{product.price}}</span>
                     </div>
                 </div>
-           
         <button [routerLink]="['/update', product.id]">Update</button>
         <delete-product></delete-product>
     </div>
 </div>
 </div>
+</div>-->
+<h3 *ngIf="product" class="jumbotron text-center name-tag">{{product.name}}</h3>
+<div class="container">
+	<div class="card">
+		<div class="container-fliud">
+			<div class="wrapper row" *ngIf="product">
+				<div class="preview col-md-6 col-sm-6 col-xs-12" >
+					<div class="thumbnail">
+						<img src="assets/images/{{product.imagePath}}" class="img-responsive" alt="loading...">
+					</div>
+				</div>
+				<div class="details col-md-6">
+					<h3 class="product-title name-tag">{{product.name}}</h3>
+					<div class="rating">
+						<div class="stars">
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+						</div>
+						<span class="review-no">41 reviews</span>
+					</div>
+					<p class="product-description">{{product.description}}</p>
+					<h4 class="price">current price: 
+						<span *ngIf="product.currency.toLowerCase()==='america'">$</span>
+						<span *ngIf="product.currency.toLowerCase()==='india'">Rs.</span>
+						<span> {{product.price}}</span></h4>
+					<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+					<h5 class="sizes">sizes:
+						<span class="size" data-toggle="tooltip" title="small">s</span>
+						<span class="size" data-toggle="tooltip" title="medium">m</span>
+						<span class="size" data-toggle="tooltip" title="large">l</span>
+						<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+					</h5>
+					<h5 class="colors">colors:
+						<span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+						<span class="color green" data-toggle="tooltip" title="Green Color Avilable"></span>
+						<span class="color blue" data-toggle="tooltip" title="Blue Color Avilable"></span>
+					</h5>
+					<div class="action">
+						<button class=" btn btn-default update-product" type="button" [routerLink]="['/update', product.id]" data-toggle="tooltip" title="Update current product">Update Product</button>
+						<button class="like btn btn-default" type="button" data-toggle="tooltip" title="Like This Product"><span class="fa fa-heart"></span></button>
+						<delete-product></delete-product>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

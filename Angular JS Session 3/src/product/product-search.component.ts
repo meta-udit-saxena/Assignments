@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
-import { Observable }        from 'rxjs/Observable';
-import { Subject }           from 'rxjs/Subject';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
@@ -13,7 +13,7 @@ import { Product } from './Product';
 @Component({
   selector: 'product-search',
   templateUrl: './product-search.html',
-  styleUrls:[
+  styleUrls: [
     './product-search.css'
   ],
   providers: [ProductSearchService]
@@ -25,7 +25,7 @@ export class ProductSearchComponent implements OnInit {
 
   constructor(
     private ProductSearchService: ProductSearchService,
-    private router: Router) {}
+    private router: Router) { }
 
   // Push a search term into the observable stream.
   search(term: string): void {
@@ -33,9 +33,9 @@ export class ProductSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = this.searchTerms  
+    this.products = this.searchTerms
       .distinctUntilChanged()
-      .switchMap(term => term 
+      .switchMap(term => term
         ? this.ProductSearchService.search(term)
         : Observable.of<Product[]>([]))
       .catch(error => {

@@ -1,16 +1,19 @@
 <h3 class="jumbotron text-center">{{title}}</h3>
 <div class="main-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 " *ngFor="let product of products"  [routerLink]="['/details', product.id]" >
-                    <div class="card card-outline-primary  text-center ">
-                        <div class="card-block  clickable-card" >
-                            <h3 class="card-title">{{product.name}}</h3>
-                            <p class="card-text">Product ID: {{product.id}}</p>
-                            <span>Rs. {{product.price}}</span>
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 no-outline" *ngFor="let product of products" [routerLink]="['/details', product.id]">
+                <div class="thumbnail">
+                    <img src="assets/images/{{product.imagePath}}" class="img-responsive img-rounded" alt="loading...">
+                    <div class="caption">
+                        <h4 class="name-tag">{{product.name.slice(0,20)}}</h4>
+                        <span *ngIf="product.currency.toLowerCase()==='america'">$</span>
+                        <span *ngIf="product.currency.toLowerCase()==='india'">Rs</span>
+                        <span>{{product.price}}</span>
+                        <p><a [routerLink]="['/details', product.id]" class="btn btn-info btn-xs" role="button">Details</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

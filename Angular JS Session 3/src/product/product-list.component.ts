@@ -9,6 +9,7 @@ import { Product } from './product';
 
 export class ProductListComponent implements OnInit {
     products : Product[];
+    title = 'All Products';
     constructor(
         private productService: ProductService,
          ){}
@@ -20,4 +21,5 @@ export class ProductListComponent implements OnInit {
     getProducts(): void {
         this.productService.getProducts().then(products => this.products = products.slice(1));
     }
+
 }

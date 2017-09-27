@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product/product';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProductService } from '../product/product.service';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 @Component
     ({
@@ -15,7 +15,7 @@ export class DeleteProductComponent implements OnInit {
     constructor(
         private productService: ProductService,
         private router: ActivatedRoute,
-        private location : Location
+        private location: Location
     ) { }
 
     ngOnInit(): void {
@@ -32,9 +32,9 @@ export class DeleteProductComponent implements OnInit {
             .then(() => {
                 this.products = this.products.filter(p => p !== this.product);
             });
-            this.goBack();
+        this.goBack();
     }
-    goBack():void{
+    goBack(): void {
         this.location.back();
     }
 

@@ -1,16 +1,40 @@
-<div class="container" *ngIf="product">
-    <h2>{{product.name}} details!</h2>
-    <div>
-      <label>id: </label>{{product.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="product.name" placeholder="name" />
-     </div>
-     <div>
-        <label>price: </label>
-        <input [(ngModel)]="product.price" placeholder="price" />
-       </div>
-    <button (click)="goBack()">Back</button>
-    <button (click)="save()">Save</button>
+<section class="row" *ngIf="product">
+  <div class="container">
+    <h2 class="text-center">{{product.name}} details!</h2>
+    <div class="well">
+      <div class="text-center">
+        <img src="assets/images/{{product.imagePath}}" class="img-responsive">
+      </div>
+      <div>
+        <div>
+          <label>Product name:</label>
+          <input [(ngModel)]="product.name" class="form-control" />
+        </div>
+        <div>
+          <label>Product price:</label>
+          <input class="form-control" [(ngModel)]="product.price" />
+        </div>
+        <div>
+          <label>Product Image:</label>
+          <input type="file" class="form-control" [(ngModel)]="product.imagePath" />
+        </div>
+        <div>
+          <label>Product Decription:</label>
+          <textarea class="form-control" row="5" [(ngModel)]="product.description"></textarea>
+        </div>
+        <div>
+          <label for="sel1">Currency:</label>
+          <select class="form-control" [(ngModel)]="product.currency">
+              <option disabled hidden>{{product.currency}}</option>
+                <option>India</option>
+                <option>America</option>
+                <option>China</option>
+                <option>UK</option>
+              </select>
+        </div>
+        <button class="btn btn-primary" (click)="goBack()">Back</button>
+        <button class="btn btn-primary" (click)="save()">Save</button>
+      </div>
+    </div>
   </div>
-  
+</section>

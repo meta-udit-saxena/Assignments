@@ -6,14 +6,14 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ProductService {
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private productsUrl = 'api/PRODUCTLIST';
+    private productsUrl = 'http://localhost:8080/layered-arch/service/product/list';
 
     constructor(private http: Http) { }
 
     getProducts(): Promise<Product[]> {
         return this.http.get(this.productsUrl)
             .toPromise()
-            .then(response => 
+            .then(response =>
                 response.json().data as Product[])
             .catch(this.handleError);
     }
@@ -33,9 +33,9 @@ export class ProductService {
             .catch(this.handleError);
     }
 
-    createProduct(name: string, price: Number): Promise<Product> {
+    createProduct(name: string, price: number, imagePath: string, description: string, currency: string): Promise<Product> {
         return this.http
-            .post(this.productsUrl, JSON.stringify({ name: name, price: price }), { headers: this.headers })
+            .post(this.productsUrl, JSON.stringify({ name: name, price: price, imagePath: imagePath, description: description, currency: currency }), { headers: this.headers })
             .toPromise()
             .then(res => res.json().data as Product)
             .catch(this.handleError);
