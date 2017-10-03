@@ -25,14 +25,14 @@ export class AddProductComponent implements OnInit {
     addProduct(name: string, price: number, imagePath: string, description: string, currency: string): void {
         name = name.trim();
         imagePath = imagePath.split('\\').pop();
-        console.log(imagePath);
         if (!name || !price || !imagePath || !description || !currency) {
             return;
         }
         this.productService.createProduct(name, price, imagePath, description, currency)
             .then(product => {
                 this.products.push(product);
+                this.location.back();
             })
-        this.location.back();
+      
     }
 }

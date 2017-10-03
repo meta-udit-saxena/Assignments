@@ -1,1 +1,0 @@
-https://github.com/michaelbromley/angularUtils/tree/master/src/directives/pagination

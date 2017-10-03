@@ -31,8 +31,9 @@ export class DeleteProductComponent implements OnInit {
             .deleteProduct(this.product.id)
             .then(() => {
                 this.products = this.products.filter(p => p !== this.product);
+                this.goBack();
             });
-        this.goBack();
+       
     }
     goBack(): void {
         this.location.back();

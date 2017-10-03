@@ -1,31 +1,31 @@
-import {Component,OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
-import {Location} from '@angular/common';
-import {ActivatedRoute, ParamMap} from '@angular/router';
-import {ProductService} from '../product/product.service';
+import { Location } from '@angular/common';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ProductService } from '../product/product.service';
 @Component({
-    selector:'update-product',
-    templateUrl:'./update-product.html',
-    styleUrls:['./update-product.css'],
+    selector: 'update-product',
+    templateUrl: './update-product.html',
+    styleUrls: ['./update-product.css'],
 })
 
-export class UpdateProductComponent{
-    product:Product;
+export class UpdateProductComponent {
+    product: Product;
     constructor(
-        private productService : ProductService,
-        private route : ActivatedRoute,
-        private location : Location
-    ){}
-    ngOnInit():void{
+        private productService: ProductService,
+        private route: ActivatedRoute,
+        private location: Location
+    ) { }
+    ngOnInit(): void {
         this.route.paramMap
-            .switchMap((params : ParamMap)=>this.productService.getProduct(+params.get('id')))
+            .switchMap((params: ParamMap) => this.productService.getProduct(+params.get('id')))
             .subscribe(product => this.product = product);
     }
-    save():void{
+    save(): void {
         this.productService.updateProduct(this.product)
-        .then(()=>this.goBack());
+            .then(() => this.goBack());
     }
-    goBack():void
-{
-    this.location.back();
-}}
+    goBack(): void {
+        this.location.back();
+    }
+}
