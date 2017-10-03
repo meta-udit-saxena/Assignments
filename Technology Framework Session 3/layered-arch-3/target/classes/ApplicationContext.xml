@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="productDao" class="com.metacube.get.layarch.dao.product.JdbcProductDao">
+		<property name="tableName" value="Product" />
+	</bean>
+
+	<bean id="productService" class="com.metacube.get.layarch.service.DefaultProductService">
+		<constructor-arg name="productDao" ref="productDao" />
+	</bean>
+
+	<bean id="productFacade" class="com.metacube.get.layarch.facade.DefaultProductFacade"
+		autowire="byName">
+	</bean>
+</beans>
