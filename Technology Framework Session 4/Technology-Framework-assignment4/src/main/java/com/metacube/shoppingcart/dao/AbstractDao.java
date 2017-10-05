@@ -22,18 +22,18 @@ public interface AbstractDao<T, ID extends Serializable> {
 	 * @param entity
 	 *            the entity
 	 * @return the status
-	 *//*
+	 */
 	<S extends T> Status add(S entity);
 
-	*//**
+	/**
 	 * Find one.
 	 *
 	 * @param primaryKey
 	 *            the primary key
 	 * @return the t
-	 *//*
+	 */
 	T findOne(ID primaryKey);
-*/
+
 	
 	
 	/**
@@ -50,19 +50,19 @@ public interface AbstractDao<T, ID extends Serializable> {
 	 * Find dashboard.
 	 *
 	 * @return the iterable
-	 *//*
+	 */
 	Iterable<T> findDashboard();
 
-	*//**
+	/**
 	 * Delete.
 	 *
 	 * @param id
 	 *            the id
 	 * @return the status
-	 *//*
+	 */
 	Status delete(int id);
 
-	*//**
+	/**
 	 * Update product.
 	 *
 	 * @param <S>
@@ -72,6 +72,6 @@ public interface AbstractDao<T, ID extends Serializable> {
 	 * @param id
 	 *            the id
 	 * @return the status
-	 *//*
-	<S extends T> Status updateProduct(S entity, int id);*/
+	 */
+	<S extends T> Status updateProduct(S entity, int id);
 }

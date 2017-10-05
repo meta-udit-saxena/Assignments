@@ -20,6 +20,9 @@ public class DefaultProductService implements ProductService {
 	@Resource(name = "hibernateProductDao")
 	ProductDao productDao;
 
+	public DefaultProductService(){
+		
+	}
 	/**
 	 * Instantiates a new default product service.
 	 *
@@ -63,49 +66,49 @@ public class DefaultProductService implements ProductService {
 	 * Gets the dashboard products.
 	 *
 	 * @return the all products
-	 *//*
+	 */
 	@Override
 	public Iterable<Product> getDashboardProducts() {
 		return productDao.findDashboard();
 	}
 
-	*//**
+	/**
 	 * Gets the product by id.
 	 *
 	 * @param id
 	 *            the id
 	 * @return the product by id
-	 *//*
+	 */
 	@Override
 	public Product getProductById(int id) {
 		return productDao.findOne(id);
 	}
 
-	*//**
+	/**
 	 * Delete product by id.
 	 *
 	 * @param id
 	 *            the id
 	 * @return the status
-	 *//*
+	 */
 	@Override
 	public Status deleteProductById(int id) {
 		return productDao.delete(id);
 	}
 
-	*//**
+	/**
 	 * Adds the product.
 	 *
 	 * @param entity
 	 *            the entity
 	 * @return the status
-	 *//*
+	 */
 	@Override
 	public Status addProduct(Product entity) {
 		return productDao.add(entity);
 	}
 
-	*//**
+	/**
 	 * Update product.
 	 *
 	 * @param entity
@@ -113,9 +116,9 @@ public class DefaultProductService implements ProductService {
 	 * @param id
 	 *            the id
 	 * @return the status
-	 *//*
+	 */
 	@Override
 	public Status updateProduct(Product entity, int id) {
 		return productDao.updateProduct(entity, id);
-	}*/
+	}
 }

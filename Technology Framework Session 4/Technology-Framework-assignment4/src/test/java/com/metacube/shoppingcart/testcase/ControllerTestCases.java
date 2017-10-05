@@ -1,75 +1,160 @@
-package com.metacube.shoppingcart.testcase;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import org.junit.Before;
-import org.junit.Test;
-import com.metacube.shoppingcart.dao.product.JdbcProductDao;
+package com.metacube.shoppingcart.dao;
+
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.metacube.shoppingcart.enums.Status;
-import com.metacube.shoppingcart.facade.DefaultProductFacade;
-import com.metacube.shoppingcart.facade.ProductFacade;
 import com.metacube.shoppingcart.model.Product;
-import com.metacube.shoppingcart.service.DefaultProductService;
 
-public class ControllerTestCases {
-	ProductFacade productFacade;
+/**
+ * The Class HibernateDao.
+ *
+ * @param <T>
+ *            the generic type
+ * @param <ID>
+ *            the generic type
+ */
+public abstract class HibernateDao<T, ID extends Serializable> implements
+		AbstractDao<T, ID> {
 
-	@Before
-	public void setUpObject() {
-		productFacade = new DefaultProductFacade(new DefaultProductService(
-				new JdbcProductDao()));
+	/** The session factory. */
+	@Autowired
+	private SessionFactory sessionFactory;
+
+	/**
+	 * Gets the session factory.
+	 *
+	 * @return the session factory
+	 */
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
 	}
 
-	@Test
-	public void GivenAddProduct_WhenAddProduct_ThenStatusSuccess() {
-		Product product = new Product();
-		product.setCurrency("india");
-		product.setDescription("dadsdsadsa");
-		product.setImagePath("nike.png");
-		product.setName("demo");
-		product.setPrice(1000);
-		assertEquals(productFacade.addProduct(product), Status.Success);
+	/**
+	 * Sets the session factory.
+	 *
+	 * @param sessionFactory
+	 *            the new session factory
+	 */
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
-	@Test
-	public void GivenRequestProductList_WhenGetProducts_ThenAllProducts() {
-		assertNotEquals(productFacade.getAllProducts(), null);
+	/** The model class. */
+	private Class<T> modelClass;
+
+	/**
+	 * Gets the model class.
+	 *
+	 * @return the model class
+	 */
+	public Class<T> getModelClass() {
+		return modelClass;
 	}
 
-	@Test
-	public void GivenValidId_WhenGetProductById_ThenProduct() {
-		Product product = new Product();
-		product.setCurrency("india");
-		product.setDescription("dadsdsadsa");
-		product.setImagePath("nike.png");
-		product.setName("demo");
-		product.setPrice(1000);
-		productFacade.addProduct(product);
-		assertEquals(productFacade.getProductById(53).getName(),
-				product.getName());
+	/**
+	 * Instantiates a new hibernate dao.
+	 *
+	 * @param modelClass
+	 *            the model class
+	 */
+	public HibernateDao(Class<T> modelClass) {
+		this.modelClass = modelClass;
 	}
 
-	@Test
-	public void GivenValidId_WhenDeleteProductById_ThenStatusSuccess() {
-		assertEquals(productFacade.deleteProductById(51), Status.Success);
+	@Override
+	public Iterable<T> findAll() {
+		List<T> productList = null;
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			Criteria cr = session.createCriteria(getModelClass());
+			productList = cr.list();
+
+		} catch (Exception e) {
+			productList = Collections.emptyList();
+		}
+		return productList;
 	}
 
-	@Test
-	public void GivenInValidId_WhenDeleteProductById_ThenStatusNotFound() {
-		assertEquals(productFacade.deleteProductById(14509), Status.NOT_Found);
+	@Override
+	public Iterable<T> findDashboard() {
+		List<T> productList = null;
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			Criteria cr = session.createCriteria(getModelClass());
+			productList = cr.list().subList(0, 8);
+
+		} catch (Exception e) {
+			productList = Collections.emptyList();
+		}
+		return productList;
 	}
 
-	@Test
-	public void GivenValidId_WhenUpdateProduct_ThenStatusSuccess() {
-		Product product = new Product();
-		product.setCurrency("india");
-		product.setDescription("dadsdsadsa");
-		product.setImagePath("nike.png");
-		product.setName("demo");
-		product.setPrice(1000);
-		productFacade.addProduct(product);
-		assertEquals(productFacade.updateProduct(product, 50), Status.Success);
-		assertEquals(productFacade.getProductById(50).getName(),
-				product.getName());
+	@Override
+	public T findOne(final ID primaryKey) {
+		Product product = null;
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			product = (Product) session.get(Product.class, primaryKey);
+		} catch (Exception e) {
+
+		}
+
+		return (T) product;
+	}
+
+	@Override
+	public Status delete(int primaryKey) {
+		Status result = Status.Success;
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			Product product = (Product) session.get(Product.class, primaryKey);
+			session.delete(product);
+		} catch (Exception e) {
+			result = Status.Error_Occured;
+		}
+		return result;
+
+	}
+
+	@Override
+	public <S extends T> Status add(final S entity) {
+		Status result = Status.Success;
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			session.save(entity);
+		} catch (Exception e) {
+			result = Status.Error_Occured;
+		}
+		return result;
+	}
+
+	@Override
+	public <S extends T> Status updateProduct(S entity, int id) {
+		Status result = Status.Added;
+		try {
+
+			Session session = this.sessionFactory.getCurrentSession();
+			Product update = (Product) entity;
+			Product product = (Product) session.get(Product.class, id);
+			product.setName(update.getName());
+			product.setPrice(update.getPrice());
+			product.setCurrency(update.getCurrency());
+			product.setDescription(update.getDescription());
+			product.setImagePath(update.getImagePath());
+			session.update(product);
+
+		} catch (Exception e) {
+			result = Status.Error_Occured;
+		}
+
+		return result;
 	}
 }

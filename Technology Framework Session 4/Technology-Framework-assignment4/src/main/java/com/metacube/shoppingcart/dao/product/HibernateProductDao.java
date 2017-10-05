@@ -20,5 +20,4 @@ public class HibernateProductDao extends HibernateDao<Product, Integer>
 	public HibernateProductDao() {
 		super(Product.class);
 	}
-
 }

@@ -20,7 +20,7 @@ public class JdbcConnectionFactory {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/shopping cart","root", "root");
-
+			
 			return con;
 		} catch (Exception e) {
 			System.out.println(e);

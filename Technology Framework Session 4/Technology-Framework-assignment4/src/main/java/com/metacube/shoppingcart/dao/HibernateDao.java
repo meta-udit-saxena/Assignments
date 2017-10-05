@@ -1,12 +1,12 @@
 package com.metacube.shoppingcart.dao;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.metacube.shoppingcart.enums.Status;
@@ -20,9 +20,8 @@ import com.metacube.shoppingcart.model.Product;
  * @param <ID>
  *            the generic type
  */
-public abstract class HibernateDao<T, ID extends Serializable>
-		implements
-			AbstractDao<T, ID> {
+public abstract class HibernateDao<T, ID extends Serializable> implements
+		AbstractDao<T, ID> {
 
 	/** The session factory. */
 	@Autowired
@@ -69,65 +68,92 @@ public abstract class HibernateDao<T, ID extends Serializable>
 		this.modelClass = modelClass;
 	}
 
-
+	@Override
 	public Iterable<T> findAll() {
-		Session session = this.sessionFactory.getCurrentSession();
-		Criteria cr = session.createCriteria(getModelClass());
-		List<T> personsList = cr.list();
-		return personsList;
+		List<T> productList = null;
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			Criteria cr = session.createCriteria(getModelClass());
+			productList = cr.list();
+
+		} catch (Exception e) {
+			productList = Collections.emptyList();
+		}
+		return productList;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.metacube.shoppingcart.dao.BaseDao#findOne(java.io.Serializable)
-	 
+	@Override
+	public Iterable<T> findDashboard() {
+		List<T> productList = null;
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			Criteria cr = session.createCriteria(getModelClass());
+			productList = cr.list().subList(0, 8);
+
+		} catch (Exception e) {
+			productList = Collections.emptyList();
+		}
+		return productList;
+	}
+
 	@Override
 	public T findOne(final ID primaryKey) {
-		Session session = this.sessionFactory.getCurrentSession();
-		Criteria cr = session.createCriteria(getModelClass());
-		cr = cr.add(Restrictions.eq("id", primaryKey));
-		return (T) cr.uniqueResult();
+		Product product = null;
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			product = (Product) session.get(Product.class, primaryKey);
+		} catch (Exception e) {
+
+		}
+
+		return (T) product;
 	}
 
-	
-	 * (non-Javadoc)
-	 * 
-	 * @see com.metacube.shoppingcart.dao.BaseDao#delete(java.lang.Object)
-	 
-
-	public Status delete(final ID primaryKey) {
-		Session session = this.sessionFactory.getCurrentSession();
-		Criteria cr = session.createCriteria(getModelClass());
+	@Override
+	public Status delete(int primaryKey) {
 		Status result = Status.Success;
-		T product = (T) cr.add(Restrictions.eq("id", primaryKey));
-		session.delete(product);
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			Product product = (Product) session.get(Product.class, primaryKey);
+			session.delete(product);
+		} catch (Exception e) {
+			result = Status.Error_Occured;
+		}
 		return result;
 
 	}
 
-	
-	public Product save(int id, String name, double price) {
-		Session session = this.sessionFactory.getCurrentSession();
-		Product product = new Product();
-		product.setId(id);
-		product.setName(name);
-		product.setPrice(price);
-		session.save(product);
-		return product;
-	}
-	
 	@Override
-	public Product update(int id, String name, double price) {
-		Session session = this.sessionFactory.getCurrentSession();
+	public <S extends T> Status add(final S entity) {
+		Status result = Status.Success;
+		try {
+			Session session = this.sessionFactory.getCurrentSession();
+			session.save(entity);
+		} catch (Exception e) {
+			result = Status.Error_Occured;
+		}
+		return result;
+	}
 
-		Product product = new Product();
-		product.setId(id);
-		product.setName(name);
-		product.setPrice(price);
-		session.update(product);
+	@Override
+	public <S extends T> Status updateProduct(S entity, int id) {
+		Status result = Status.Added;
+		try {
 
-		return product;
+			Session session = this.sessionFactory.getCurrentSession();
+			Product update = (Product) entity;
+			Product product = (Product) session.get(Product.class, id);
+			product.setName(update.getName());
+			product.setPrice(update.getPrice());
+			product.setCurrency(update.getCurrency());
+			product.setDescription(update.getDescription());
+			product.setImagePath(update.getImagePath());
+			session.update(product);
 
-	}*/
+		} catch (Exception e) {
+			result = Status.Error_Occured;
+		}
+
+		return result;
+	}
 }
