@@ -1,0 +1,7 @@
+Test Scenarios:
+TC#1 –  Verify that user is able to login
+TC#2 – Verify that user is able to  find the desired ticket to be cancelled.
+TC#3 - Verify that user is able to  Click on the cancel button
+TC#4-Verify that user is able to cancel single passenger from a ticket which is booked for multiple passengers.
+TC#5 - Verify that user is able to cancel a ticket which is booked 
+TC#6-  Verify that user is able to cancel a ticket which is in waiting 
