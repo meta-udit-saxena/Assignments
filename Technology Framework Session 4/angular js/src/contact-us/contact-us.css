@@ -1,0 +1,42 @@
+#contact {
+    margin-bottom: 50px;
+    }
+    
+    .content-header {
+    font-family: 'Oleo Script', cursive;
+    color:#fcc500;
+    font-size: 45px;
+    }
+    
+    #contact { 
+    font-family: 'Raleway', sans-serif;
+    padding-top: 50px;
+    min-height: 600px;
+    background: linear-gradient(to left, #3a6186 , #89253e);
+    color: #fff; 
+    }
+    
+    .contact-section {
+    padding-top: 50px;
+    }
+    
+    label {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: normal;
+    }
+    
+    .form-control {
+    font-size: 20px;
+    color: #080808;
+    }
+    
+    textarea.form-control {
+    height: 135px;
+    }
+    
+    .submit {
+    background-color: transparent;
+    color: #fff;
+    margin-bottom: 50px;
+    }

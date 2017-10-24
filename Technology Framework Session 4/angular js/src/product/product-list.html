@@ -1,0 +1,50 @@
+<div class="main-content">
+    <div class="container">
+        <h3 class="jumbotron text-center">{{title}}</h3>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 no-outline" *ngFor="let product of products" [routerLink]="['/details', product.id]">
+                <div class="thumbnail">
+                    <img src="assets/images/{{product.imagePath}}" class="img-responsive img-rounded" alt="loading...">
+                    <div class="caption">
+                        <h4 class="name-tag">{{product.name.slice(0,20)}}</h4>
+                        <span *ngIf="product.currency.toLowerCase()==='america'">$</span>
+                        <span *ngIf="product.currency.toLowerCase()==='india'">Rs</span>
+                        <span>{{product.price}}</span>
+                        <p><a [routerLink]="['/details', product.id]" class="btn btn-info btn-xs" role="button">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<div class="container">
+    <div class="row">
+        <div class="span4 col-lg-3 col-md-4 col-sm-6 col-xs-12" *ngFor="let product of products" >
+            <div class="thumbnail">
+                <div class="caption">
+                    <h4>{{product.name}}</h4>
+                    <p>{{product.price}}</p>
+                    <p>
+                        <a href="" class="label label-danger" rel="tooltip" title="Zoom">Zoom</a>
+                        <a href="" class="label label-default" rel="tooltip" title="Download now">Download</a>
+                    </p>
+                </div>
+                <img src="http://lorempixel.com/400/300/sports/1/" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+<script  >
+    $(document).ready(function () {
+        $("[rel='tooltip']").tooltip();
+        $('.thumbnail').click(
+            function () {
+                $(this).find('.caption').slideDown(250); //.fadeIn(250)
+            },
+            function () {
+                $(this).find('.caption').slideUp(250); //.fadeOut(205)
+            }
+        );
+    });
+</script>-->
