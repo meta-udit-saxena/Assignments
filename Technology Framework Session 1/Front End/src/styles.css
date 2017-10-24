@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background: linear-gradient(to left, #74ebd5 , #acb6e5 );
+}
+.jumbotron{
+    color: #13093C;
+    background-color:transparent;
+    margin: 0px;
+    font-size: 3em;
+}
+.clickable-card{
+    background-color: #53CAB6;
+    padding: 10px;
+    border: 1px solid #542121;
+    margin:10px;
+}
+.clickable-card:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color:#266C75;
+    outline: none;
+}
+.name-tag{
+    word-wrap: break-word;
+}
