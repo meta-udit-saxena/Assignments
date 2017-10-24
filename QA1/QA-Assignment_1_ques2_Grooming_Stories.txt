@@ -1,0 +1,9 @@
+Grooming User Story:
+Case 1:When the train is cancelled
+Case 2:Refund on the basis of Status of the ticket of the passenger
+Case 3:Should also sent an mandotry confirmation message on mobile
+Case 4:Authentication code(OTP) should be send on cancellation of ticket to authenticate the user
+Case 5:The page should display list of all the booked tickets and a search option to search for the required ticket
+Case 6:Refund is not credited
+Case 7:How amount should be credited back
+Case 8:In case of multiple seats are booked via one PNR number and user wants to cancel only few of them but not the whole ticket
