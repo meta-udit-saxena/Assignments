@@ -1,0 +1,188 @@
+header {
+    background-color: #ba5e5e;
+    color: #ffffff;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.navbar-toggle {
+    border: 1px solid #662d2d; 
+}
+
+header .container .icon {
+	margin: 10px;
+	font-size: 25px;
+	background-color: #f0677c;
+	border-radius: 50%;
+	padding: 15px;
+}
+
+header .container .logo {
+	padding-top: 15px;
+}
+
+header .navbar-header button {
+	position: relative;
+	background-color: #ee657a;
+}
+
+header p {
+	margin-top: 20px;
+}
+
+.navbar-inverse {
+	border-radius: 0px;
+	border: 0px;
+	min-height: 1px;
+}
+
+#dashboard a{
+  background-color: #ba5e5e;
+} 
+
+.navbar .nav li a {
+	color: #fff;
+}
+
+section .container {
+	margin-top: 30px;
+	color: #f491a0;
+}
+
+.layer1 .container hr {
+	border-top: 2px solid #f491a0; 
+	margin-top: 5px;
+}
+
+.layer1 .container .well {
+	margin: 35px 0px 0px 0px;
+	background-color: #dff0d8;
+	color: #8aab7f;
+}
+
+.layer2 .container .row {
+	color: #fff;
+}
+
+.notify {
+	background-color: #b9b739;
+}
+
+.gallery {
+	background-color: #f94c4c;
+}
+
+.favourite {
+	background-color: #119c7e;
+}
+
+.announcement {
+	background-color: #b739b9;
+}
+
+.layer2 .container .icon{
+	font-size: 30px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	padding: 10px;
+}
+
+.panel-body ul {
+	padding-left: 0px;
+	list-style: none;
+}
+
+.left-panel .panel-body .glyphicon {
+	border: 1px solid #ccc;
+	padding: 5px;
+}
+
+.panel .panel-body ul li a {
+	text-decoration: none;
+	color: #000;
+}
+
+.panel .panel-body ul li a .label {
+	padding: 5px;
+}
+
+.left-panel .panel-body {
+	margin-bottom: 0px;
+}
+
+.layer3 .well {
+	background-color: #f2dede;
+	color: #c79292;
+	line-height: 2;
+	padding: 15px 20px;
+}
+
+.layer3 .container .row .right-panel .panel-heading {
+	background-color: #dff0d8;
+	color: #74a084;
+	font-size: 15px;
+	padding: 17px;
+}
+
+.layer3 .container .row .right-panel .panel-body {
+	color: #000;
+}
+
+.layer3 .container .row .right-panel .panel-footer {
+	color: #777;
+	padding: 18px;
+}
+
+.layer3 .container .row .right-panel button {
+	border-radius: 0px;
+}
+
+textarea {
+	width: 100%;
+	height: 200px;
+	border-radius: 4px;
+	border-color: #ccc;
+}
+
+.social-buttons {
+	padding: 12px;
+	background-color: #fcf8e3;
+}
+
+.social-buttons button {
+	border-radius: 0px;
+	color: #fff;
+}
+
+.btn-fb {
+  background-color: #3B5998;
+}
+
+.btn-gplus {
+  background-color: #DD4B39;
+}
+
+.btn-tw {
+  background-color: #55ACEE;
+}
+
+.btn-li {
+  background-color: #0082CA;
+}
+
+.table {
+	color: #000;
+}
+
+.view {
+	border-radius: 0px;
+	padding: 5px;
+}
+
+footer {
+	color: #fff;
+	background-color: #c36464;
+	padding: 15px;
+	margin-top: 50px;
+}
